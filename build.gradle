@@ -1,0 +1,38 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.7.6'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id "org.openjfx.javafxplugin" version "0.0.13"
+}
+
+group = 'com.slavamashkov'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = '17'
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
