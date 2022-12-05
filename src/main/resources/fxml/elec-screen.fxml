@@ -16,7 +16,7 @@
                               text="Left Engine"/>
                 <ToggleButton fx:id="rightEngineToggleButton" mnemonicParsing="false"
                               onAction="#onActionActivateRightEngine" prefHeight="40.0" prefWidth="100.0"
-                              text="Left Engine"/>
+                              text="Right Engine"/>
             </children>
         </VBox>
 

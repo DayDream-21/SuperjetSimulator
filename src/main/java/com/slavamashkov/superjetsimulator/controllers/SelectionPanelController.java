@@ -9,7 +9,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SelectionPanelController extends FxController {
     private final String source = "fxml/selection-panel-pane.fxml";
+
     @FXML private AnchorPane selectionPanelMainPane;
     private final BottomInfoPaneController bottomInfoPaneController;
     private final UpperInfoPaneController upperInfoPaneController;
@@ -38,34 +38,57 @@ public class SelectionPanelController extends FxController {
     @FXML private Rectangle extPwrUpperLight;
     @FXML private Rectangle extPwrLowerLight;
 
+    @FXML private Rectangle apuGenUpperLight;
+    @FXML private Rectangle apuGenLowerLight;
+
     @Override
     public void init() {
         buttons.getStylesheets().add("css/selection-panel.css");
         extPwrUpperLight.setFill(Color.LIME);
+        apuGenLowerLight.setFill(Color.LIME);
 
         overheadPanelImageView.setImage(new Image("images/overhead_panel_2.png"));
         selectorImageView.setImage(new Image("images/selector.png"));
     }
 
-    private static final List<Double> allowedDegrees = Arrays.asList(45.0, 90.0, 135.0, 180.0);
-    private Iterator<Double> listIterator = allowedDegrees.listIterator();
+    boolean extPwrSwitchedOn = false;
 
-    boolean isSwitchExtPowButtonPressed = false;
+    @FXML private void switchExtPwrButton(MouseEvent mouseEvent) {
+        extPwrSwitchedOn = !extPwrSwitchedOn;
 
-    @FXML private void switchExtPowButton(MouseEvent mouseEvent) {
-        isSwitchExtPowButtonPressed = !isSwitchExtPowButtonPressed;
-
-        if (isSwitchExtPowButtonPressed) {
+        if (extPwrSwitchedOn) {
             bottomInfoPaneController.activateExtPwr();
 
             extPwrUpperLight.setFill(Color.GREY);
             extPwrLowerLight.setFill(Color.LIME);
         } else {
             bottomInfoPaneController.deactivateExtPwr();
+
             extPwrUpperLight.setFill(Color.LIME);
             extPwrLowerLight.setFill(Color.GREY);
         }
     }
+
+    boolean apuGenSwitchedOn = false;
+
+    @FXML private void switchApuGenButton(MouseEvent mouseEvent) {
+        apuGenSwitchedOn = !apuGenSwitchedOn;
+
+        if (apuGenSwitchedOn) {
+            bottomInfoPaneController.activateApuGen();
+
+            apuGenUpperLight.setFill(Color.LIME);
+            apuGenLowerLight.setFill(Color.GREY);
+        } else {
+            bottomInfoPaneController.deactivateApuGen();
+
+            apuGenUpperLight.setFill(Color.GREY);
+            apuGenLowerLight.setFill(Color.LIME);
+        }
+    }
+
+    private static final List<Double> allowedDegrees = Arrays.asList(45.0, 90.0, 135.0, 180.0);
+    private Iterator<Double> listIterator = allowedDegrees.listIterator();
 
     @FXML private void changeDegree(MouseEvent mouseEvent) {
         if (!listIterator.hasNext()) {

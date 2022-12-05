@@ -31,12 +31,22 @@ public class BottomInfoPaneController extends FxController {
 
     public void activateExtPwr() {
         elecUnitsConnectionsController.activateExtPwrConnection();
-        elecUnitsController.activateExtPwr();
+        elecUnitsController.activateExtPwrUnit();
     }
 
     public void deactivateExtPwr() {
         elecUnitsConnectionsController.deactivateExtPwrConnection();
-        elecUnitsController.deactivateExtPwr();
+        elecUnitsController.deactivateExtPwrUnit();
+    }
+
+    public void activateApuGen() {
+        elecUnitsConnectionsController.activateApuGenConnection();
+        elecUnitsController.activateApuGenUnit();
+    }
+
+    public void deactivateApuGen() {
+        elecUnitsConnectionsController.deactivateApuGenConnection();
+        elecUnitsController.deactivateApuGenUnit();
     }
 
     public void activateLeftEngine() {
@@ -57,25 +67,5 @@ public class BottomInfoPaneController extends FxController {
     public void deactivateRightEngine() {
         elecUnitsConnectionsController.deactivateRightDriveToRightConnection();
         elecUnitsController.deactivateRightEngine();
-    }
-
-    public void activateErrorLeftEngine() {
-        elecUnitsConnectionsController.deactivateLeftDriveToLeftConnection();
-        // elecUnitsController.activateErrorLeftEngine();
-    }
-
-    public void deactivateErrorLeftEngine() {
-        elecUnitsConnectionsController.activateLeftDriveToLeftConnection();
-        // elecUnitsController.deactivateErrorLeftEngine();
-    }
-
-    public void activateErrorRightEngine() {
-        elecUnitsConnectionsController.deactivateRightDriveToRightConnection();
-        // elecUnitsController.activateErrorRightEngine();
-    }
-
-    public void deactivateErrorRightEngine() {
-        elecUnitsConnectionsController.activateRightDriveToRightConnection();
-        // elecUnitsController.deactivateErrorRightEngine();
     }
 }

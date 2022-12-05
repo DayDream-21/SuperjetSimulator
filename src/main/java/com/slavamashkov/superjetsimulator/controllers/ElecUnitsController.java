@@ -9,7 +9,6 @@ import javafx.scene.shape.CubicCurve;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import static com.slavamashkov.superjetsimulator.enums.Color.ACTIVE_COLOR;
@@ -24,6 +23,23 @@ public class ElecUnitsController extends FxController {
 
     private final UpperInfoPaneController upperInfoPaneController;
 
+    // External Power
+    @FXML private Rectangle extPwrRectangle;
+    @FXML private CubicCurve extPwrTransformerSign;
+    @FXML private Label extLabel;
+    @FXML private Label pwrLabel;
+    @FXML private Label extPwrVoltageValue;
+    @FXML private Label extPwrVoltageSign;
+    @FXML private Label extPwrFrequencyValue;
+    @FXML private Label extPwrFrequencySign;
+
+    // APU Generator
+    @FXML private Circle apuGenCircle;
+    @FXML private Label apuLabel;
+    @FXML private Label genLabel;
+    @FXML private CubicCurve apuGenTransformerSign;
+    @FXML private Pane apuGenInfoPane;
+
     // Left Engine
     @FXML private Rectangle leftDriveConnection;
     @FXML private Circle leftDriveTransformerCircle;
@@ -36,17 +52,7 @@ public class ElecUnitsController extends FxController {
     @FXML private Rectangle rightDriveRectangle;
     @FXML private CubicCurve rightDriveTransformerSign;
 
-    // External Power
-    @FXML private Rectangle extPwrRectangle;
-    @FXML private CubicCurve extPwrTransformerSign;
-    @FXML private Label extLabel;
-    @FXML private Label pwrLabel;
-    @FXML private Label extPwrVoltageValue;
-    @FXML private Label extPwrVoltageSign;
-    @FXML private Label extPwrFrequencyValue;
-    @FXML private Label extPwrFrequencySign;
-
-    public void activateExtPwr() {
+    public void activateExtPwrUnit() {
         extPwrRectangle.setOpacity(1.0);
         extPwrTransformerSign.setOpacity(1.0);
         extLabel.setOpacity(1.0);
@@ -59,7 +65,7 @@ public class ElecUnitsController extends FxController {
         upperInfoPaneController.activateAllBatsDemo();
     }
 
-    public void deactivateExtPwr() {
+    public void deactivateExtPwrUnit() {
         extPwrRectangle.setOpacity(0.0);
         extPwrTransformerSign.setOpacity(0.0);
         extLabel.setOpacity(0.0);
@@ -72,13 +78,28 @@ public class ElecUnitsController extends FxController {
         upperInfoPaneController.deactivateAllBatsDemo();
     }
 
+    public void activateApuGenUnit() {
+        apuGenCircle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
+        apuGenTransformerSign.setOpacity(1.0);
+        apuGenInfoPane.setOpacity(1.0);
+
+        upperInfoPaneController.activateAllBatsDemo();
+    }
+
+    public void deactivateApuGenUnit() {
+        apuGenCircle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
+        apuGenTransformerSign.setOpacity(0.0);
+        apuGenInfoPane.setOpacity(0.0);
+
+        upperInfoPaneController.deactivateAllBatsDemo();
+    }
+
     public void activateLeftEngine() {
         leftDriveConnection.setOpacity(1.0);
         leftDriveTransformerSign.setOpacity(1.0);
         leftDriveTransformerSign.setStroke(Color.web(ACTIVE_COLOR.hexCode));
         leftDriveTransformerCircle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
         leftDriveRectangle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
-
 
         upperInfoPaneController.activateAllBatsDemo();
     }
