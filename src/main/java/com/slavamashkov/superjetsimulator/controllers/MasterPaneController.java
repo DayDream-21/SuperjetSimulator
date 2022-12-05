@@ -1,12 +1,9 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
-import com.slavamashkov.superjetsimulator.errors.BusMalfunction;
 import com.slavamashkov.superjetsimulator.errors.Malfunction;
-import com.slavamashkov.superjetsimulator.errors.NoMalfunction;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -29,20 +26,18 @@ public class MasterPaneController extends FxController {
     @Override
     public void init() {
         super.init();
+        //getStage().setOnCloseRequest(e -> returnToDefault());
         selectionPanelPane.getChildren().add(selectionPanelController.getSelectionPanelMainPane());
         elecScreen.getChildren().add(elecScreenController.getElecScreenMainPane());
     }
 
+    /*// todo implement method to call Malfunction#restoreSystem()
+    // Return stage to its default condition
+    private void returnToDefault() {
+    }*/
+
     public void receiveData(Malfunction malfunction) {
-        if (!(malfunction instanceof NoMalfunction)) {
-            BusMalfunction busMalfunction = (BusMalfunction) malfunction;
-            middleInfoPaneController.getLeftMainBusDC().setStroke(
-                    Paint.valueOf(toHexString(busMalfunction.parameters.get("leftMainBusDC").get(0).getFxValue()))
-            );
-            middleInfoPaneController.getRightEmrgBusDC().setStroke(
-                    Paint.valueOf(toHexString(busMalfunction.parameters.get("rightEmrgBusDC").get(0).getFxValue()))
-            );
-        }
+        malfunction.executeMalfunction();
     }
 
     private String format(double val) {

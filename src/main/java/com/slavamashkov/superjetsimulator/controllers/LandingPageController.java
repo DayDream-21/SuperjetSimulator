@@ -19,6 +19,10 @@ public class LandingPageController extends FxController implements CommandLineRu
     private final String source = "fxml/landing-page.fxml";
     private final MasterPaneController masterPaneController;
 
+    private final NoMalfunction noMalfunction;
+    private final BusMalfunction busMalfunction;
+    private final BatteryMalfunction batteryMalfunction;
+
     @FXML private ImageView logo;
     @FXML private ComboBox<Malfunction> comboBox;
 
@@ -29,11 +33,11 @@ public class LandingPageController extends FxController implements CommandLineRu
         getScene().getStylesheets().add("css/landing-page.css");
         logo.setImage(new Image("images/sukhoi_logo.png"));
         comboBox.getItems().addAll(
-                new NoMalfunction(),
-                new BusMalfunction(),
-                new BatteryMalfunction()
+                noMalfunction,
+                busMalfunction,
+                batteryMalfunction
         );
-        comboBox.setVisibleRowCount(2);
+        comboBox.setVisibleRowCount(10);
     }
 
     @Override

@@ -1,29 +1,28 @@
 package com.slavamashkov.superjetsimulator.errors;
 
+import com.slavamashkov.superjetsimulator.controllers.MiddleInfoPaneController;
 import javafx.scene.paint.Color;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+@Component
+@RequiredArgsConstructor
 public class BusMalfunction extends Malfunction {
-    public Map<String, List<ErrorParameter>> parameters = new HashMap<>();
-
-    public BusMalfunction() {
-        List<ErrorParameter> leftMainBusDCList = List.of(
-                new ErrorParameter("stroke", Color.RED)
-        );
-
-        List<ErrorParameter> rightEmrgBusDC = List.of(
-                new ErrorParameter("stroke", Color.ORANGE)
-        );
-
-        parameters.put("leftMainBusDC", leftMainBusDCList);
-        parameters.put("rightEmrgBusDC", rightEmrgBusDC);
-    }
+    private final MiddleInfoPaneController middleInfoPaneController;
 
     @Override
     public String toString() {
         return "Bus Malfunction";
+    }
+
+    @Override
+    public void executeMalfunction() {
+        middleInfoPaneController.getLeftMainBusDC().setStroke(Color.RED);
+        middleInfoPaneController.getRightEmrgBusDC().setStroke(Color.ORANGE);
+    }
+
+    @Override
+    public void restoreSystem() {
+
     }
 }
