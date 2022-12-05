@@ -1,0 +1,37 @@
+StackPane:hover > .rec-button-serif {
+    -fx-opacity: 1.0;
+}
+
+StackPane:hover > .rec-button {
+    -fx-fill: #4B9AD8;
+}
+
+StackPane:hover > .rec-button-text {
+    -fx-fill: #003671;
+}
+
+.start-button-pane:hover > .start-button-circle {
+    -fx-opacity: 0.7;
+}
+
+.combo-box {
+    -fx-background-color: #1f93ff;
+    -fx-border-color: #1f93ff;
+    -fx-border-width: 4;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-border-color: white;
+    -fx-border-radius: 2;
+    -fx-border-width: 4;
+}
+
+.combo-box .list-cell .text {
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #0e68bb;
+}

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="bottomInfoElecUnitsPaneMainPane"
+      fx:controller="com.slavamashkov.superjetsimulator.controllers.ElecUnitsController" prefHeight="147.0"
+      prefWidth="650.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml">
+    <children>
+        <Pane fx:id="leftDrivePane" prefHeight="155.0" prefWidth="128.0">
+            <children>
+                <Rectangle fx:id="leftDriveConnection" arcHeight="1.0" arcWidth="1.0" height="40.0" layoutX="89.0"
+                           layoutY="37.0" opacity="0.0" stroke="#00ff25" strokeType="INSIDE" strokeWidth="4.0"
+                           width="12.0"/>
+                <Circle fx:id="leftDriveTransformerCircle" layoutX="94.0" layoutY="23.0" radius="25.0" stroke="WHITE"
+                        strokeType="INSIDE" strokeWidth="2.0"/>
+                <CubicCurve fx:id="leftDriveTransformerSign" controlX1="-50.0" controlX2="-51.0" controlY1="-30.0"
+                            controlY2="30.0" endX="-32.0" layoutX="144.0" layoutY="24.0" opacity="0.0" startX="-68.0"
+                            stroke="#00ff25" strokeWidth="2.0"/>
+                <Rectangle fx:id="leftDriveRectangle" arcHeight="1.0" arcWidth="1.0" height="40.0" layoutX="62.0"
+                           layoutY="68.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="66.0"/>
+                <Label fx:id="leftDriveLabel" alignment="CENTER" layoutX="61.0" layoutY="73.0" prefHeight="30.0"
+                       prefWidth="66.0" text="DRIVE" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="leftGenLabel" layoutX="4.0" layoutY="8.0" prefHeight="30.0" prefWidth="60.0" text="L GEN"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane fx:id="rightDrivePane" layoutX="522.0" prefHeight="155.0" prefWidth="128.0">
+            <children>
+                <Rectangle fx:id="rightDriveConnection" arcHeight="1.0" arcWidth="1.0" height="40.0" layoutX="28.0"
+                           layoutY="37.0" opacity="0.0" stroke="#00ff25" strokeType="INSIDE" strokeWidth="4.0"
+                           width="12.0"/>
+                <Circle fx:id="rightDriveTransformerCircle" layoutX="33.0" layoutY="23.0" radius="25.0" stroke="WHITE"
+                        strokeType="INSIDE" strokeWidth="2.0"/>
+                <CubicCurve fx:id="rightDriveTransformerSign" controlX1="-50.0" controlX2="-51.0" controlY1="-30.0"
+                            controlY2="30.0" endX="-32.0" layoutX="83.0" layoutY="24.0" opacity="0.0" startX="-68.0"
+                            stroke="#00FF25" strokeWidth="2.0"/>
+                <Rectangle fx:id="rightDriveRectangle" arcHeight="1.0" arcWidth="1.0" height="40.0" layoutY="68.0"
+                           stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="66.0"/>
+                <Label fx:id="rightDriveLabel" alignment="CENTER" layoutY="73.0" prefHeight="30.0" prefWidth="66.0"
+                       text="DRIVE" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="rightGenLabel" layoutX="66.0" layoutY="8.0" prefHeight="30.0" prefWidth="60.0"
+                       text="R GEN" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane fx:id="apuGenPane" layoutX="128.0" prefHeight="155.0" prefWidth="185.0">
+            <children>
+                <Circle fx:id="apuGenCircle" layoutX="50.0" layoutY="47.0" radius="25.0" stroke="WHITE"
+                        strokeType="INSIDE" strokeWidth="2.0"/>
+                <Label fx:id="apuLabel" alignment="CENTER" layoutX="8.0" layoutY="73.0" prefHeight="30.0"
+                       prefWidth="83.0" text="APU" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="genLabel" alignment="CENTER" layoutX="8.0" layoutY="91.0" prefHeight="30.0"
+                       prefWidth="83.0" text="GEN" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <CubicCurve fx:id="apuGenTransformerSign" controlX1="-50.0" controlX2="-51.0" controlY1="-30.0"
+                            controlY2="30.0" endX="-32.0" layoutX="100.0" layoutY="47.0" opacity="0.0" startX="-68.0"
+                            stroke="#00ff25" strokeWidth="2.0"/>
+                <Pane fx:id="apuGenInfoPane" layoutX="76.0" layoutY="2.0" opacity="0.0" prefHeight="90.0"
+                      prefWidth="109.0">
+                    <children>
+                        <Label fx:id="apuGenVoltageValue" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="44.0"
+                               text="115" textFill="#00ff25">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="apuGenPercentValue" alignment="CENTER_RIGHT" layoutY="30.0" prefHeight="30.0"
+                               prefWidth="44.0" text="30" textFill="#00ff25">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="apuGenVoltageSign" layoutX="47.0" text="V" textFill="WHITE">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="apuGenPercentSign" layoutX="47.0" layoutY="30.0" text="\%" textFill="WHITE">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="apuGenFrequencyValue" alignment="CENTER_RIGHT" layoutY="60.0" prefHeight="30.0"
+                               prefWidth="44.0" text="400" textFill="#00ff25">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="apuGenFrequencySign" layoutX="47.0" layoutY="60.0" text="HZ" textFill="WHITE">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+        <Pane fx:id="extPwrPane" layoutX="337.0" prefHeight="155.0" prefWidth="185.0">
+            <children>
+                <Rectangle opacity="0.0" fx:id="extPwrRectangle" arcHeight="5.0" height="50.0" layoutX="107.0"
+                           layoutY="23.0" stroke="#00ff25" strokeType="INSIDE" strokeWidth="2.0" width="50.0"/>
+                <CubicCurve opacity="0.0" fx:id="extPwrTransformerSign" controlX1="-50.0" controlX2="-51.0"
+                            controlY1="-30.0" controlY2="30.0" endX="-32.0" layoutX="182.0" layoutY="47.0"
+                            startX="-68.0" stroke="#00ff25" strokeWidth="2.0"/>
+                <Label opacity="0.0" fx:id="extLabel" alignment="CENTER" layoutX="91.0" layoutY="73.0" prefHeight="30.0"
+                       prefWidth="83.0" text="EXT" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label opacity="0.0" fx:id="pwrLabel" alignment="CENTER" layoutX="91.0" layoutY="91.0" prefHeight="30.0"
+                       prefWidth="83.0" text="PWR" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label opacity="0.0" fx:id="extPwrVoltageValue" alignment="CENTER_RIGHT" layoutX="30.0" layoutY="18.0"
+                       prefHeight="30.0" prefWidth="44.0" text="115" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label opacity="0.0" fx:id="extPwrVoltageSign" layoutX="76.0" layoutY="18.0" text="V" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label opacity="0.0" fx:id="extPwrFrequencyValue" alignment="CENTER_RIGHT" layoutX="30.0" layoutY="48.0"
+                       prefHeight="30.0" prefWidth="44.0" text="400" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label opacity="0.0" fx:id="extPwrFrequencySign" layoutX="76.0" layoutY="48.0" text="HZ"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </children>
+</Pane>

@@ -11,6 +11,8 @@ group = 'com.slavamashkov'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
+mainClassName = 'com.slavamashkov.superjetsimulator.SuperjetSimulatorApplication'
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="bottomInfoPaneMainPane" fx:controller="com.slavamashkov.superjetsimulator.controllers.BottomInfoPaneController" prefHeight="288.0"
+      prefWidth="650.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml">
+    <children>
+        <Pane fx:id="elecUnitsPane" layoutY="147.0" prefHeight="147.0" prefWidth="650.0"/>
+        <Pane fx:id="elecUnitsConnectionsPane" prefHeight="147.0" prefWidth="650.0"/>
+    </children>
+</Pane>

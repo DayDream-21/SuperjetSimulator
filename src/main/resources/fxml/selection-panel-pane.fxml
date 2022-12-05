@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="selectionPanelMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="1000.0" prefWidth="868.0" xmlns="http://javafx.com/javafx/18"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.slavamashkov.superjetsimulator.controllers.SelectionPanelController">
+    <children>
+        <Pane fx:id="lights" layoutX="266.0" layoutY="548.0" prefHeight="164.0" prefWidth="332.0">
+            <children>
+                <Pane fx:id="bat1Lights" layoutX="77.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="bat1UpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat1LowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="bat3Lights" layoutX="121.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="bat3UpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat3LowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="bat2Lights" layoutX="168.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="bat2UpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat2LowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="bat4Lights" layoutX="213.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="bat4UpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat4LowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="invLights" layoutX="258.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="invUpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="invLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="leftGenLights" layoutX="32.0" layoutY="65.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="leftGenUpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="leftGenLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="rightGenLights" layoutX="258.0" layoutY="65.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="rightGenUpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="rightGenLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="leftDriveLights" layoutX="32.0" layoutY="112.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="leftDriveUpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="leftDriveLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="rightDriveLights" layoutX="257.0" layoutY="112.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="rightDriveUpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="rightDriveLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="apuGenLights" layoutX="91.0" layoutY="113.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="apuGenUpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="apuGenLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="extPwrLights" layoutX="197.0" layoutY="113.0" prefHeight="50.0" prefWidth="45.0">
+                    <children>
+                        <Rectangle fx:id="extPwrUpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="extPwrLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+        <ImageView fx:id="overheadPanelImageView" fitHeight="1000.0" fitWidth="868.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <!--<image>
+                <Image url="@../images/overhead_panel_2.png"/>
+            </image>-->
+        </ImageView>
+        <Group fx:id="selectorGroup" layoutX="729.0" layoutY="663.0">
+            <children>
+                <ImageView fx:id="selectorImageView" fitHeight="49.0" fitWidth="65.0" layoutX="-6.0" layoutY="-7.0"
+                           pickOnBounds="true" preserveRatio="true">
+                    <!--<image>
+                        <Image url="@../images/selector.png"/>
+                    </image>-->
+                </ImageView>
+            </children>
+        </Group>
+        <Rectangle fx:id="allowedZone" height="47.0" layoutX="721.0" layoutY="655.0" onMousePressed="#changeDegree"
+                   opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="52.0"/>
+        <Label fx:id="batteryVoltageIndicator" alignment="CENTER_RIGHT" layoutX="647.0" layoutY="648.0"
+               prefHeight="17.0" prefWidth="45.0" text="0.0" textFill="#00ff25">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <Pane fx:id="buttons" layoutX="266.0" layoutY="548.0" prefHeight="164.0" prefWidth="332.0">
+            <children>
+                <Rectangle fx:id="bat1Button" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="50.0"
+                           layoutX="77.0" layoutY="8.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
+                <Rectangle fx:id="bat2Button" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="50.0"
+                           layoutX="121.0" layoutY="8.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
+                <Rectangle fx:id="bat3Button" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="50.0"
+                           layoutX="168.0" layoutY="8.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
+                <Rectangle fx:id="bat4Button" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="49.0"
+                           layoutX="213.0" layoutY="8.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="46.0"/>
+                <Rectangle fx:id="invButton" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="50.0"
+                           layoutX="258.0" layoutY="8.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
+                <Rectangle fx:id="leftGenButton" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="46.0"
+                           layoutX="32.0" layoutY="65.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="46.0"/>
+                <Rectangle fx:id="rightGenButton" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="46.0"
+                           layoutX="258.0" layoutY="65.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="46.0"/>
+                <Rectangle fx:id="leftDriveButton" arcHeight="12.0" arcWidth="12.0" fill="#1f93ff00" height="50.0"
+                           layoutX="32.0" layoutY="112.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
+                <Rectangle fx:id="rightDriveButton" arcHeight="12.0" arcWidth="12.0" fill="#1f93ff00" height="50.0"
+                           layoutX="257.0" layoutY="112.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
+                <Rectangle fx:id="apuGenButton" arcHeight="12.0" arcWidth="12.0" fill="#1f93ff00" height="47.0"
+                           layoutX="91.0" layoutY="113.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="2.0" styleClass="allowed-zone" width="47.0"/>
+                <Rectangle fx:id="extPwrButton" arcHeight="12.0" arcWidth="12.0" fill="#1f93ff00" height="47.0"
+                           layoutX="197.0" layoutY="113.0" onMouseClicked="#switchExtPowButton" opacity="0.0"
+                           stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" styleClass="allowed-zone" width="47.0"/>
+            </children>
+        </Pane>
+
+    </children>
+</AnchorPane>

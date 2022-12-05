@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="bottomInfoElecUnitsConnectionsPaneMainPane" prefHeight="144.0" prefWidth="650.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.slavamashkov.superjetsimulator.controllers.ElecUnitsConnectionsController">
+    <children>
+        <Pane fx:id="fromLeftDriveToLeft" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="#00ff25" layoutX="235.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="47.0" layoutX="233.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="4.0" layoutX="93.0" layoutY="61.0" smooth="false"
+                           width="144.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="84.0" layoutX="93.0" layoutY="63.0" smooth="false"
+                           width="4.0"/>
+            </children>
+        </Pane>
+        <Pane fx:id="fromRightDriveToRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="#00ff25" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="47.0" layoutX="413.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="4.0" layoutX="413.0" layoutY="61.0" smooth="false"
+                           width="144.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="84.0" layoutX="553.0" layoutY="63.0" smooth="false"
+                           width="4.0"/>
+            </children>
+        </Pane>
+        <Pane fx:id="fromRightDriveToLeftRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="#00ff25" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="47.0" layoutX="413.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="4.0" layoutX="233.0" layoutY="61.0" smooth="false"
+                           width="324.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="87.0" layoutX="553.0" layoutY="65.0" smooth="false"
+                           width="4.0"/>
+                <Polygon fill="#00ff25" layoutX="235.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="47.0" layoutX="233.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+            </children>
+        </Pane>
+        <Pane fx:id="fromLeftDriveToLeftRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="#00ff25" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="47.0" layoutX="413.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="4.0" layoutX="93.0" layoutY="61.0" smooth="false"
+                           width="324.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="84.0" layoutX="93.0" layoutY="65.0" smooth="false"
+                           width="4.0"/>
+                <Polygon fill="#00ff25" layoutX="235.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="47.0" layoutX="233.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+            </children>
+        </Pane>
+        <Pane fx:id="fromApuToLeft" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="#00ff25" layoutX="178.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="155.0" layoutX="176.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+            </children>
+        </Pane>
+        <Pane fx:id="fromApuToRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="#00ff25" layoutX="470.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="70.0" layoutX="468.0" layoutY="12.0" smooth="false"
+                           width="4.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="4.0" layoutX="176.0" layoutY="82.0" smooth="false"
+                           width="296.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="85.0" layoutX="176.0" layoutY="86.0" smooth="false"
+                           width="4.0"/>
+            </children>
+        </Pane>
+        <Pane fx:id="fromExtToLeft" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="#00ff25" layoutX="178.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="69.0" layoutX="176.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="4.0" layoutX="176.0" layoutY="82.0" smooth="false"
+                           width="296.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="86.0" layoutX="468.0" layoutY="86.0" smooth="false"
+                           width="4.0"/>
+            </children>
+        </Pane>
+        <Pane fx:id="fromExtToRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="#00ff25" layoutX="470.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="#00ff25" height="160.0" layoutX="468.0" layoutY="12.0" smooth="false"
+                           width="4.0"/>
+            </children>
+        </Pane>
+        <Pane fx:id="leftDriveInfoPane" layoutY="57.0" opacity="0.0" prefHeight="90.0" prefWidth="93.0">
+            <children>
+                <Label fx:id="leftDriveVoltageValue" alignment="CENTER_RIGHT" layoutX="18.0" prefHeight="30.0"
+                       prefWidth="44.0" text="115" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="leftDriveVoltageSign" layoutX="65.0" text="V" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="leftDrivePercentValue" alignment="CENTER_RIGHT" layoutX="18.0" layoutY="30.0"
+                       prefHeight="30.0" prefWidth="44.0" text="30" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="leftDrivePercentSign" layoutX="65.0" layoutY="30.0" text="\%" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="leftDriveFrequencyValue" alignment="CENTER_RIGHT" layoutX="18.0" layoutY="60.0"
+                       prefHeight="30.0" prefWidth="44.0" text="400" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="leftDriveFrequencySign" layoutX="65.0" layoutY="60.0" text="HZ" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </Pane>
+        <Pane fx:id="rightDriveInfoPane" layoutX="557.0" layoutY="57.0" opacity="0.0" prefHeight="90.0"
+              prefWidth="93.0">
+            <children>
+                <Label fx:id="rightDriveVoltageValue" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="44.0"
+                       text="115" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="rightDriveVoltageSign" layoutX="47.0" text="V" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="rightDrivePercentValue" alignment="CENTER_RIGHT" layoutY="30.0" prefHeight="30.0"
+                       prefWidth="44.0" text="30" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="rightDrivePercentSign" layoutX="47.0" layoutY="30.0" text="\%" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="rightDriveFrequencyValue" alignment="CENTER_RIGHT" layoutY="60.0" prefHeight="30.0"
+                       prefWidth="44.0" text="400" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="rightDriveFrequencySign" layoutX="47.0" layoutY="60.0" text="HZ" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </children>
+</Pane>

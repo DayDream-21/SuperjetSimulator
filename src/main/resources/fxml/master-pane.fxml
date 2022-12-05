@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1618.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.slavamashkov.superjetsimulator.controllers.MasterPaneController">
+    <children>
+        <Pane fx:id="selectionPanelPane" prefHeight="1000.0" prefWidth="868.0"/>
+        <Pane fx:id="elecScreen" prefHeight="1000.0" prefWidth="750" layoutX="868.0"/>
+    </children>
+</AnchorPane>

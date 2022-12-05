@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.slavamashkov.superjetsimulator.controllers.LandingPageController" prefHeight="1000.0"
+            prefWidth="1518.0">
+    <children>
+        <Rectangle fx:id="background" height="1000.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"
+                   width="1518.0">
+            <fill>
+                <RadialGradient centerY="0.12322274881516587" focusAngle="10.91" focusDistance="-1.0" radius="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.29019609093666077" green="0.6196078658103943" blue="0.8549019694328308"/>
+                            </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                            <color>
+                                <Color red="0.29019609093666077" green="0.6196078658103943" blue="0.8549019694328308"/>
+                            </color>
+                        </Stop>
+                        <Stop offset="0.4127107546243247">
+                            <color>
+                                <Color red="0.27450981736183167" green="0.5176470875740051" blue="0.7843137383460999"/>
+                            </color>
+                        </Stop>
+                        <Stop offset="0.6615853658536586">
+                            <color>
+                                <Color red="0.4117647111415863" green="0.615686297416687" blue="0.8313725590705872"/>
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.0941176488995552" green="0.37254902720451355" blue="0.5921568870544434"/>
+                            </color>
+                        </Stop>
+                    </stops>
+                </RadialGradient>
+            </fill>
+        </Rectangle>
+        <Rectangle fx:id="upper" fill="#33638e" height="60.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE"
+                   strokeWidth="0.0" width="1518.0"/>
+        <ImageView fx:id="logo" fitHeight="60.0" fitWidth="170.0" layoutX="15.0" layoutY="12.0" pickOnBounds="true"
+                   preserveRatio="true">
+        </ImageView>
+        <Pane fx:id="buttons" layoutY="60.0" opacity="0.0" prefHeight="158.0" prefWidth="200.0">
+            <children>
+                <Rectangle fx:id="left" fill="#33638e" height="940.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE"
+                           strokeWidth="0.0" width="200.0"/>
+                <StackPane prefHeight="40.0" prefWidth="200.0">
+                    <children>
+                        <Rectangle fill="#00367100" height="40.0" strokeType="INSIDE" strokeWidth="0.0"
+                                   styleClass="rec-button" width="200.0"/>
+                        <Rectangle fill="#003671" height="40.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                                   strokeWidth="0.0" styleClass="rec-button-serif" width="8.0"
+                                   StackPane.alignment="TOP_LEFT"/>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="rec-button-text"
+                              text="Sample Text 1">
+                            <font>
+                                <Font size="24.0"/>
+                            </font>
+                        </Text>
+                    </children>
+                </StackPane>
+                <StackPane layoutY="40.0" prefHeight="40.0" prefWidth="200.0">
+                    <children>
+                        <Rectangle fill="#00367100" height="40.0" strokeType="INSIDE" strokeWidth="0.0"
+                                   styleClass="rec-button" width="200.0"/>
+                        <Rectangle fill="#003671" height="40.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                                   strokeWidth="0.0" styleClass="rec-button-serif" width="8.0"
+                                   StackPane.alignment="TOP_LEFT"/>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="rec-button-text"
+                              text="Sample Text 1">
+                            <font>
+                                <Font size="24.0"/>
+                            </font>
+                        </Text>
+                    </children>
+                </StackPane>
+                <StackPane layoutY="80.0" prefHeight="40.0" prefWidth="200.0">
+                    <children>
+                        <Rectangle fill="#00367100" height="40.0" strokeType="INSIDE" strokeWidth="0.0"
+                                   styleClass="rec-button" width="200.0"/>
+                        <Rectangle fill="#003671" height="40.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                                   strokeWidth="0.0" styleClass="rec-button-serif" width="8.0"
+                                   StackPane.alignment="TOP_LEFT"/>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="rec-button-text"
+                              text="Sample Text 1">
+                            <font>
+                                <Font size="24.0"/>
+                            </font>
+                        </Text>
+                    </children>
+                </StackPane>
+                <StackPane layoutY="120.0" prefHeight="40.0" prefWidth="200.0">
+                    <children>
+                        <Rectangle fill="#00367100" height="40.0" strokeType="INSIDE" strokeWidth="0.0"
+                                   styleClass="rec-button" width="200.0"/>
+                        <Rectangle fill="#003671" height="40.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                                   strokeWidth="0.0" styleClass="rec-button-serif" width="8.0"
+                                   StackPane.alignment="TOP_LEFT"/>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="rec-button-text"
+                              text="Sample Text 1">
+                            <font>
+                                <Font size="24.0"/>
+                            </font>
+                        </Text>
+                    </children>
+                </StackPane>
+            </children>
+        </Pane>
+        <Pane layoutX="389.0" layoutY="244.0" prefHeight="292.0" prefWidth="566.0">
+            <children>
+                <Rectangle fill="#1f93ff" focusTraversable="true" height="292.0" opacity="0.5" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="0.0" width="566.0">
+                    <effect>
+                        <InnerShadow/>
+                    </effect>
+                </Rectangle>
+
+                <ComboBox fx:id="comboBox" layoutX="568.0" layoutY="2.0" prefWidth="150.0" value="No error"/>
+                <Pane layoutY="214.0" prefHeight="56.0" prefWidth="566.0">
+                    <children>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              text="Запуск">
+                            <font>
+                                <Font name="Open Sans Bold" size="41.0"/>
+                            </font>
+                        </Text>
+                        <Pane styleClass="start-button-pane" onMouseClicked="#switchToSceneTwo" layoutX="437.0"
+                              layoutY="-72.0" prefHeight="200.0" prefWidth="200.0" scaleX="0.15" scaleY="0.15">
+                            <children>
+                                <Circle styleClass="start-button-circle" fill="WHITE" layoutX="100.0" layoutY="100.0"
+                                        radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"/>
+                                <Polygon styleClass="start-button-triangle" fill="#1f93ff" layoutX="111.0"
+                                         layoutY="108.0" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" rotate="90.0"
+                                         scaleX="0.75" scaleY="0.75" stroke="#1f93ff" strokeLineCap="ROUND"
+                                         strokeLineJoin="ROUND" strokeWidth="10.0"/>
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
