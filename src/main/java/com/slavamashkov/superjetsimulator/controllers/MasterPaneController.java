@@ -1,7 +1,7 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
-import com.slavamashkov.superjetsimulator.errors.Error;
-import com.slavamashkov.superjetsimulator.errors.Error1;
+import com.slavamashkov.superjetsimulator.errors.BusMalfunction;
+import com.slavamashkov.superjetsimulator.errors.Malfunction;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -10,10 +10,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Getter
 @Component
@@ -37,16 +35,16 @@ public class MasterPaneController extends FxController {
         elecScreen.getChildren().add(elecScreenController.getElecScreenMainPane());
     }
 
-    public void receiveData(Error error) {
-        Optional<Error> optionalError = Optional.of(error);
+    public void receiveData(Malfunction malfunction) {
+        Optional<Malfunction> optionalError = Optional.of(malfunction);
 
         if (optionalError.isPresent()) {
-            Error1 error1 = (Error1) optionalError.get();
+            BusMalfunction busError = (BusMalfunction) optionalError.get();
             middleInfoPaneController.getLeftMainBusDC().setStroke(
-                    Paint.valueOf(toHexString(error1.parameters.get("leftMainBusDC").get(0).getFxValue()))
+                    Paint.valueOf(toHexString(busError.parameters.get("leftMainBusDC").get(0).getFxValue()))
             );
             middleInfoPaneController.getRightEmrgBusDC().setStroke(
-                    Paint.valueOf(toHexString(error1.parameters.get("rightEmrgBusDC").get(0).getFxValue()))
+                    Paint.valueOf(toHexString(busError.parameters.get("rightEmrgBusDC").get(0).getFxValue()))
             );
         }
 

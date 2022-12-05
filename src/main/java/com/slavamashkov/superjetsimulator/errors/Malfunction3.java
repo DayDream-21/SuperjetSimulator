@@ -1,8 +1,8 @@
 package com.slavamashkov.superjetsimulator.errors;
 
-public class Error3 extends Error {
+public class Malfunction3 extends Malfunction {
     @Override
     public String toString() {
-        return "Error 3";
+        return "Malfunction 3";
     }
 }

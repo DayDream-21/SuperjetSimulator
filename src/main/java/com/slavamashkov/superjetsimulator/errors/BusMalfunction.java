@@ -1,16 +1,15 @@
 package com.slavamashkov.superjetsimulator.errors;
 
 import javafx.scene.paint.Color;
-import lombok.ToString;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Error1 extends Error {
+public class BusMalfunction extends Malfunction {
     public Map<String, List<ErrorParameter>> parameters = new HashMap<>();
 
-    public Error1() {
+    public BusMalfunction() {
         List<ErrorParameter> leftMainBusDCList = List.of(
                 new ErrorParameter("stroke", Color.RED)
         );
@@ -25,6 +24,6 @@ public class Error1 extends Error {
 
     @Override
     public String toString() {
-        return "Error 1";
+        return "Bus Malfunction";
     }
 }

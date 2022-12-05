@@ -1,9 +1,7 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
-import com.slavamashkov.superjetsimulator.errors.Error;
-import com.slavamashkov.superjetsimulator.errors.Error1;
-import com.slavamashkov.superjetsimulator.errors.Error2;
-import com.slavamashkov.superjetsimulator.errors.Error3;
+import com.slavamashkov.superjetsimulator.errors.*;
+import com.slavamashkov.superjetsimulator.errors.Malfunction;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
@@ -22,7 +20,7 @@ public class LandingPageController extends FxController implements CommandLineRu
     private final MasterPaneController masterPaneController;
 
     @FXML private ImageView logo;
-    @FXML private ComboBox<Error> comboBox;
+    @FXML private ComboBox<Malfunction> comboBox;
 
     @Override
     public void init() {
@@ -30,9 +28,8 @@ public class LandingPageController extends FxController implements CommandLineRu
         getScene().getStylesheets().add("css/landing-page.css");
         logo.setImage(new Image("images/sukhoi_logo.png"));
         comboBox.getItems().addAll(
-                new Error1(),
-                new Error2(),
-                new Error3()
+                new BusMalfunction(),
+                new BatteryMalfunction()
         );
         comboBox.setVisibleRowCount(2);
     }

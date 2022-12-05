@@ -126,7 +126,7 @@
                     </effect>
                 </Rectangle>
 
-                <ComboBox fx:id="comboBox" layoutX="568.0" layoutY="2.0" prefWidth="150.0" value="No error"/>
+                <ComboBox fx:id="comboBox" layoutX="568.0" layoutY="2.0" prefWidth="150.0" value="No Malfunction"/>
                 <Pane layoutY="214.0" prefHeight="56.0" prefWidth="566.0">
                     <children>
                         <Text fill="WHITE" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0"
