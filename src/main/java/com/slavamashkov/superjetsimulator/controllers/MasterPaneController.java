@@ -2,7 +2,6 @@ package com.slavamashkov.superjetsimulator.controllers;
 
 import com.slavamashkov.superjetsimulator.errors.BusMalfunction;
 import com.slavamashkov.superjetsimulator.errors.Malfunction;
-import com.slavamashkov.superjetsimulator.errors.Malfunction3;
 import com.slavamashkov.superjetsimulator.errors.NoMalfunction;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
@@ -11,9 +10,6 @@ import javafx.scene.paint.Paint;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Optional;
 
 @Getter
 @Component
@@ -24,8 +20,6 @@ public class MasterPaneController extends FxController {
     private final SelectionPanelController selectionPanelController;
     private final ElecScreenController elecScreenController;
     private final MiddleInfoPaneController middleInfoPaneController;
-
-    List<Integer> list = List.of(1, 2, 3, 5);
 
     @FXML
     private Pane selectionPanelPane;
