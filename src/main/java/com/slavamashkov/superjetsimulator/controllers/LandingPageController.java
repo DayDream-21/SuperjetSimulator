@@ -28,6 +28,7 @@ public class LandingPageController extends FxController implements CommandLineRu
         getScene().getStylesheets().add("css/landing-page.css");
         logo.setImage(new Image("images/sukhoi_logo.png"));
         comboBox.getItems().addAll(
+                new NoMalfunction(),
                 new BusMalfunction(),
                 new BatteryMalfunction()
         );
@@ -41,6 +42,12 @@ public class LandingPageController extends FxController implements CommandLineRu
 
     public void switchToSceneTwo(MouseEvent event) {
         masterPaneController.getStage().show();
-        masterPaneController.receiveData(comboBox.getValue());
+
+        if (comboBox.getSelectionModel().getSelectedIndex() == -1) {
+            comboBox.getSelectionModel().select(0);
+            masterPaneController.receiveData(comboBox.getValue());
+        } else {
+            masterPaneController.receiveData(comboBox.getValue());
+        }
     }
 }

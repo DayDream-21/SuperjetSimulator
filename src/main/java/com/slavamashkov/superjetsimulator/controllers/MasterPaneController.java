@@ -2,6 +2,8 @@ package com.slavamashkov.superjetsimulator.controllers;
 
 import com.slavamashkov.superjetsimulator.errors.BusMalfunction;
 import com.slavamashkov.superjetsimulator.errors.Malfunction;
+import com.slavamashkov.superjetsimulator.errors.Malfunction3;
+import com.slavamashkov.superjetsimulator.errors.NoMalfunction;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -25,8 +27,10 @@ public class MasterPaneController extends FxController {
 
     List<Integer> list = List.of(1, 2, 3, 5);
 
-    @FXML private Pane selectionPanelPane;
-    @FXML private Pane elecScreen;
+    @FXML
+    private Pane selectionPanelPane;
+    @FXML
+    private Pane elecScreen;
 
     @Override
     public void init() {
@@ -36,18 +40,15 @@ public class MasterPaneController extends FxController {
     }
 
     public void receiveData(Malfunction malfunction) {
-        Optional<Malfunction> optionalError = Optional.of(malfunction);
-
-        if (optionalError.isPresent()) {
-            BusMalfunction busError = (BusMalfunction) optionalError.get();
+        if (!(malfunction instanceof NoMalfunction)) {
+            BusMalfunction busMalfunction = (BusMalfunction) malfunction;
             middleInfoPaneController.getLeftMainBusDC().setStroke(
-                    Paint.valueOf(toHexString(busError.parameters.get("leftMainBusDC").get(0).getFxValue()))
+                    Paint.valueOf(toHexString(busMalfunction.parameters.get("leftMainBusDC").get(0).getFxValue()))
             );
             middleInfoPaneController.getRightEmrgBusDC().setStroke(
-                    Paint.valueOf(toHexString(busError.parameters.get("rightEmrgBusDC").get(0).getFxValue()))
+                    Paint.valueOf(toHexString(busMalfunction.parameters.get("rightEmrgBusDC").get(0).getFxValue()))
             );
         }
-
     }
 
     private String format(double val) {
