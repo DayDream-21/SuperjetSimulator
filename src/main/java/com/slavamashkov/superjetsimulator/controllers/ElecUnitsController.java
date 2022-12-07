@@ -21,7 +21,7 @@ public class ElecUnitsController extends FxController {
     private final String source = "fxml/bottom-info-elec-units-pane.fxml";
     @FXML private Pane bottomInfoElecUnitsPaneMainPane;
 
-    private final UpperInfoPaneController upperInfoPaneController;
+    private final BatsConnectionsController batsConnectionsController;
 
     // External Power
     @FXML private Rectangle extPwrRectangle;
@@ -62,7 +62,7 @@ public class ElecUnitsController extends FxController {
         extPwrFrequencyValue.setOpacity(1.0);
         extPwrFrequencySign.setOpacity(1.0);
 
-        upperInfoPaneController.activateAllBatsDemo();
+        batsConnectionsController.activateAllBatsDemo();
     }
 
     public void deactivateExtPwrUnit() {
@@ -75,7 +75,7 @@ public class ElecUnitsController extends FxController {
         extPwrFrequencyValue.setOpacity(0.0);
         extPwrFrequencySign.setOpacity(0.0);
 
-        upperInfoPaneController.deactivateAllBatsDemo();
+        batsConnectionsController.deactivateAllBatsDemo();
     }
 
     public void activateApuGenUnit() {
@@ -83,7 +83,7 @@ public class ElecUnitsController extends FxController {
         apuGenTransformerSign.setOpacity(1.0);
         apuGenInfoPane.setOpacity(1.0);
 
-        upperInfoPaneController.activateAllBatsDemo();
+        batsConnectionsController.activateAllBatsDemo();
     }
 
     public void deactivateApuGenUnit() {
@@ -91,7 +91,7 @@ public class ElecUnitsController extends FxController {
         apuGenTransformerSign.setOpacity(0.0);
         apuGenInfoPane.setOpacity(0.0);
 
-        upperInfoPaneController.deactivateAllBatsDemo();
+        batsConnectionsController.deactivateAllBatsDemo();
     }
 
     public void activateLeftEngine() {
@@ -101,7 +101,7 @@ public class ElecUnitsController extends FxController {
         leftDriveTransformerCircle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
         leftDriveRectangle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
 
-        upperInfoPaneController.activateAllBatsDemo();
+        batsConnectionsController.activateAllBatsDemo();
     }
 
     public void deactivateLeftEngine() {
@@ -110,7 +110,7 @@ public class ElecUnitsController extends FxController {
         leftDriveTransformerCircle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
         leftDriveRectangle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
 
-        upperInfoPaneController.deactivateAllBatsDemo();
+        batsConnectionsController.deactivateAllBatsDemo();
     }
 
     public void activateRightEngine() {
@@ -120,7 +120,7 @@ public class ElecUnitsController extends FxController {
         rightDriveTransformerCircle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
         rightDriveRectangle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
 
-        upperInfoPaneController.activateAllBatsDemo();
+        batsConnectionsController.activateAllBatsDemo();
     }
 
     public void deactivateRightEngine() {
@@ -129,6 +129,6 @@ public class ElecUnitsController extends FxController {
         rightDriveTransformerCircle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
         rightDriveRectangle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
 
-        upperInfoPaneController.deactivateAllBatsDemo();
+        batsConnectionsController.deactivateAllBatsDemo();
     }
 }

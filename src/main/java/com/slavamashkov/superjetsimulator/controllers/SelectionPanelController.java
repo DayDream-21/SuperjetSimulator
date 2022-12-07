@@ -26,6 +26,7 @@ public class SelectionPanelController extends FxController {
 
     @FXML private AnchorPane selectionPanelMainPane;
     private final BottomInfoPaneController bottomInfoPaneController;
+    private final BatsConnectionsController batsConnectionsController;
     private final UpperInfoPaneController upperInfoPaneController;
 
     @FXML private Pane buttons;
@@ -34,6 +35,18 @@ public class SelectionPanelController extends FxController {
 
     @FXML private Label batteryVoltageIndicator;
     @FXML private Group selectorGroup;
+
+    @FXML private Rectangle bat1UpperLight;
+    @FXML private Rectangle bat1LowerLight;
+
+    @FXML private Rectangle bat2UpperLight;
+    @FXML private Rectangle bat2LowerLight;
+
+    @FXML private Rectangle bat3UpperLight;
+    @FXML private Rectangle bat3LowerLight;
+
+    @FXML private Rectangle bat4UpperLight;
+    @FXML private Rectangle bat4LowerLight;
 
     @FXML private Rectangle extPwrUpperLight;
     @FXML private Rectangle extPwrLowerLight;
@@ -51,12 +64,76 @@ public class SelectionPanelController extends FxController {
         selectorImageView.setImage(new Image("images/selector.png"));
     }
 
-    boolean extPwrSwitchedOn = false;
+    boolean bat1SwitchedPressed = false;
+
+    public void switchBat1Button(MouseEvent mouseEvent) {
+        bat1SwitchedPressed = !bat1SwitchedPressed;
+
+        if (bat1SwitchedPressed) {
+            upperInfoPaneController.batOff(1);
+
+            bat1LowerLight.setFill(Color.LIME);
+        } else {
+            upperInfoPaneController.batOn(1);
+
+            bat1LowerLight.setFill(Color.GREY);
+        }
+    }
+
+    boolean bat2SwitchedPressed = false;
+
+    public void switchBat2Button(MouseEvent mouseEvent) {
+        bat2SwitchedPressed = !bat2SwitchedPressed;
+
+        if (bat2SwitchedPressed) {
+            upperInfoPaneController.batOff(2);
+
+            bat2LowerLight.setFill(Color.LIME);
+        } else {
+            upperInfoPaneController.batOn(2);
+
+            bat2LowerLight.setFill(Color.GREY);
+        }
+    }
+
+    boolean bat3SwitchedPressed = false;
+
+    public void switchBat3Button(MouseEvent mouseEvent) {
+        bat3SwitchedPressed = !bat3SwitchedPressed;
+
+        if (bat3SwitchedPressed) {
+            upperInfoPaneController.batOff(3);
+
+            bat3LowerLight.setFill(Color.LIME);
+        } else {
+            upperInfoPaneController.batOn(3);
+
+            bat3LowerLight.setFill(Color.GREY);
+        }
+    }
+
+    boolean bat4SwitchedPressed = false;
+
+    public void switchBat4Button(MouseEvent mouseEvent) {
+        bat4SwitchedPressed = !bat4SwitchedPressed;
+
+        if (bat4SwitchedPressed) {
+            upperInfoPaneController.batOff(4);
+
+            bat4LowerLight.setFill(Color.LIME);
+        } else {
+            upperInfoPaneController.batOn(4);
+
+            bat4LowerLight.setFill(Color.GREY);
+        }
+    }
+
+    boolean extPwrSwitchedPressed = false;
 
     @FXML private void switchExtPwrButton(MouseEvent mouseEvent) {
-        extPwrSwitchedOn = !extPwrSwitchedOn;
+        extPwrSwitchedPressed = !extPwrSwitchedPressed;
 
-        if (extPwrSwitchedOn) {
+        if (extPwrSwitchedPressed) {
             bottomInfoPaneController.activateExtPwr();
 
             extPwrUpperLight.setFill(Color.GREY);
@@ -69,12 +146,12 @@ public class SelectionPanelController extends FxController {
         }
     }
 
-    boolean apuGenSwitchedOn = false;
+    boolean apuGenSwitchedPressed = false;
 
     @FXML private void switchApuGenButton(MouseEvent mouseEvent) {
-        apuGenSwitchedOn = !apuGenSwitchedOn;
+        apuGenSwitchedPressed = !apuGenSwitchedPressed;
 
-        if (apuGenSwitchedOn) {
+        if (apuGenSwitchedPressed) {
             bottomInfoPaneController.activateApuGen();
 
             apuGenUpperLight.setFill(Color.LIME);
@@ -105,17 +182,18 @@ public class SelectionPanelController extends FxController {
         if (rotationDegree == 0.0) {
             batteryVoltageIndicator.setText(String.valueOf(0.0));
         } else if (rotationDegree == 45.0) {
-            batteryVoltageIndicator.setText(String.valueOf(upperInfoPaneController.getBat1Voltage()));
+            batteryVoltageIndicator.setText(String.valueOf(batsConnectionsController.getBatVoltage(1)));
         } else if (rotationDegree == 90.0) {
-            batteryVoltageIndicator.setText(String.valueOf(upperInfoPaneController.getBat2Voltage()));
+            batteryVoltageIndicator.setText(String.valueOf(batsConnectionsController.getBatVoltage(2)));
         } else if (rotationDegree == 135.0) {
-            batteryVoltageIndicator.setText(String.valueOf(upperInfoPaneController.getBat3Voltage()));
+            batteryVoltageIndicator.setText(String.valueOf(batsConnectionsController.getBatVoltage(3)));
         } else if (rotationDegree == 180.0) {
-            batteryVoltageIndicator.setText(String.valueOf(upperInfoPaneController.getBat4Voltage()));
+            batteryVoltageIndicator.setText(String.valueOf(batsConnectionsController.getBatVoltage(4)));
         } else {
             // todo
             // залогировать неподдерживаемое значение селектора
             batteryVoltageIndicator.setText(String.valueOf(0.0));
         }
     }
+
 }

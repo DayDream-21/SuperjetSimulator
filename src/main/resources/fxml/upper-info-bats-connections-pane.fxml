@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="upperInfoBatsConnectionsPaneMainPane"
+      fx:controller="com.slavamashkov.superjetsimulator.controllers.BatsConnectionsController"
+      style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      prefHeight="103.0" prefWidth="345.0">
+    <children>
+        <Pane fx:id="bat1InfoPane" prefWidth="75.0" prefHeight="103.0">
+            <children>
+                <Label fx:id="bat1VoltageSign" layoutX="32.0" layoutY="16.0" text="V" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="bat1VoltageValue" alignment="CENTER" layoutY="16.0" prefHeight="30.0"
+                       prefWidth="32.0" text="0" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Polygon fx:id="bat1ArrowEnd" fill="#00ff25" layoutX="53.0" layoutY="26.0"
+                         points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle fx:id="bat1Arrow" arcHeight="5.0" fill="#00ff25" height="87.0" layoutX="51.0"
+                           layoutY="16.0" smooth="false" width="4.0"/>
+                <Label fx:id="bat1CurrentSign" layoutX="32.0" layoutY="45.0" text="A" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="bat1CurrentValue" alignment="CENTER" layoutY="45.0" prefHeight="30.0"
+                       prefWidth="32.0" text="0" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane fx:id="bat3InfoPane" layoutX="85.0" prefHeight="103.0" prefWidth="75.0">
+            <children>
+                <Label fx:id="bat3VoltageSign" layoutX="32.0" layoutY="16.0" text="V" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="bat3VoltageValue" alignment="CENTER" layoutY="16.0" prefHeight="30.0"
+                       prefWidth="32.0" text="0" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Polygon fx:id="bat3ArrowEnd" fill="#00ff25" layoutX="53.0" layoutY="26.0"
+                         points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle fx:id="bat3Arrow" arcHeight="5.0" fill="#00ff25" height="87.0" layoutX="51.0"
+                           layoutY="16.0" smooth="false" width="4.0"/>
+                <Label fx:id="bat3CurrentSign" layoutX="32.0" layoutY="45.0" text="A" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="bat3CurrentValue" alignment="CENTER" layoutY="45.0" prefHeight="30.0"
+                       prefWidth="32.0" text="0" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane fx:id="bat2InfoPane" layoutX="180.0" prefHeight="103.0" prefWidth="75.0">
+            <children>
+                <Label fx:id="bat2VoltageSign" layoutX="32.0" layoutY="16.0" text="V" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="bat2VoltageValue" alignment="CENTER" layoutY="16.0" prefHeight="30.0"
+                       prefWidth="32.0" text="0" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Polygon fx:id="bat2ArrowEnd" fill="#00ff25" layoutX="53.0" layoutY="26.0"
+                         points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle fx:id="bat2Arrow" arcHeight="5.0" fill="#00ff25" height="87.0" layoutX="51.0"
+                           layoutY="16.0" smooth="false" width="4.0"/>
+                <Label fx:id="bat2CurrentSign" layoutX="32.0" layoutY="45.0" text="A" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="bat2CurrentValue" alignment="CENTER" layoutY="45.0" prefHeight="30.0"
+                       prefWidth="32.0" text="0" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane fx:id="bat4InfoPane" layoutX="270.0" prefHeight="103.0" prefWidth="75.0">
+            <children>
+                <Label fx:id="bat4VoltageSign" layoutX="32.0" layoutY="16.0" text="V" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="bat4VoltageValue" alignment="CENTER" layoutY="16.0" prefHeight="30.0"
+                       prefWidth="32.0" text="0" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Polygon fx:id="bat4ArrowEnd" fill="#00ff25" layoutX="53.0" layoutY="26.0"
+                         points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle fx:id="bat4Arrow" arcHeight="5.0" fill="#00ff25" height="87.0" layoutX="51.0"
+                           layoutY="16.0" smooth="false" width="4.0"/>
+                <Label fx:id="bat4CurrentSign" layoutX="32.0" layoutY="45.0" text="A" textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="bat4CurrentValue" alignment="CENTER" layoutY="45.0" prefHeight="30.0"
+                       prefWidth="32.0" text="0" textFill="#00ff25">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </children>
+</Pane>

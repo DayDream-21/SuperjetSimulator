@@ -30,42 +30,42 @@ public class BottomInfoPaneController extends FxController {
     }
 
     public void activateExtPwr() {
-        elecUnitsConnectionsController.activateExtPwrConnection();
         elecUnitsController.activateExtPwrUnit();
+        elecUnitsConnectionsController.activateExtPwrConnection();
     }
 
     public void deactivateExtPwr() {
-        elecUnitsConnectionsController.deactivateExtPwrConnection();
         elecUnitsController.deactivateExtPwrUnit();
+        elecUnitsConnectionsController.deactivateExtPwrConnection();
     }
 
     public void activateApuGen() {
-        elecUnitsConnectionsController.activateApuGenConnection();
         elecUnitsController.activateApuGenUnit();
+        elecUnitsConnectionsController.activateApuGenConnection();
     }
 
     public void deactivateApuGen() {
-        elecUnitsConnectionsController.deactivateApuGenConnection();
         elecUnitsController.deactivateApuGenUnit();
+        elecUnitsConnectionsController.deactivateApuGenConnection();
     }
 
     public void activateLeftEngine() {
-        elecUnitsConnectionsController.activateLeftDriveToLeftConnection();
         elecUnitsController.activateLeftEngine();
+        elecUnitsConnectionsController.activateLeftDriveToLeftConnection();
     }
 
     public void deactivateLeftEngine() {
-        elecUnitsConnectionsController.deactivateLeftDriveToLeftConnection();
         elecUnitsController.deactivateLeftEngine();
+        elecUnitsConnectionsController.deactivateLeftDriveToLeftConnection();
     }
 
     public void activateRightEngine() {
-        elecUnitsConnectionsController.activateRightDriveToRightConnection();
         elecUnitsController.activateRightEngine();
+        elecUnitsConnectionsController.activateRightDriveToRightConnection();
     }
 
     public void deactivateRightEngine() {
-        elecUnitsConnectionsController.deactivateRightDriveToRightConnection();
         elecUnitsController.deactivateRightEngine();
+        elecUnitsConnectionsController.deactivateRightDriveToRightConnection();
     }
 }

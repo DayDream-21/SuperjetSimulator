@@ -7,9 +7,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="bottomInfoElecUnitsConnectionsPaneMainPane" prefHeight="144.0" prefWidth="650.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.slavamashkov.superjetsimulator.controllers.ElecUnitsConnectionsController">
+<Pane fx:id="bottomInfoElecUnitsConnectionsPaneMainPane"
+      fx:controller="com.slavamashkov.superjetsimulator.controllers.ElecUnitsConnectionsController" prefHeight="144.0"
+      prefWidth="650.0"
+      style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml">
     <children>
         <Pane fx:id="fromLeftDriveToLeft" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
             <children>
