@@ -1,4 +1,4 @@
-package com.slavamashkov.superjetsimulator.errors;
+package com.slavamashkov.superjetsimulator.malfunctions;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

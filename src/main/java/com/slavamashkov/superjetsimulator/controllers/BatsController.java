@@ -2,11 +2,13 @@ package com.slavamashkov.superjetsimulator.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_COLOR;
 
 @Getter
 @Component
@@ -25,19 +27,19 @@ public class BatsController extends FxController {
 
     public void batOff(int i) {
         switch (i) {
-            case 1 -> bat1Frame.setStroke(Color.WHITE);
-            case 2 -> bat2Frame.setStroke(Color.WHITE);
-            case 3 -> bat3Frame.setStroke(Color.WHITE);
-            case 4 -> bat4Frame.setStroke(Color.WHITE);
+            case 1 -> bat1Frame.setStroke(INACTIVE_COLOR.color);
+            case 2 -> bat2Frame.setStroke(INACTIVE_COLOR.color);
+            case 3 -> bat3Frame.setStroke(INACTIVE_COLOR.color);
+            case 4 -> bat4Frame.setStroke(INACTIVE_COLOR.color);
         }
     }
 
     public void batOn(int i) {
         switch (i) {
-            case 1 -> bat1Frame.setStroke(Color.LIME);
-            case 2 -> bat2Frame.setStroke(Color.LIME);
-            case 3 -> bat3Frame.setStroke(Color.LIME);
-            case 4 -> bat4Frame.setStroke(Color.LIME);
+            case 1 -> bat1Frame.setStroke(ACTIVE_COLOR.color);
+            case 2 -> bat2Frame.setStroke(ACTIVE_COLOR.color);
+            case 3 -> bat3Frame.setStroke(ACTIVE_COLOR.color);
+            case 4 -> bat4Frame.setStroke(ACTIVE_COLOR.color);
         }
     }
 }

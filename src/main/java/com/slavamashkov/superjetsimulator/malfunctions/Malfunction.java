@@ -1,4 +1,4 @@
-package com.slavamashkov.superjetsimulator.errors;
+package com.slavamashkov.superjetsimulator.malfunctions;
 
 public abstract class Malfunction {
     /*

@@ -3,7 +3,6 @@ package com.slavamashkov.superjetsimulator.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurve;
 import javafx.scene.shape.Rectangle;
@@ -11,8 +10,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import static com.slavamashkov.superjetsimulator.enums.Color.ACTIVE_COLOR;
-import static com.slavamashkov.superjetsimulator.enums.Color.INACTIVE_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_COLOR;
 
 @Getter
 @Component
@@ -79,7 +78,7 @@ public class ElecUnitsController extends FxController {
     }
 
     public void activateApuGenUnit() {
-        apuGenCircle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
+        apuGenCircle.setStroke(ACTIVE_COLOR.color);
         apuGenTransformerSign.setOpacity(1.0);
         apuGenInfoPane.setOpacity(1.0);
 
@@ -87,7 +86,7 @@ public class ElecUnitsController extends FxController {
     }
 
     public void deactivateApuGenUnit() {
-        apuGenCircle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
+        apuGenCircle.setStroke(INACTIVE_COLOR.color);
         apuGenTransformerSign.setOpacity(0.0);
         apuGenInfoPane.setOpacity(0.0);
 
@@ -97,9 +96,9 @@ public class ElecUnitsController extends FxController {
     public void activateLeftEngine() {
         leftDriveConnection.setOpacity(1.0);
         leftDriveTransformerSign.setOpacity(1.0);
-        leftDriveTransformerSign.setStroke(Color.web(ACTIVE_COLOR.hexCode));
-        leftDriveTransformerCircle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
-        leftDriveRectangle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
+        leftDriveTransformerSign.setStroke(ACTIVE_COLOR.color);
+        leftDriveTransformerCircle.setStroke(ACTIVE_COLOR.color);
+        leftDriveRectangle.setStroke(ACTIVE_COLOR.color);
 
         batsConnectionsController.activateAllBatsDemo();
     }
@@ -107,8 +106,8 @@ public class ElecUnitsController extends FxController {
     public void deactivateLeftEngine() {
         leftDriveConnection.setOpacity(0.0);
         leftDriveTransformerSign.setOpacity(0.0);
-        leftDriveTransformerCircle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
-        leftDriveRectangle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
+        leftDriveTransformerCircle.setStroke(INACTIVE_COLOR.color);
+        leftDriveRectangle.setStroke(INACTIVE_COLOR.color);
 
         batsConnectionsController.deactivateAllBatsDemo();
     }
@@ -116,9 +115,9 @@ public class ElecUnitsController extends FxController {
     public void activateRightEngine() {
         rightDriveConnection.setOpacity(1.0);
         rightDriveTransformerSign.setOpacity(1.0);
-        rightDriveTransformerSign.setStroke(Color.web(ACTIVE_COLOR.hexCode));
-        rightDriveTransformerCircle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
-        rightDriveRectangle.setStroke(Color.web(ACTIVE_COLOR.hexCode));
+        rightDriveTransformerSign.setStroke(ACTIVE_COLOR.color);
+        rightDriveTransformerCircle.setStroke(ACTIVE_COLOR.color);
+        rightDriveRectangle.setStroke(ACTIVE_COLOR.color);
 
         batsConnectionsController.activateAllBatsDemo();
     }
@@ -126,8 +125,8 @@ public class ElecUnitsController extends FxController {
     public void deactivateRightEngine() {
         rightDriveConnection.setOpacity(0.0);
         rightDriveTransformerSign.setOpacity(0.0);
-        rightDriveTransformerCircle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
-        rightDriveRectangle.setStroke(Color.web(INACTIVE_COLOR.hexCode));
+        rightDriveTransformerCircle.setStroke(INACTIVE_COLOR.color);
+        rightDriveRectangle.setStroke(INACTIVE_COLOR.color);
 
         batsConnectionsController.deactivateAllBatsDemo();
     }

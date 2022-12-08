@@ -1,6 +1,6 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
-import com.slavamashkov.superjetsimulator.errors.*;
+import com.slavamashkov.superjetsimulator.malfunctions.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;

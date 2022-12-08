@@ -8,7 +8,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +16,9 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_LIGHT_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_LIGHT_COLOR;
 
 @Getter
 @Component
@@ -57,8 +59,8 @@ public class SelectionPanelController extends FxController {
     @Override
     public void init() {
         buttons.getStylesheets().add("css/selection-panel.css");
-        extPwrUpperLight.setFill(Color.LIME);
-        apuGenLowerLight.setFill(Color.LIME);
+        extPwrUpperLight.setFill(ACTIVE_LIGHT_COLOR.color);
+        apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
 
         overheadPanelImageView.setImage(new Image("images/overhead_panel_2.png"));
         selectorImageView.setImage(new Image("images/selector.png"));
@@ -72,11 +74,11 @@ public class SelectionPanelController extends FxController {
         if (bat1SwitchedPressed) {
             upperInfoPaneController.batOff(1);
 
-            bat1LowerLight.setFill(Color.LIME);
+            bat1LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
             upperInfoPaneController.batOn(1);
 
-            bat1LowerLight.setFill(Color.GREY);
+            bat1LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -88,11 +90,11 @@ public class SelectionPanelController extends FxController {
         if (bat2SwitchedPressed) {
             upperInfoPaneController.batOff(2);
 
-            bat2LowerLight.setFill(Color.LIME);
+            bat2LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
             upperInfoPaneController.batOn(2);
 
-            bat2LowerLight.setFill(Color.GREY);
+            bat2LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -104,11 +106,11 @@ public class SelectionPanelController extends FxController {
         if (bat3SwitchedPressed) {
             upperInfoPaneController.batOff(3);
 
-            bat3LowerLight.setFill(Color.LIME);
+            bat3LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
             upperInfoPaneController.batOn(3);
 
-            bat3LowerLight.setFill(Color.GREY);
+            bat3LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -120,11 +122,11 @@ public class SelectionPanelController extends FxController {
         if (bat4SwitchedPressed) {
             upperInfoPaneController.batOff(4);
 
-            bat4LowerLight.setFill(Color.LIME);
+            bat4LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
             upperInfoPaneController.batOn(4);
 
-            bat4LowerLight.setFill(Color.GREY);
+            bat4LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -136,13 +138,13 @@ public class SelectionPanelController extends FxController {
         if (extPwrSwitchedPressed) {
             bottomInfoPaneController.activateExtPwr();
 
-            extPwrUpperLight.setFill(Color.GREY);
-            extPwrLowerLight.setFill(Color.LIME);
+            extPwrUpperLight.setFill(INACTIVE_LIGHT_COLOR.color);
+            extPwrLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
             bottomInfoPaneController.deactivateExtPwr();
 
-            extPwrUpperLight.setFill(Color.LIME);
-            extPwrLowerLight.setFill(Color.GREY);
+            extPwrUpperLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            extPwrLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -154,13 +156,11 @@ public class SelectionPanelController extends FxController {
         if (apuGenSwitchedPressed) {
             bottomInfoPaneController.activateApuGen();
 
-            apuGenUpperLight.setFill(Color.LIME);
-            apuGenLowerLight.setFill(Color.GREY);
+            apuGenLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         } else {
             bottomInfoPaneController.deactivateApuGen();
 
-            apuGenUpperLight.setFill(Color.GREY);
-            apuGenLowerLight.setFill(Color.LIME);
+            apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }
     }
 

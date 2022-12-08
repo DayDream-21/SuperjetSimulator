@@ -1,9 +1,8 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
-import com.slavamashkov.superjetsimulator.errors.Malfunction;
+import com.slavamashkov.superjetsimulator.malfunctions.Malfunction;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -38,15 +37,5 @@ public class MasterPaneController extends FxController {
 
     public void receiveData(Malfunction malfunction) {
         malfunction.executeMalfunction();
-    }
-
-    private String format(double val) {
-        String in = Integer.toHexString((int) Math.round(val * 255));
-        return in.length() == 1 ? "0" + in : in;
-    }
-
-    private String toHexString(Color value) {
-        return "#" + (format(value.getRed()) + format(value.getGreen()) + format(value.getBlue()) + format(value.getOpacity()))
-                .toUpperCase();
     }
 }
