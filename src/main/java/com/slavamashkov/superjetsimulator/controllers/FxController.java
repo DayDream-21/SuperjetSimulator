@@ -12,29 +12,40 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * The class that each controller must inherit. When inherited, the
+ * getSource method must be overridden.
+ * <p>
+ * It is recommended to add Lombok annotation @Getter for overriding
+ * getSource method. Also inherited classes should be annotated as @Component
+ * and @RequiredArgsConstructor to support DI.
+ */
 @Getter
 abstract public class FxController {
     private final Stage stage = new Stage();
     private Scene scene;
 
+    /**
+     * To override this method, an inherited class only needs
+     * the @Getter annotation and the source field declared as
+     * <p>
+     * {@code private final String source = "fxml/<file-name>"}
+     *
+     * @return fxml file location
+     */
     protected abstract String getSource();
 
-    //Init FX components
+    // Init FX components
     {
-        //Create FXML loader
         FXMLLoader fxmlLoader = new FXMLLoader();
 
-        //create inputStream from resource fxml file
         try (InputStream inputStream = fxmlLoader.getClass().getClassLoader().getResourceAsStream(getSource())) {
             fxmlLoader.setControllerFactory(param -> this);
 
-            //fill loader from fxml file and get root element for scene
             Parent root = fxmlLoader.load(inputStream);
 
-            //create Scene
             scene = new Scene(root);
 
-            //set scene to stage
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,15 +54,18 @@ abstract public class FxController {
     }
 
     /**
-     * FXML loader invoke method "initialize" by reflection if it exists after read full context
-     * Not recommended for use
+     * FXML loader invoke method "initialize" by reflection if
+     * it exists after read full context. Not recommended for use.
      */
     public void initialize() {
     }
 
     /**
-     * Invoke after all initializations.
-     * Recommended used for configuration components
+     * Invoke after all initializations. Recommended used for
+     * configuration components.
+     * <p>
+     * In the basic version, this method is responsible for setting
+     * up the main application window.
      */
     @PostConstruct
     public void init() {

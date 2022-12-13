@@ -7,15 +7,13 @@ import org.springframework.stereotype.Component;
 import static com.slavamashkov.superjetsimulator.enums.MyColor.ERROR_COLOR;
 import static com.slavamashkov.superjetsimulator.enums.MyColor.WARNING_COLOR;
 
+/**
+ *
+ */
 @Component
 @RequiredArgsConstructor
 public class BusMalfunction extends Malfunction {
     private final MiddleInfoPaneController middleInfoPaneController;
-
-    @Override
-    public String toString() {
-        return "Bus Malfunction";
-    }
 
     @Override
     public void executeMalfunction() {
@@ -26,5 +24,10 @@ public class BusMalfunction extends Malfunction {
     @Override
     public void restoreSystem() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Bus Malfunction";
     }
 }

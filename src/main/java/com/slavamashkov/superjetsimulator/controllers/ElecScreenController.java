@@ -9,6 +9,16 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * The main task of this class is to combine the controllers responsible
+ * for certain layers of the screen, such as
+ * {@link SystemNamePaneController}, {@link UpperInfoPaneController},
+ * {@link MiddleInfoPaneController} and {@link BottomInfoPaneController}.
+ * <i>We can say that the class implements the Facade pattern, in relation
+ * to the functions that implement the above classes.</i>
+ * <p>
+ * This class also serves to merge the fxml files into one.
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
@@ -29,12 +39,17 @@ public class ElecScreenController extends FxController {
     @FXML private ToggleButton leftEngineToggleButton;
     @FXML private ToggleButton rightEngineToggleButton;
 
+    /**
+     * Combines system-name-pane.fxml, upper-info-pane.fxml,
+     * middle-info-pane.fxml, and bottom-info-pane.fxml into
+     * one fxml file
+     */
     @Override
     public void init() {
-        systemNamePane.getChildren().add(systemNamePaneController.getSystemNamePaneMainPane());
-        upperInfoPane.getChildren().add(upperInfoPaneController.getUpperInfoPaneMainPane());
-        middleInfoPane.getChildren().add(middleInfoPaneController.getMiddleInfoPaneMainPane());
-        bottomInfoPane.getChildren().add(bottomInfoPaneController.getBottomInfoPaneMainPane());
+        systemNamePane.getChildren().add(systemNamePaneController.getSystemNameMainPane());
+        upperInfoPane.getChildren().add(upperInfoPaneController.getUpperInfoMainPane());
+        middleInfoPane.getChildren().add(middleInfoPaneController.getMiddleInfoMainPane());
+        bottomInfoPane.getChildren().add(bottomInfoPaneController.getBottomInfoMainPane());
     }
 
     public void onActionActivateLeftEngine(ActionEvent event) {

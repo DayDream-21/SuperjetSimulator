@@ -9,12 +9,17 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * The class responsible for connecting and disconnecting the batteries
+ * from the power grid, as well as displaying and controlling the voltage
+ * and current value
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
 public class BatsConnectionsController extends FxController {
     private final String source = "fxml/upper-info-bats-connections-pane.fxml";
-    @FXML private Pane upperInfoBatsConnectionsPaneMainPane;
+    @FXML private Pane upperInfoBatsConnectionsMainPane;
 
     // Bat 1
     @FXML private Label bat1VoltageSign;
@@ -23,7 +28,7 @@ public class BatsConnectionsController extends FxController {
     @FXML private Rectangle bat1Arrow;
     @FXML private Label bat1CurrentSign;
     @FXML private Label bat1CurrentValue;
-    
+
     // Bat 2
     @FXML private Label bat2VoltageSign;
     @FXML private Label bat2VoltageValue;
@@ -31,7 +36,7 @@ public class BatsConnectionsController extends FxController {
     @FXML private Polygon bat2ArrowEnd;
     @FXML private Label bat2CurrentSign;
     @FXML private Label bat2CurrentValue;
-    
+
     // Bat 3
     @FXML private Label bat3VoltageSign;
     @FXML private Label bat3VoltageValue;
@@ -39,7 +44,7 @@ public class BatsConnectionsController extends FxController {
     @FXML private Rectangle bat3Arrow;
     @FXML private Label bat3CurrentSign;
     @FXML private Label bat3CurrentValue;
-    
+
     // Bat 4
     @FXML private Label bat4VoltageSign;
     @FXML private Label bat4VoltageValue;
@@ -48,9 +53,11 @@ public class BatsConnectionsController extends FxController {
     @FXML private Label bat4CurrentSign;
     @FXML private Label bat4CurrentValue;
 
-    @Override
-    public void init() {}
-
+    /**
+     * Allows you to disconnect a certain battery from the power grid
+     *
+     * @param i the battery number must be an integer between 1 and 4 inclusive
+     */
     public void batOff(int i) {
         switch (i) {
             case 1 -> {
@@ -88,6 +95,11 @@ public class BatsConnectionsController extends FxController {
         }
     }
 
+    /**
+     * Allows you to connect a specific battery to the power grid
+     *
+     * @param i The battery number must be an integer between 1 and 4 inclusive
+     */
     public void batOn(int i) {
         switch (i) {
             case 1 -> {
@@ -125,6 +137,8 @@ public class BatsConnectionsController extends FxController {
         }
     }
 
+    private int batsCounter = 0;
+
     public void activateAllBatsDemo() {
         bat1VoltageValue.setText(String.valueOf(21));
         bat2VoltageValue.setText(String.valueOf(22));
@@ -135,20 +149,33 @@ public class BatsConnectionsController extends FxController {
         bat2CurrentValue.setText(String.valueOf(-15));
         bat3CurrentValue.setText(String.valueOf(-15));
         bat4CurrentValue.setText(String.valueOf(-15));
+
+        batsCounter++;
     }
 
     public void deactivateAllBatsDemo() {
-        bat1VoltageValue.setText(String.valueOf(0));
-        bat2VoltageValue.setText(String.valueOf(0));
-        bat3VoltageValue.setText(String.valueOf(0));
-        bat4VoltageValue.setText(String.valueOf(0));
+        batsCounter--;
 
-        bat1CurrentValue.setText(String.valueOf(0));
-        bat2CurrentValue.setText(String.valueOf(0));
-        bat3CurrentValue.setText(String.valueOf(0));
-        bat4CurrentValue.setText(String.valueOf(0));
+        if (batsCounter < 1) {
+            bat1VoltageValue.setText(String.valueOf(0));
+            bat2VoltageValue.setText(String.valueOf(0));
+            bat3VoltageValue.setText(String.valueOf(0));
+            bat4VoltageValue.setText(String.valueOf(0));
+
+            bat1CurrentValue.setText(String.valueOf(0));
+            bat2CurrentValue.setText(String.valueOf(0));
+            bat3CurrentValue.setText(String.valueOf(0));
+            bat4CurrentValue.setText(String.valueOf(0));
+        }
     }
 
+    /**
+     * Allows you to obtain the voltage of a certain battery, provided
+     * that it is connected to the power grid
+     *
+     * @param i the battery number must be an integer between 1 and 4 inclusive
+     * @return battery voltage as double value if it is connected, if not it returns double value 0.0
+     */
     public double getBatVoltage(int i) {
         switch (i) {
             case 1 -> {

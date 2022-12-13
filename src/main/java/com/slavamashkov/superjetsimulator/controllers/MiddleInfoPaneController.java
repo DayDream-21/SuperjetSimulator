@@ -7,12 +7,15 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ *
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
 public class MiddleInfoPaneController extends FxController {
     private final String source = "fxml/middle-info-pane.fxml";
-    @FXML private Pane middleInfoPaneMainPane;
+    @FXML private Pane middleInfoMainPane;
 
     @FXML private Rectangle leftMainBusDC;
     @FXML private Rectangle rightEmrgBusDC;

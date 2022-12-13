@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="upperInfoBatsPaneMainPane" prefHeight="60.0" prefWidth="345.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.slavamashkov.superjetsimulator.controllers.BatsController">
+<Pane fx:id="upperInfoBatsMainPane" prefHeight="60.0" prefWidth="345.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.slavamashkov.superjetsimulator.controllers.BatsController">
     <children>
         <Pane fx:id="bat1" prefHeight="161.0" prefWidth="75.0">
             <children>

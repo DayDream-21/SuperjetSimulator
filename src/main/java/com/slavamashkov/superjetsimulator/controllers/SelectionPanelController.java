@@ -20,13 +20,16 @@ import java.util.List;
 import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_LIGHT_COLOR;
 import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_LIGHT_COLOR;
 
+/**
+ *
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
 public class SelectionPanelController extends FxController {
     private final String source = "fxml/selection-panel-pane.fxml";
-
     @FXML private AnchorPane selectionPanelMainPane;
+
     private final BottomInfoPaneController bottomInfoPaneController;
     private final BatsConnectionsController batsConnectionsController;
     private final UpperInfoPaneController upperInfoPaneController;

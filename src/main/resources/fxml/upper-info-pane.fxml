@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="upperInfoPaneMainPane"
+<Pane fx:id="upperInfoMainPane"
       fx:controller="com.slavamashkov.superjetsimulator.controllers.UpperInfoPaneController" prefHeight="161.0"
       prefWidth="650.0" style="-fx-background-color: BLACK;"
       xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">

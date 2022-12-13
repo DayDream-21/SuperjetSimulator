@@ -6,12 +6,21 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * The main task of this class is to combine the controllers responsible
+ * for the bottom layer of the screen, such as
+ * {@link ElecUnitsController} and {@link ElecUnitsConnectionsController}.
+ * <i>We can say that the class implements the Facade pattern, in relation
+ * to the functions that implement the above classes.</i>
+ * <p>
+ * This class also serves to merge the fxml files into one.
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
 public class BottomInfoPaneController extends FxController {
     private final String source = "fxml/bottom-info-pane.fxml";
-    @FXML private Pane bottomInfoPaneMainPane;
+    @FXML private Pane bottomInfoMainPane;
 
     private final ElecUnitsController elecUnitsController;
     private final ElecUnitsConnectionsController elecUnitsConnectionsController;
@@ -19,13 +28,18 @@ public class BottomInfoPaneController extends FxController {
     @FXML private Pane elecUnitsPane;
     @FXML private Pane elecUnitsConnectionsPane;
 
+    /**
+     * Combines bottom-info-elec-units-pane.fxml
+     * and bottom-info-elec-units-connections-pane.fxml into
+     * one fxml file
+     */
     @Override
     public void init() {
         elecUnitsPane.getChildren().add(
-                elecUnitsController.getBottomInfoElecUnitsPaneMainPane()
+                elecUnitsController.getBottomInfoElecUnitsMainPane()
         );
         elecUnitsConnectionsPane.getChildren().add(
-                elecUnitsConnectionsController.getBottomInfoElecUnitsConnectionsPaneMainPane()
+                elecUnitsConnectionsController.getBottomInfoElecUnitsConnectionsMainPane()
         );
     }
 

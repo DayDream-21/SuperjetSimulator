@@ -10,21 +10,27 @@ import org.springframework.stereotype.Component;
 import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_COLOR;
 import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_COLOR;
 
+/**
+ * The class responsible for the battery display and the color change
+ * depending on the presence or absence of a fault in the system
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
 public class BatsController extends FxController {
     private final String source = "fxml/upper-info-bats-pane.fxml";
-    @FXML private Pane upperInfoBatsPaneMainPane;
+    @FXML private Pane upperInfoBatsMainPane;
 
     @FXML private Rectangle bat1Frame;
-    @FXML private Rectangle bat3Frame;
     @FXML private Rectangle bat2Frame;
+    @FXML private Rectangle bat3Frame;
     @FXML private Rectangle bat4Frame;
 
-    @Override
-    public void init() {}
-
+    /**
+     * Allows you to turn off a certain battery
+     *
+     * @param i the battery number must be an integer between 1 and 4 inclusive
+     */
     public void batOff(int i) {
         switch (i) {
             case 1 -> bat1Frame.setStroke(INACTIVE_COLOR.color);
@@ -34,6 +40,11 @@ public class BatsController extends FxController {
         }
     }
 
+    /**
+     * Allows you to turn on a certain battery
+     *
+     * @param i the battery number must be an integer between 1 and 4 inclusive
+     */
     public void batOn(int i) {
         switch (i) {
             case 1 -> bat1Frame.setStroke(ACTIVE_COLOR.color);

@@ -1,5 +1,6 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
+import com.slavamashkov.superjetsimulator.SuperjetSimulatorApplication;
 import com.slavamashkov.superjetsimulator.malfunctions.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -12,11 +13,29 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+/**
+ * <b>
+ * This class is called immediately after calling the main
+ * method in the {@link SuperjetSimulatorApplication} class
+ * </b>
+ * <p>
+ * This class is responsible for receiving and processing
+ * the user's actions on the initial application screen. For
+ * example, selecting the error that will be embedded in the
+ * system at startup.
+ * <p>
+ * <i>
+ * Because this class implements the CommandLineRunner
+ * interface, the Spring framework understands that this is the
+ * class where user interaction with the application should start.
+ * </i>
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
 public class LandingPageController extends FxController implements CommandLineRunner {
     private final String source = "fxml/landing-page.fxml";
+
     private final MasterPaneController masterPaneController;
 
     private final NoMalfunction noMalfunction;
@@ -45,6 +64,14 @@ public class LandingPageController extends FxController implements CommandLineRu
         getStage().show();
     }
 
+    /**
+     * Activated by pressing the start button. Opens a window
+     * with a control panel and a screen showing the status of
+     * the power supply system.
+     * <p>
+     * Transmits the selected malfunction to the application
+     * @param event
+     */
     public void switchToSceneTwo(MouseEvent event) {
         if (comboBox.getSelectionModel().getSelectedIndex() == -1) {
             comboBox.getSelectionModel().select(0);

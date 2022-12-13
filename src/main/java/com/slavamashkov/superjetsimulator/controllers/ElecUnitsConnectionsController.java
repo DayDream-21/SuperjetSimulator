@@ -6,12 +6,19 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * The class responsible for displaying the connections of units that
+ * supply power to the system, such as the left and right drives, the
+ * external power supply and the APU. For the drives the voltages,
+ * frequencies and load percentage is displayed. {@link ElecUnitsController}
+ * is responsible for displaying APU and external power information.
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
 public class ElecUnitsConnectionsController extends FxController {
     private final String source = "fxml/bottom-info-elec-units-connections-pane.fxml";
-    @FXML private Pane bottomInfoElecUnitsConnectionsPaneMainPane;
+    @FXML private Pane bottomInfoElecUnitsConnectionsMainPane;
 
     @FXML private Pane fromExtToLeft;
     @FXML private Pane fromExtToRight;

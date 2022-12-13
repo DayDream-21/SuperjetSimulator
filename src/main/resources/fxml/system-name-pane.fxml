@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="systemNamePaneMainPane" prefHeight="61.0" prefWidth="650.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx"
+<Pane fx:id="systemNameMainPane" prefHeight="61.0" prefWidth="650.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" fx:controller="com.slavamashkov.superjetsimulator.controllers.SystemNamePaneController">
     <children>
         <Label fx:id="system_name" alignment="CENTER" prefHeight="41.0" prefWidth="89.0" text="ELEC" textFill="WHITE">

@@ -6,12 +6,15 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ *
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
 public class UpperInfoPaneController extends FxController {
     private final String source = "fxml/upper-info-pane.fxml";
-    @FXML private Pane upperInfoPaneMainPane;
+    @FXML private Pane upperInfoMainPane;
 
     private final BatsController batsController;
     private final BatsConnectionsController batsConnectionsController;
@@ -19,13 +22,16 @@ public class UpperInfoPaneController extends FxController {
     @FXML private Pane batsPane;
     @FXML private Pane batsConnectionsPane;
 
+    /**
+     *
+     */
     @Override
     public void init() {
         batsPane.getChildren().add(
-                batsController.getUpperInfoBatsPaneMainPane()
+                batsController.getUpperInfoBatsMainPane()
         );
         batsConnectionsPane.getChildren().add(
-                batsConnectionsController.getUpperInfoBatsConnectionsPaneMainPane()
+                batsConnectionsController.getUpperInfoBatsConnectionsMainPane()
         );
     }
 

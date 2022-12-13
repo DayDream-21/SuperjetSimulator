@@ -13,12 +13,20 @@ import org.springframework.stereotype.Component;
 import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_COLOR;
 import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_COLOR;
 
+/**
+ * The class responsible for displaying the units that supply power
+ * to the system, such as the left and right drives, the external power
+ * supply and the APU. For the external power supply the voltages and
+ * frequencies are displayed, for the APU additionally the load percentage
+ * is displayed. {@link ElecUnitsConnectionsController} is responsible for
+ * displaying drives information.
+ */
 @Getter
 @Component
 @RequiredArgsConstructor
 public class ElecUnitsController extends FxController {
     private final String source = "fxml/bottom-info-elec-units-pane.fxml";
-    @FXML private Pane bottomInfoElecUnitsPaneMainPane;
+    @FXML private Pane bottomInfoElecUnitsMainPane;
 
     private final BatsConnectionsController batsConnectionsController;
 

@@ -103,7 +103,7 @@
         <Rectangle fx:id="allowedZone" height="47.0" layoutX="721.0" layoutY="655.0" onMousePressed="#changeDegree"
                    opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="52.0"/>
         <Label fx:id="batteryVoltageIndicator" alignment="CENTER_RIGHT" layoutX="647.0" layoutY="648.0"
-               prefHeight="17.0" prefWidth="45.0" text="0.0" textFill="#00ff25">
+               prefHeight="17.0" prefWidth="45.0" text="0.0" textFill="LIME">
             <font>
                 <Font size="16.0"/>
             </font>
