@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <Pane fx:id="upperInfoBatsConnectionsMainPane"
-      fx:controller="com.slavamashkov.superjetsimulator.controllers.BatsConnectionsController"
+      fx:controller="com.slavamashkov.superjetsimulator.controllers.upper_layer.BatsConnectionsController"
       style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       prefHeight="103.0" prefWidth="345.0">
     <children>

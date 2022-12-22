@@ -1,6 +1,7 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
 import com.slavamashkov.superjetsimulator.SuperjetSimulatorApplication;
+import com.slavamashkov.superjetsimulator.controllers.upper_layer.UpperInfoPaneController;
 import com.slavamashkov.superjetsimulator.malfunctions.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -41,6 +42,7 @@ public class LandingPageController extends FxController implements CommandLineRu
     private final NoMalfunction noMalfunction;
     private final BusMalfunction busMalfunction;
     private final BatteryMalfunction batteryMalfunction;
+    private final UpperInfoPaneController upperInfoPaneController;
 
     @FXML private ImageView logo;
     @FXML private ComboBox<Malfunction> comboBox;
@@ -78,6 +80,10 @@ public class LandingPageController extends FxController implements CommandLineRu
             masterPaneController.receiveData(comboBox.getValue());
         } else {
             masterPaneController.receiveData(comboBox.getValue());
+        }
+
+        for (int i = 1; i < 5; i++) {
+            upperInfoPaneController.batOff(i);
         }
 
         masterPaneController.getStage().show();

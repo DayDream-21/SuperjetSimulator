@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="bottomInfoElecUnitsConnectionsMainPane"
-      fx:controller="com.slavamashkov.superjetsimulator.controllers.ElecUnitsConnectionsController" prefHeight="144.0"
+      fx:controller="com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsConnectionsController" prefHeight="144.0"
       prefWidth="650.0"
       style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml">

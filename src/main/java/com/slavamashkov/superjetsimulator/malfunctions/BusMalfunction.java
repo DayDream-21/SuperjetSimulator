@@ -1,6 +1,6 @@
 package com.slavamashkov.superjetsimulator.malfunctions;
 
-import com.slavamashkov.superjetsimulator.controllers.MiddleInfoPaneController;
+import com.slavamashkov.superjetsimulator.controllers.middle_layer.MiddleInfoPaneController;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

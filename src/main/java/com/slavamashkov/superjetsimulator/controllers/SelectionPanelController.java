@@ -1,5 +1,10 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.BottomInfoPaneController;
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsConnectionsController;
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsController;
+import com.slavamashkov.superjetsimulator.controllers.upper_layer.BatsConnectionsController;
+import com.slavamashkov.superjetsimulator.controllers.upper_layer.UpperInfoPaneController;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
@@ -11,6 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -33,6 +40,22 @@ public class SelectionPanelController extends FxController {
     private final BottomInfoPaneController bottomInfoPaneController;
     private final BatsConnectionsController batsConnectionsController;
     private final UpperInfoPaneController upperInfoPaneController;
+    private final ElecUnitsController elecUnitsController;
+    private final ElecUnitsConnectionsController elecUnitsConnectionsController;
+
+    /*
+    * Here the @Lazy annotation is used to resolve the cyclic dependency
+    * between beans elecScreenController and selectionPanelController.
+    * Instead of fully initializing the bean, Spring will create a proxy
+    * to inject it into the other bean. The injected bean will only be
+    * fully created when it’s first needed.
+    * */
+    private ElecScreenController elecScreenController;
+
+    @Autowired
+    public void setElecScreenController(@Lazy ElecScreenController elecScreenController) {
+        this.elecScreenController = elecScreenController;
+    }
 
     @FXML private Pane buttons;
     @FXML private ImageView overheadPanelImageView;
@@ -71,80 +94,96 @@ public class SelectionPanelController extends FxController {
 
     boolean bat1SwitchedPressed = false;
 
-    public void switchBat1Button(MouseEvent mouseEvent) {
+    @FXML private void switchBat1Button(MouseEvent mouseEvent) {
         bat1SwitchedPressed = !bat1SwitchedPressed;
 
         if (bat1SwitchedPressed) {
-            upperInfoPaneController.batOff(1);
-
-            bat1LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
-        } else {
             upperInfoPaneController.batOn(1);
-
             bat1LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
+        } else {
+            upperInfoPaneController.batOff(1);
+            bat1LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }
     }
 
     boolean bat2SwitchedPressed = false;
 
-    public void switchBat2Button(MouseEvent mouseEvent) {
+    @FXML private void switchBat2Button(MouseEvent mouseEvent) {
         bat2SwitchedPressed = !bat2SwitchedPressed;
 
         if (bat2SwitchedPressed) {
-            upperInfoPaneController.batOff(2);
-
-            bat2LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
-        } else {
             upperInfoPaneController.batOn(2);
-
             bat2LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
+        } else {
+            upperInfoPaneController.batOff(2);
+            bat2LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }
     }
 
     boolean bat3SwitchedPressed = false;
 
-    public void switchBat3Button(MouseEvent mouseEvent) {
+    @FXML private void switchBat3Button(MouseEvent mouseEvent) {
         bat3SwitchedPressed = !bat3SwitchedPressed;
 
         if (bat3SwitchedPressed) {
-            upperInfoPaneController.batOff(3);
-
-            bat3LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
-        } else {
             upperInfoPaneController.batOn(3);
-
             bat3LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
+        } else {
+            upperInfoPaneController.batOff(3);
+            bat3LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }
     }
 
     boolean bat4SwitchedPressed = false;
 
-    public void switchBat4Button(MouseEvent mouseEvent) {
+    @FXML private void switchBat4Button(MouseEvent mouseEvent) {
         bat4SwitchedPressed = !bat4SwitchedPressed;
 
         if (bat4SwitchedPressed) {
-            upperInfoPaneController.batOff(4);
-
-            bat4LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
-        } else {
             upperInfoPaneController.batOn(4);
-
             bat4LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
+        } else {
+            upperInfoPaneController.batOff(4);
+            bat4LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }
     }
 
     boolean extPwrSwitchedPressed = false;
 
-    @FXML private void switchExtPwrButton(MouseEvent mouseEvent) {
+    @FXML public void switchExtPwrButton(MouseEvent mouseEvent) {
         extPwrSwitchedPressed = !extPwrSwitchedPressed;
 
         if (extPwrSwitchedPressed) {
-            bottomInfoPaneController.activateExtPwr();
+            elecUnitsController.activateExtPwrUnit();
+            //elecUnitsConnectionsController.activateExtPwrConnection();
+
+            if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                elecUnitsConnectionsController.activateExtPwrConnectionToRight();
+            } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
+                elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
+            } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                elecUnitsConnectionsController.activateExtPwrConnection();
+            }
+
+            if (apuGenSwitchedPressed) {
+                elecUnitsConnectionsController.deactivateApuGenConnection();
+            }
 
             extPwrUpperLight.setFill(INACTIVE_LIGHT_COLOR.color);
             extPwrLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
-            bottomInfoPaneController.deactivateExtPwr();
+            elecUnitsController.deactivateExtPwrUnit();
+            elecUnitsConnectionsController.deactivateExtPwrConnection();
+
+            if (apuGenSwitchedPressed) {
+                if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                    elecUnitsConnectionsController.activateApuGenConnectionToRight();
+                } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
+                    elecUnitsConnectionsController.activateApuGenConnectionToLeft();
+                } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                    elecUnitsConnectionsController.activateApuGenConnection();
+                }
+            }
 
             extPwrUpperLight.setFill(ACTIVE_LIGHT_COLOR.color);
             extPwrLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
@@ -157,11 +196,34 @@ public class SelectionPanelController extends FxController {
         apuGenSwitchedPressed = !apuGenSwitchedPressed;
 
         if (apuGenSwitchedPressed) {
-            bottomInfoPaneController.activateApuGen();
+            elecUnitsController.activateApuGenUnit();
+
+            if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                elecUnitsConnectionsController.activateApuGenConnectionToRight();
+            } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
+                elecUnitsConnectionsController.activateApuGenConnectionToLeft();
+            } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                elecUnitsConnectionsController.activateApuGenConnection();
+            }
+
+            if (extPwrSwitchedPressed) {
+                elecUnitsConnectionsController.deactivateExtPwrConnection();
+            }
 
             apuGenLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         } else {
-            bottomInfoPaneController.deactivateApuGen();
+            elecUnitsController.deactivateApuGenUnit();
+            elecUnitsConnectionsController.deactivateApuGenConnection();
+
+            if (extPwrSwitchedPressed) {
+                if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                    elecUnitsConnectionsController.activateExtPwrConnectionToRight();
+                } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
+                    elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
+                } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                    elecUnitsConnectionsController.activateExtPwrConnection();
+                }
+            }
 
             apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }

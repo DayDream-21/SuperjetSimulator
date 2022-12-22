@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Group?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="selectionPanelMainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="1000.0" prefWidth="868.0" xmlns="http://javafx.com/javafx/18"
+            minWidth="-Infinity" prefHeight="1000.0" prefWidth="868.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.slavamashkov.superjetsimulator.controllers.SelectionPanelController">
     <children>
@@ -19,25 +17,25 @@
                 <Pane fx:id="bat1Lights" layoutX="77.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="bat1UpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="bat1LowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat1LowerLight" fill="LIME" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="bat3Lights" layoutX="121.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="bat3UpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="bat3LowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat3LowerLight" fill="LIME" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="bat2Lights" layoutX="168.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="bat2UpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="bat2LowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat2LowerLight" fill="LIME" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="bat4Lights" layoutX="213.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="bat4UpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="bat4LowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat4LowerLight" fill="LIME" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="invLights" layoutX="258.0" layoutY="8.0" prefHeight="50.0" prefWidth="45.0">
@@ -111,17 +109,17 @@
         <Pane fx:id="buttons" layoutX="266.0" layoutY="548.0" prefHeight="164.0" prefWidth="332.0">
             <children>
                 <Rectangle fx:id="bat1Button" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="50.0"
-                           layoutX="77.0" layoutY="8.0" onMouseClicked="#switchBat1Button" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
-                           strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
+                           layoutX="77.0" layoutY="8.0" onMouseClicked="#switchBat1Button" opacity="0.0" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
                 <Rectangle fx:id="bat2Button" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="50.0"
-                           layoutX="168.0" layoutY="8.0" onMouseClicked="#switchBat2Button" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
-                           strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
+                           layoutX="168.0" layoutY="8.0" onMouseClicked="#switchBat2Button" opacity="0.0" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
                 <Rectangle fx:id="bat3Button" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="50.0"
-                           layoutX="121.0" layoutY="8.0" onMouseClicked="#switchBat3Button" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
-                           strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
+                           layoutX="121.0" layoutY="8.0" onMouseClicked="#switchBat3Button" opacity="0.0" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
                 <Rectangle fx:id="bat4Button" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="49.0"
-                           layoutX="213.0" layoutY="8.0" onMouseClicked="#switchBat4Button" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
-                           strokeWidth="2.0" styleClass="allowed-zone" width="46.0"/>
+                           layoutX="213.0" layoutY="8.0" onMouseClicked="#switchBat4Button" opacity="0.0" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="2.0" styleClass="allowed-zone" width="46.0"/>
                 <Rectangle fx:id="invButton" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="50.0"
                            layoutX="258.0" layoutY="8.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
                            strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
@@ -138,8 +136,8 @@
                            layoutX="257.0" layoutY="112.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
                            strokeWidth="2.0" styleClass="allowed-zone" width="45.0"/>
                 <Rectangle fx:id="apuGenButton" arcHeight="12.0" arcWidth="12.0" fill="#1f93ff00" height="47.0"
-                           layoutX="91.0" layoutY="113.0" onMouseClicked="#switchApuGenButton" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
-                           strokeWidth="2.0" styleClass="allowed-zone" width="47.0"/>
+                           layoutX="91.0" layoutY="113.0" onMouseClicked="#switchApuGenButton" opacity="0.0"
+                           stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" styleClass="allowed-zone" width="47.0"/>
                 <Rectangle fx:id="extPwrButton" arcHeight="12.0" arcWidth="12.0" fill="#1f93ff00" height="47.0"
                            layoutX="197.0" layoutY="113.0" onMouseClicked="#switchExtPwrButton" opacity="0.0"
                            stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" styleClass="allowed-zone" width="47.0"/>

@@ -1,6 +1,7 @@
 package com.slavamashkov.superjetsimulator.malfunctions;
 
-import com.slavamashkov.superjetsimulator.controllers.BatsController;
+import com.slavamashkov.superjetsimulator.controllers.upper_layer.BatsConnectionsController;
+import com.slavamashkov.superjetsimulator.controllers.upper_layer.BatsController;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static com.slavamashkov.superjetsimulator.enums.MyColor.ERROR_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.WARNING_COLOR;
 
 /**
  *
@@ -17,11 +18,16 @@ import static com.slavamashkov.superjetsimulator.enums.MyColor.ERROR_COLOR;
 @RequiredArgsConstructor
 public class BatteryMalfunction extends Malfunction {
     private final BatsController batsController;
+    private final BatsConnectionsController batsConnectionsController;
 
     @Override
     public void executeMalfunction() {
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        Runnable task = () -> batsController.getBat1Frame().setStroke(ERROR_COLOR.color);
+        Runnable task = () -> {
+            batsController.getBat1Frame().setStroke(WARNING_COLOR.color);
+            batsConnectionsController.getBat1Arrow().setFill(WARNING_COLOR.color);
+            batsConnectionsController.getBat1ArrowEnd().setFill(WARNING_COLOR.color);
+        };
         executor.schedule(task, 5, TimeUnit.SECONDS);
         executor.shutdown();
     }
