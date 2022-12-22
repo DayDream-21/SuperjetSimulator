@@ -1,5 +1,6 @@
-package com.slavamashkov.superjetsimulator.controllers;
+package com.slavamashkov.superjetsimulator.controllers.middle_layer;
 
+import com.slavamashkov.superjetsimulator.controllers.FxController;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;

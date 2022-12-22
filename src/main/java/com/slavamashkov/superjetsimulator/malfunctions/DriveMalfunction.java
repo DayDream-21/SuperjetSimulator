@@ -1,5 +1,7 @@
 package com.slavamashkov.superjetsimulator.malfunctions;
 
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsConnectionsController;
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsController;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +10,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @RequiredArgsConstructor
-public class Malfunction3 extends Malfunction {
+public class DriveMalfunction extends Malfunction {
+    private final ElecUnitsController elecUnitsController;
+    private final ElecUnitsConnectionsController elecUnitsConnectionsController;
+
     @Override
     public void executeMalfunction() {
 

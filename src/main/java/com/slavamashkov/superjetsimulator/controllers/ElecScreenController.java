@@ -1,5 +1,11 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.BottomInfoPaneController;
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsConnectionsController;
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsController;
+import com.slavamashkov.superjetsimulator.controllers.middle_layer.MiddleInfoPaneController;
+import com.slavamashkov.superjetsimulator.controllers.name_layer.SystemNamePaneController;
+import com.slavamashkov.superjetsimulator.controllers.upper_layer.UpperInfoPaneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
@@ -30,6 +36,9 @@ public class ElecScreenController extends FxController {
     private final UpperInfoPaneController upperInfoPaneController;
     private final MiddleInfoPaneController middleInfoPaneController;
     private final BottomInfoPaneController bottomInfoPaneController;
+    private final ElecUnitsController elecUnitsController;
+    private final ElecUnitsConnectionsController elecUnitsConnectionsController;
+    private final SelectionPanelController selectionPanelController;
 
     @FXML private Pane systemNamePane;
     @FXML private Pane upperInfoPane;
@@ -55,16 +64,48 @@ public class ElecScreenController extends FxController {
     public void onActionActivateLeftEngine(ActionEvent event) {
         if (leftEngineToggleButton.isSelected()) {
             bottomInfoPaneController.activateLeftEngine();
+
+            if (selectionPanelController.apuGenSwitchedPressed) {
+                elecUnitsConnectionsController.deactivateApuGenConnectionToLeft();
+            } else if (selectionPanelController.extPwrSwitchedPressed) {
+                elecUnitsConnectionsController.deactivateExtPwrConnectionToLeft();
+            }
         } else {
             bottomInfoPaneController.deactivateLeftEngine();
+
+            if (selectionPanelController.apuGenSwitchedPressed) {
+                elecUnitsConnectionsController.activateApuGenConnectionToLeft();
+            } else if (selectionPanelController.extPwrSwitchedPressed) {
+                elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
+            }
         }
     }
 
     public void onActionActivateRightEngine(ActionEvent event) {
         if (rightEngineToggleButton.isSelected()) {
             bottomInfoPaneController.activateRightEngine();
+
+            if (selectionPanelController.apuGenSwitchedPressed) {
+                elecUnitsConnectionsController.deactivateApuGenConnectionToRight();
+            } else if (selectionPanelController.extPwrSwitchedPressed) {
+                elecUnitsConnectionsController.deactivateExtPwrConnectionToRight();
+            }
         } else {
             bottomInfoPaneController.deactivateRightEngine();
+
+            if (selectionPanelController.apuGenSwitchedPressed) {
+                elecUnitsConnectionsController.activateApuGenConnectionToRight();
+            } else if (selectionPanelController.extPwrSwitchedPressed) {
+                elecUnitsConnectionsController.activateExtPwrConnectionToRight();
+            }
         }
+    }
+
+    public boolean isRightEngineActive() {
+        return rightEngineToggleButton.isSelected();
+    }
+
+    public boolean isLeftEngineActive() {
+        return leftEngineToggleButton.isSelected();
     }
 }

@@ -1,5 +1,6 @@
-package com.slavamashkov.superjetsimulator.controllers;
+package com.slavamashkov.superjetsimulator.controllers.upper_layer;
 
+import com.slavamashkov.superjetsimulator.controllers.FxController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;

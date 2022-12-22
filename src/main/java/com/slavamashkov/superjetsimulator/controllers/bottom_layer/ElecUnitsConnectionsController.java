@@ -1,5 +1,6 @@
-package com.slavamashkov.superjetsimulator.controllers;
+package com.slavamashkov.superjetsimulator.controllers.bottom_layer;
 
+import com.slavamashkov.superjetsimulator.controllers.FxController;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import lombok.Getter;
@@ -29,24 +30,56 @@ public class ElecUnitsConnectionsController extends FxController {
     @FXML private Pane fromRightDriveToRight;
     @FXML private Pane rightDriveInfoPane;
 
-    public void activateExtPwrConnection() {
+    public void activateExtPwrConnectionToLeft() {
         fromExtToLeft.setOpacity(1.0);
+    }
+
+    public void deactivateExtPwrConnectionToLeft() {
+        fromExtToLeft.setOpacity(0.0);
+    }
+
+    public void activateExtPwrConnectionToRight() {
         fromExtToRight.setOpacity(1.0);
     }
 
-    public void deactivateExtPwrConnection() {
-        fromExtToLeft.setOpacity(0.0);
+    public void deactivateExtPwrConnectionToRight() {
         fromExtToRight.setOpacity(0.0);
     }
 
-    public void activateApuGenConnection() {
+    public void activateApuGenConnectionToLeft() {
         fromApuToLeft.setOpacity(1.0);
+    }
+
+    public void deactivateApuGenConnectionToLeft() {
+        fromApuToLeft.setOpacity(0.0);
+    }
+
+    public void activateApuGenConnectionToRight() {
         fromApuToRight.setOpacity(1.0);
     }
 
-    public void deactivateApuGenConnection() {
-        fromApuToLeft.setOpacity(0.0);
+    public void deactivateApuGenConnectionToRight() {
         fromApuToRight.setOpacity(0.0);
+    }
+
+    public void activateApuGenConnection() {
+        activateApuGenConnectionToLeft();
+        activateApuGenConnectionToRight();
+    }
+
+    public void deactivateApuGenConnection() {
+        deactivateApuGenConnectionToLeft();
+        deactivateApuGenConnectionToRight();
+    }
+
+    public void activateExtPwrConnection() {
+        activateExtPwrConnectionToLeft();
+        activateExtPwrConnectionToRight();
+    }
+
+    public void deactivateExtPwrConnection() {
+        deactivateExtPwrConnectionToLeft();
+        deactivateExtPwrConnectionToRight();
     }
 
     public void activateLeftDriveToLeftConnection() {
