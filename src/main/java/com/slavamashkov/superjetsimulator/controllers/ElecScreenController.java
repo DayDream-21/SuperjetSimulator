@@ -67,16 +67,20 @@ public class ElecScreenController extends FxController {
 
             if (selectionPanelController.apuGenSwitchedPressed) {
                 elecUnitsConnectionsController.deactivateApuGenConnectionToLeft();
-            } else if (selectionPanelController.extPwrSwitchedPressed) {
+            }
+
+            if (selectionPanelController.extPwrSwitchedPressed) {
                 elecUnitsConnectionsController.deactivateExtPwrConnectionToLeft();
             }
         } else {
             bottomInfoPaneController.deactivateLeftEngine();
 
-            if (selectionPanelController.apuGenSwitchedPressed) {
+            if (selectionPanelController.apuGenSwitchedPressed && !selectionPanelController.extPwrSwitchedPressed) {
                 elecUnitsConnectionsController.activateApuGenConnectionToLeft();
-            } else if (selectionPanelController.extPwrSwitchedPressed) {
+            } else if (selectionPanelController.extPwrSwitchedPressed && !selectionPanelController.apuGenSwitchedPressed) {
                 elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
+            } else if (selectionPanelController.apuGenSwitchedPressed && selectionPanelController.extPwrSwitchedPressed) {
+                elecUnitsConnectionsController.activateApuGenConnectionToLeft();
             }
         }
     }
@@ -87,16 +91,20 @@ public class ElecScreenController extends FxController {
 
             if (selectionPanelController.apuGenSwitchedPressed) {
                 elecUnitsConnectionsController.deactivateApuGenConnectionToRight();
-            } else if (selectionPanelController.extPwrSwitchedPressed) {
+            }
+
+            if (selectionPanelController.extPwrSwitchedPressed) {
                 elecUnitsConnectionsController.deactivateExtPwrConnectionToRight();
             }
         } else {
             bottomInfoPaneController.deactivateRightEngine();
 
-            if (selectionPanelController.apuGenSwitchedPressed) {
+            if (selectionPanelController.apuGenSwitchedPressed && !selectionPanelController.extPwrSwitchedPressed) {
                 elecUnitsConnectionsController.activateApuGenConnectionToRight();
-            } else if (selectionPanelController.extPwrSwitchedPressed) {
+            } else if (selectionPanelController.extPwrSwitchedPressed && !selectionPanelController.apuGenSwitchedPressed) {
                 elecUnitsConnectionsController.activateExtPwrConnectionToRight();
+            } else if (selectionPanelController.apuGenSwitchedPressed && selectionPanelController.extPwrSwitchedPressed) {
+                elecUnitsConnectionsController.activateApuGenConnectionToRight();
             }
         }
     }
