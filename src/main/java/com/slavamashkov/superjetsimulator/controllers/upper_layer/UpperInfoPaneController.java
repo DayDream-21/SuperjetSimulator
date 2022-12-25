@@ -39,9 +39,10 @@ public class UpperInfoPaneController extends FxController {
     }
 
     public void batOn(int i) {
-        if (elecUnitsController.getIsPowered() > 0) {
+        if (elecUnitsController.isPowered()) {
             batsController.batOn(i);
             batsConnectionsController.batConnect(i);
+            batsConnectionsController.batStartCharge(i);
         } else {
             batsController.batOnInverse(i);
             batsConnectionsController.batConnectInverse(i);
@@ -52,6 +53,5 @@ public class UpperInfoPaneController extends FxController {
     public void batOff(int i) {
         batsController.batOff(i);
         batsConnectionsController.batDisconnect(i);
-        //batsConnectionsController.batStopDischarge(i);
     }
 }

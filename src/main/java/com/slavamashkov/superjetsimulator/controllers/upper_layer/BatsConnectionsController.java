@@ -1,6 +1,7 @@
 package com.slavamashkov.superjetsimulator.controllers.upper_layer;
 
 import com.slavamashkov.superjetsimulator.controllers.FxController;
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,6 +10,8 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ExecutorService;
@@ -28,6 +31,13 @@ import static com.slavamashkov.superjetsimulator.enums.MyColor.WARNING_COLOR;
 public class BatsConnectionsController extends FxController {
     private final String source = "fxml/upper-info-bats-connections-pane.fxml";
     @FXML private Pane upperInfoBatsConnectionsMainPane;
+
+    private ElecUnitsController elecUnitsController;
+
+    @Autowired
+    public void setElecUnitsController(@Lazy ElecUnitsController elecUnitsController) {
+        this.elecUnitsController = elecUnitsController;
+    }
 
     // Bat 1
     @FXML private Label bat1VoltageSign;
@@ -282,6 +292,42 @@ public class BatsConnectionsController extends FxController {
         }
     }
 
+    private boolean isBatConnected(int batNumber) {
+        switch (batNumber) {
+            case 1 -> {
+                return bat1ArrowUp.getOpacity() == 1.0;
+            }
+            case 2 -> {
+                return bat2ArrowUp.getOpacity() == 1.0;
+            }
+            case 3 -> {
+                return bat3ArrowUp.getOpacity() == 1.0;
+            }
+            case 4 -> {
+                return bat4ArrowUp.getOpacity() == 1.0;
+            }
+        }
+        return false;
+    }
+
+    public boolean isBatConnectedInverse(int i) {
+        switch (i) {
+            case 1 -> {
+                return bat1ArrowDown.getOpacity() == 1.0;
+            }
+            case 2 -> {
+                return bat2ArrowDown.getOpacity() == 1.0;
+            }
+            case 3 -> {
+                return bat3ArrowDown.getOpacity() == 1.0;
+            }
+            case 4 -> {
+                return bat4ArrowDown.getOpacity() == 1.0;
+            }
+        }
+        return false;
+    }
+
     public void batStartDischarge(int i) {
         switch (i) {
             case 1 -> startDischarge(bat1VoltageValue);
@@ -291,17 +337,6 @@ public class BatsConnectionsController extends FxController {
         }
     }
 
-    // todo Implement the method
-    public void batStopDischarge(int i) {
-        switch (i) {
-            case 1 -> stopDischarge(bat1VoltageValue);
-            case 2 -> stopDischarge(bat2VoltageValue);
-            case 3 -> stopDischarge(bat3VoltageValue);
-            case 4 -> stopDischarge(bat4VoltageValue);
-        }
-    }
-
-    // todo Implement the method
     public void batStartCharge(int i) {
         switch (i) {
             case 1 -> startCharge(bat1VoltageValue);
@@ -311,24 +346,14 @@ public class BatsConnectionsController extends FxController {
         }
     }
 
-    // todo Implement the method
-    public void batStopCharge(int i) {
-        switch (i) {
-            case 1 -> stopCharge(bat1VoltageValue);
-            case 2 -> stopCharge(bat2VoltageValue);
-            case 3 -> stopCharge(bat3VoltageValue);
-            case 4 -> stopCharge(bat4VoltageValue);
-        }
-    }
-
     private final ExecutorService executorService = Executors.newFixedThreadPool(4);
-    // todo so far the batteries are discharged by a certain number,
-    //  each time they are connected, in future versions they will
-    //  be discharged as long as they are connected and their
-    //  discharging process can be interrupted
+
     private void startDischarge(Label batVoltageValue) {
         executorService.submit(() -> {
-            for (int j = 1; j < 6; j++) {
+            int batNumber = Integer.parseInt(String.valueOf(batVoltageValue.getId().charAt(3)));
+
+            while (isBatConnectedInverse(batNumber) &&
+                    Integer.parseInt(batVoltageValue.getText()) > 0) {
                 Platform.runLater(() -> {
                     int prevValue = Integer.parseInt(batVoltageValue.getText());
                     int nextValue = prevValue - 1;
@@ -336,7 +361,7 @@ public class BatsConnectionsController extends FxController {
                 });
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -344,18 +369,25 @@ public class BatsConnectionsController extends FxController {
         });
     }
 
-    // todo Implement the method
-    private void stopDischarge(Label batVoltageValue) {
-
-    }
-
-    // todo Implement the method
     private void startCharge(Label batVoltageValue) {
+        executorService.submit(() -> {
+            int batNumber = Integer.parseInt(String.valueOf(batVoltageValue.getId().charAt(3)));
 
-    }
+            while (isBatConnected(batNumber) &&
+                    Integer.parseInt(batVoltageValue.getText()) < 27) {
+                Platform.runLater(() -> {
+                    int prevValue = Integer.parseInt(batVoltageValue.getText());
+                    int nextValue = prevValue + 1;
+                    batVoltageValue.setText(String.valueOf(nextValue));
+                });
 
-    // todo Implement the method
-    private void stopCharge(Label batVoltageValue) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
     }
 

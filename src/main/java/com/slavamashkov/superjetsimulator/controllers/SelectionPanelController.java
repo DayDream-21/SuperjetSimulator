@@ -159,6 +159,24 @@ public class SelectionPanelController extends FxController {
         }
     }
 
+    public boolean isBatButtonPressed(int i) {
+        switch (i) {
+            case 1 -> {
+                return bat1LowerLight.getFill().equals(INACTIVE_LIGHT_COLOR.color);
+            }
+            case 2 -> {
+                return bat2LowerLight.getFill().equals(INACTIVE_LIGHT_COLOR.color);
+            }
+            case 3 -> {
+                return bat3LowerLight.getFill().equals(INACTIVE_LIGHT_COLOR.color);
+            }
+            case 4 -> {
+                return bat4LowerLight.getFill().equals(INACTIVE_LIGHT_COLOR.color);
+            }
+        }
+        return false;
+    }
+
     @FXML public void switchLeftGenButton(MouseEvent mouseEvent) {
         elecScreenController.getLeftEngineToggleButton().fire();
     }

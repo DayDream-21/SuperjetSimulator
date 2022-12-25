@@ -78,43 +78,11 @@ public class ElecUnitsController extends FxController {
     @FXML private Rectangle rightDriveRectangle;
     @FXML private CubicCurve rightDriveTransformerSign;
 
-    private boolean isBatConnectedInverse(int i) {
-        switch (i) {
-            case 1 -> {
-                return batsConnectionsController.getBat1ArrowDown().getOpacity() == 1.0;
-            }
-            case 2 -> {
-                return batsConnectionsController.getBat2ArrowDown().getOpacity() == 1.0;
-            }
-            case 3 -> {
-                return batsConnectionsController.getBat3ArrowDown().getOpacity() == 1.0;
-            }
-            case 4 -> {
-                return batsConnectionsController.getBat4ArrowDown().getOpacity() == 1.0;
-            }
-        }
-        return false;
-    }
-
-    private boolean isBatButtonPressed(int i) {
-        switch (i) {
-            case 1 -> {
-                return selectionPanelController.getBat1LowerLight().getFill().equals(INACTIVE_LIGHT_COLOR.color);
-            }
-            case 2 -> {
-                return selectionPanelController.getBat2LowerLight().getFill().equals(INACTIVE_LIGHT_COLOR.color);
-            }
-            case 3 -> {
-                return selectionPanelController.getBat3LowerLight().getFill().equals(INACTIVE_LIGHT_COLOR.color);
-            }
-            case 4 -> {
-                return selectionPanelController.getBat4LowerLight().getFill().equals(INACTIVE_LIGHT_COLOR.color);
-            }
-        }
-        return false;
-    }
-
     private int isPowered = 0;
+
+    public boolean isPowered() {
+        return isPowered > 0;
+    }
 
     public void activateExtPwrUnit() {
         extPwrRectangle.setOpacity(1.0);
@@ -129,7 +97,8 @@ public class ElecUnitsController extends FxController {
         ++isPowered;
 
         for (int i = 1; i < 5; i++) {
-            if (isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+            if (batsConnectionsController.isBatConnectedInverse(i) &&
+                    selectionPanelController.isBatButtonPressed(i)) {
                 upperInfoPaneController.batOn(i);
             }
         }
@@ -148,7 +117,8 @@ public class ElecUnitsController extends FxController {
         --isPowered;
 
         for (int i = 1; i < 5; i++) {
-            if (!isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+            if (!batsConnectionsController.isBatConnectedInverse(i) &&
+                    selectionPanelController.isBatButtonPressed(i)) {
                 upperInfoPaneController.batOn(i);
             }
         }
@@ -162,7 +132,8 @@ public class ElecUnitsController extends FxController {
         ++isPowered;
 
         for (int i = 1; i < 5; i++) {
-            if (isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+            if (batsConnectionsController.isBatConnectedInverse(i) &&
+                    selectionPanelController.isBatButtonPressed(i)) {
                 upperInfoPaneController.batOn(i);
             }
         }
@@ -176,7 +147,8 @@ public class ElecUnitsController extends FxController {
         --isPowered;
 
         for (int i = 1; i < 5; i++) {
-            if (!isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+            if (!batsConnectionsController.isBatConnectedInverse(i) &&
+                    selectionPanelController.isBatButtonPressed(i)) {
                 upperInfoPaneController.batOn(i);
             }
         }
@@ -192,7 +164,8 @@ public class ElecUnitsController extends FxController {
         ++isPowered;
 
         for (int i = 1; i < 5; i++) {
-            if (isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+            if (batsConnectionsController.isBatConnectedInverse(i) &&
+                    selectionPanelController.isBatButtonPressed(i)) {
                 upperInfoPaneController.batOn(i);
             }
         }
@@ -207,7 +180,8 @@ public class ElecUnitsController extends FxController {
         --isPowered;
 
         for (int i = 1; i < 5; i++) {
-            if (!isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+            if (!batsConnectionsController.isBatConnectedInverse(i) &&
+                    selectionPanelController.isBatButtonPressed(i)) {
                 upperInfoPaneController.batOn(i);
             }
         }
@@ -223,7 +197,8 @@ public class ElecUnitsController extends FxController {
         ++isPowered;
 
         for (int i = 1; i < 5; i++) {
-            if (isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+            if (batsConnectionsController.isBatConnectedInverse(i) &&
+                    selectionPanelController.isBatButtonPressed(i)) {
                 upperInfoPaneController.batOn(i);
             }
         }
@@ -238,7 +213,8 @@ public class ElecUnitsController extends FxController {
         --isPowered;
 
         for (int i = 1; i < 5; i++) {
-            if (!isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+            if (!batsConnectionsController.isBatConnectedInverse(i) &&
+                    selectionPanelController.isBatButtonPressed(i)) {
                 upperInfoPaneController.batOn(i);
             }
         }
