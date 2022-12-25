@@ -15,6 +15,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_LIGHT_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_LIGHT_COLOR;
+
 /**
  * The main task of this class is to combine the controllers responsible
  * for certain layers of the screen, such as
@@ -61,9 +64,10 @@ public class ElecScreenController extends FxController {
         bottomInfoPane.getChildren().add(bottomInfoPaneController.getBottomInfoMainPane());
     }
 
-    public void onActionActivateLeftEngine(ActionEvent event) {
-        if (leftEngineToggleButton.isSelected()) {
+    @FXML private void onActionActivateLeftEngine(ActionEvent event) {
+        if (isLeftEngineActive()) {
             bottomInfoPaneController.activateLeftEngine();
+            selectionPanelController.getLeftGenLowerLight().setFill(INACTIVE_LIGHT_COLOR.color);
 
             if (selectionPanelController.apuGenSwitchedPressed) {
                 elecUnitsConnectionsController.deactivateApuGenConnectionToLeft();
@@ -72,8 +76,10 @@ public class ElecScreenController extends FxController {
             if (selectionPanelController.extPwrSwitchedPressed) {
                 elecUnitsConnectionsController.deactivateExtPwrConnectionToLeft();
             }
+
         } else {
             bottomInfoPaneController.deactivateLeftEngine();
+            selectionPanelController.getLeftGenLowerLight().setFill(ACTIVE_LIGHT_COLOR.color);
 
             if (selectionPanelController.apuGenSwitchedPressed && !selectionPanelController.extPwrSwitchedPressed) {
                 elecUnitsConnectionsController.activateApuGenConnectionToLeft();
@@ -85,9 +91,10 @@ public class ElecScreenController extends FxController {
         }
     }
 
-    public void onActionActivateRightEngine(ActionEvent event) {
-        if (rightEngineToggleButton.isSelected()) {
+    @FXML private void onActionActivateRightEngine(ActionEvent event) {
+        if (isRightEngineActive()) {
             bottomInfoPaneController.activateRightEngine();
+            selectionPanelController.getRightGenLowerLight().setFill(INACTIVE_LIGHT_COLOR.color);
 
             if (selectionPanelController.apuGenSwitchedPressed) {
                 elecUnitsConnectionsController.deactivateApuGenConnectionToRight();
@@ -98,6 +105,7 @@ public class ElecScreenController extends FxController {
             }
         } else {
             bottomInfoPaneController.deactivateRightEngine();
+            selectionPanelController.getRightGenLowerLight().setFill(ACTIVE_LIGHT_COLOR.color);
 
             if (selectionPanelController.apuGenSwitchedPressed && !selectionPanelController.extPwrSwitchedPressed) {
                 elecUnitsConnectionsController.activateApuGenConnectionToRight();

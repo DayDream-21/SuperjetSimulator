@@ -8,8 +8,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_COLOR;
-import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.*;
 
 /**
  * The class responsible for the battery display and the color change
@@ -28,20 +27,6 @@ public class BatsController extends FxController {
     @FXML private Rectangle bat4Frame;
 
     /**
-     * Allows you to turn off a certain battery
-     *
-     * @param i the battery number must be an integer between 1 and 4 inclusive
-     */
-    public void batOff(int i) {
-        switch (i) {
-            case 1 -> bat1Frame.setStroke(INACTIVE_COLOR.color);
-            case 2 -> bat2Frame.setStroke(INACTIVE_COLOR.color);
-            case 3 -> bat3Frame.setStroke(INACTIVE_COLOR.color);
-            case 4 -> bat4Frame.setStroke(INACTIVE_COLOR.color);
-        }
-    }
-
-    /**
      * Allows you to turn on a certain battery
      *
      * @param i the battery number must be an integer between 1 and 4 inclusive
@@ -52,6 +37,29 @@ public class BatsController extends FxController {
             case 2 -> bat2Frame.setStroke(ACTIVE_COLOR.color);
             case 3 -> bat3Frame.setStroke(ACTIVE_COLOR.color);
             case 4 -> bat4Frame.setStroke(ACTIVE_COLOR.color);
+        }
+    }
+
+    public void batOnInverse(int i) {
+        switch (i) {
+            case 1 -> bat1Frame.setStroke(WARNING_COLOR.color);
+            case 2 -> bat2Frame.setStroke(WARNING_COLOR.color);
+            case 3 -> bat3Frame.setStroke(WARNING_COLOR.color);
+            case 4 -> bat4Frame.setStroke(WARNING_COLOR.color);
+        }
+    }
+
+    /**
+     * Allows you to turn off a certain battery
+     *
+     * @param i the battery number must be an integer between 1 and 4 inclusive
+     */
+    public void batOff(int i) {
+        switch (i) {
+            case 1 -> bat1Frame.setStroke(INACTIVE_COLOR.color);
+            case 2 -> bat2Frame.setStroke(INACTIVE_COLOR.color);
+            case 3 -> bat3Frame.setStroke(INACTIVE_COLOR.color);
+            case 4 -> bat4Frame.setStroke(INACTIVE_COLOR.color);
         }
     }
 }

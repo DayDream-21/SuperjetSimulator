@@ -35,6 +35,7 @@ import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_LIGHT_CO
 @RequiredArgsConstructor
 public class SelectionPanelController extends FxController {
     private final String source = "fxml/selection-panel-pane.fxml";
+
     @FXML private AnchorPane selectionPanelMainPane;
 
     private final BottomInfoPaneController bottomInfoPaneController;
@@ -76,6 +77,12 @@ public class SelectionPanelController extends FxController {
     @FXML private Rectangle bat4UpperLight;
     @FXML private Rectangle bat4LowerLight;
 
+    @FXML private Rectangle leftGenUpperLight;
+    @FXML private Rectangle leftGenLowerLight;
+
+    @FXML private Rectangle rightGenUpperLight;
+    @FXML private Rectangle rightGenLowerLight;
+
     @FXML private Rectangle extPwrUpperLight;
     @FXML private Rectangle extPwrLowerLight;
 
@@ -85,8 +92,12 @@ public class SelectionPanelController extends FxController {
     @Override
     public void init() {
         buttons.getStylesheets().add("css/selection-panel.css");
+
         extPwrUpperLight.setFill(ACTIVE_LIGHT_COLOR.color);
         apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+
+        leftGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+        rightGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
 
         overheadPanelImageView.setImage(new Image("images/overhead_panel_2.png"));
         selectorImageView.setImage(new Image("images/selector.png"));
@@ -148,6 +159,14 @@ public class SelectionPanelController extends FxController {
         }
     }
 
+    @FXML public void switchLeftGenButton(MouseEvent mouseEvent) {
+        elecScreenController.getLeftEngineToggleButton().fire();
+    }
+
+    @FXML public void switchRightGenButton(MouseEvent mouseEvent) {
+        elecScreenController.getRightEngineToggleButton().fire();
+    }
+
     boolean extPwrSwitchedPressed = false;
 
     @FXML public void switchExtPwrButton(MouseEvent mouseEvent) {
@@ -155,7 +174,6 @@ public class SelectionPanelController extends FxController {
 
         if (extPwrSwitchedPressed) {
             elecUnitsController.activateExtPwrUnit();
-            //elecUnitsConnectionsController.activateExtPwrConnection();
 
             if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
                 elecUnitsConnectionsController.activateExtPwrConnectionToRight();
@@ -166,7 +184,8 @@ public class SelectionPanelController extends FxController {
             }
 
             if (apuGenSwitchedPressed) {
-                elecUnitsConnectionsController.deactivateApuGenConnection();
+                elecUnitsConnectionsController.deactivateExtPwrConnectionToLeft();
+                elecUnitsConnectionsController.deactivateExtPwrConnectionToRight();
             }
 
             extPwrUpperLight.setFill(INACTIVE_LIGHT_COLOR.color);
@@ -255,10 +274,7 @@ public class SelectionPanelController extends FxController {
         } else if (rotationDegree == 180.0) {
             batteryVoltageIndicator.setText(String.valueOf(batsConnectionsController.getBatVoltage(4)));
         } else {
-            // todo
-            // залогировать неподдерживаемое значение селектора
             batteryVoltageIndicator.setText(String.valueOf(0.0));
         }
     }
-
 }

@@ -1,7 +1,10 @@
 package com.slavamashkov.superjetsimulator.controllers.bottom_layer;
 
 import com.slavamashkov.superjetsimulator.controllers.FxController;
+import com.slavamashkov.superjetsimulator.controllers.SelectionPanelController;
 import com.slavamashkov.superjetsimulator.controllers.upper_layer.BatsConnectionsController;
+import com.slavamashkov.superjetsimulator.controllers.upper_layer.BatsController;
+import com.slavamashkov.superjetsimulator.controllers.upper_layer.UpperInfoPaneController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -10,10 +13,11 @@ import javafx.scene.shape.CubicCurve;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_COLOR;
-import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.*;
 
 /**
  * The class responsible for displaying the units that supply power
@@ -30,7 +34,20 @@ public class ElecUnitsController extends FxController {
     private final String source = "fxml/bottom-info-elec-units-pane.fxml";
     @FXML private Pane bottomInfoElecUnitsMainPane;
 
+    private final BatsController batsController;
     private final BatsConnectionsController batsConnectionsController;
+    private SelectionPanelController selectionPanelController;
+    private UpperInfoPaneController upperInfoPaneController;
+
+    @Autowired
+    public void setSelectionPanelController(@Lazy SelectionPanelController selectionPanelController) {
+        this.selectionPanelController = selectionPanelController;
+    }
+
+    @Autowired
+    public void setUpperInfoPaneController(@Lazy UpperInfoPaneController upperInfoPaneController) {
+        this.upperInfoPaneController = upperInfoPaneController;
+    }
 
     // External Power
     @FXML private Rectangle extPwrRectangle;
@@ -61,6 +78,44 @@ public class ElecUnitsController extends FxController {
     @FXML private Rectangle rightDriveRectangle;
     @FXML private CubicCurve rightDriveTransformerSign;
 
+    private boolean isBatConnectedInverse(int i) {
+        switch (i) {
+            case 1 -> {
+                return batsConnectionsController.getBat1ArrowDown().getOpacity() == 1.0;
+            }
+            case 2 -> {
+                return batsConnectionsController.getBat2ArrowDown().getOpacity() == 1.0;
+            }
+            case 3 -> {
+                return batsConnectionsController.getBat3ArrowDown().getOpacity() == 1.0;
+            }
+            case 4 -> {
+                return batsConnectionsController.getBat4ArrowDown().getOpacity() == 1.0;
+            }
+        }
+        return false;
+    }
+
+    private boolean isBatButtonPressed(int i) {
+        switch (i) {
+            case 1 -> {
+                return selectionPanelController.getBat1LowerLight().getFill().equals(INACTIVE_LIGHT_COLOR.color);
+            }
+            case 2 -> {
+                return selectionPanelController.getBat2LowerLight().getFill().equals(INACTIVE_LIGHT_COLOR.color);
+            }
+            case 3 -> {
+                return selectionPanelController.getBat3LowerLight().getFill().equals(INACTIVE_LIGHT_COLOR.color);
+            }
+            case 4 -> {
+                return selectionPanelController.getBat4LowerLight().getFill().equals(INACTIVE_LIGHT_COLOR.color);
+            }
+        }
+        return false;
+    }
+
+    private int isPowered = 0;
+
     public void activateExtPwrUnit() {
         extPwrRectangle.setOpacity(1.0);
         extPwrTransformerSign.setOpacity(1.0);
@@ -71,7 +126,13 @@ public class ElecUnitsController extends FxController {
         extPwrFrequencyValue.setOpacity(1.0);
         extPwrFrequencySign.setOpacity(1.0);
 
-        batsConnectionsController.activateAllBatsDemo();
+        ++isPowered;
+
+        for (int i = 1; i < 5; i++) {
+            if (isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+                upperInfoPaneController.batOn(i);
+            }
+        }
     }
 
     public void deactivateExtPwrUnit() {
@@ -84,7 +145,13 @@ public class ElecUnitsController extends FxController {
         extPwrFrequencyValue.setOpacity(0.0);
         extPwrFrequencySign.setOpacity(0.0);
 
-        batsConnectionsController.deactivateAllBatsDemo();
+        --isPowered;
+
+        for (int i = 1; i < 5; i++) {
+            if (!isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+                upperInfoPaneController.batOn(i);
+            }
+        }
     }
 
     public void activateApuGenUnit() {
@@ -92,7 +159,13 @@ public class ElecUnitsController extends FxController {
         apuGenTransformerSign.setOpacity(1.0);
         apuGenInfoPane.setOpacity(1.0);
 
-        batsConnectionsController.activateAllBatsDemo();
+        ++isPowered;
+
+        for (int i = 1; i < 5; i++) {
+            if (isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+                upperInfoPaneController.batOn(i);
+            }
+        }
     }
 
     public void deactivateApuGenUnit() {
@@ -100,7 +173,13 @@ public class ElecUnitsController extends FxController {
         apuGenTransformerSign.setOpacity(0.0);
         apuGenInfoPane.setOpacity(0.0);
 
-        batsConnectionsController.deactivateAllBatsDemo();
+        --isPowered;
+
+        for (int i = 1; i < 5; i++) {
+            if (!isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+                upperInfoPaneController.batOn(i);
+            }
+        }
     }
 
     public void activateLeftEngine() {
@@ -110,7 +189,13 @@ public class ElecUnitsController extends FxController {
         leftDriveTransformerCircle.setStroke(ACTIVE_COLOR.color);
         leftDriveRectangle.setStroke(ACTIVE_COLOR.color);
 
-        batsConnectionsController.activateAllBatsDemo();
+        ++isPowered;
+
+        for (int i = 1; i < 5; i++) {
+            if (isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+                upperInfoPaneController.batOn(i);
+            }
+        }
     }
 
     public void deactivateLeftEngine() {
@@ -119,7 +204,13 @@ public class ElecUnitsController extends FxController {
         leftDriveTransformerCircle.setStroke(INACTIVE_COLOR.color);
         leftDriveRectangle.setStroke(INACTIVE_COLOR.color);
 
-        batsConnectionsController.deactivateAllBatsDemo();
+        --isPowered;
+
+        for (int i = 1; i < 5; i++) {
+            if (!isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+                upperInfoPaneController.batOn(i);
+            }
+        }
     }
 
     public void activateRightEngine() {
@@ -129,7 +220,13 @@ public class ElecUnitsController extends FxController {
         rightDriveTransformerCircle.setStroke(ACTIVE_COLOR.color);
         rightDriveRectangle.setStroke(ACTIVE_COLOR.color);
 
-        batsConnectionsController.activateAllBatsDemo();
+        ++isPowered;
+
+        for (int i = 1; i < 5; i++) {
+            if (isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+                upperInfoPaneController.batOn(i);
+            }
+        }
     }
 
     public void deactivateRightEngine() {
@@ -138,6 +235,12 @@ public class ElecUnitsController extends FxController {
         rightDriveTransformerCircle.setStroke(INACTIVE_COLOR.color);
         rightDriveRectangle.setStroke(INACTIVE_COLOR.color);
 
-        batsConnectionsController.deactivateAllBatsDemo();
+        --isPowered;
+
+        for (int i = 1; i < 5; i++) {
+            if (!isBatConnectedInverse(i) && isBatButtonPressed(i)) {
+                upperInfoPaneController.batOn(i);
+            }
+        }
     }
 }

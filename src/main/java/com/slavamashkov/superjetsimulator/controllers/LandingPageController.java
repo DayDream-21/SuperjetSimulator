@@ -82,10 +82,6 @@ public class LandingPageController extends FxController implements CommandLineRu
             masterPaneController.receiveData(comboBox.getValue());
         }
 
-        for (int i = 1; i < 5; i++) {
-            upperInfoPaneController.batOff(i);
-        }
-
         masterPaneController.getStage().show();
     }
 }

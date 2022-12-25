@@ -1,6 +1,7 @@
 package com.slavamashkov.superjetsimulator.controllers.upper_layer;
 
 import com.slavamashkov.superjetsimulator.controllers.FxController;
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsController;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class UpperInfoPaneController extends FxController {
 
     private final BatsController batsController;
     private final BatsConnectionsController batsConnectionsController;
+    private final ElecUnitsController elecUnitsController;
 
     @FXML private Pane batsPane;
     @FXML private Pane batsConnectionsPane;
@@ -36,13 +38,20 @@ public class UpperInfoPaneController extends FxController {
         );
     }
 
-    public void batOff(int i) {
-        batsController.batOff(i);
-        batsConnectionsController.batOff(i);
+    public void batOn(int i) {
+        if (elecUnitsController.getIsPowered() > 0) {
+            batsController.batOn(i);
+            batsConnectionsController.batConnect(i);
+        } else {
+            batsController.batOnInverse(i);
+            batsConnectionsController.batConnectInverse(i);
+            batsConnectionsController.batStartDischarge(i);
+        }
     }
 
-    public void batOn(int i) {
-        batsController.batOn(i);
-        batsConnectionsController.batOn(i);
+    public void batOff(int i) {
+        batsController.batOff(i);
+        batsConnectionsController.batDisconnect(i);
+        //batsConnectionsController.batStopDischarge(i);
     }
 }

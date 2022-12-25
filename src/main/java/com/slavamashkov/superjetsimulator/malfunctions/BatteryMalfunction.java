@@ -26,7 +26,7 @@ public class BatteryMalfunction extends Malfunction {
         Runnable task = () -> {
             batsController.getBat1Frame().setStroke(WARNING_COLOR.color);
             batsConnectionsController.getBat1Arrow().setFill(WARNING_COLOR.color);
-            batsConnectionsController.getBat1ArrowEnd().setFill(WARNING_COLOR.color);
+            batsConnectionsController.getBat1ArrowUp().setFill(WARNING_COLOR.color);
         };
         executor.schedule(task, 5, TimeUnit.SECONDS);
         executor.shutdown();
