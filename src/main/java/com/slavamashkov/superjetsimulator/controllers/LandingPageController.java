@@ -1,7 +1,6 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
 import com.slavamashkov.superjetsimulator.SuperjetSimulatorApplication;
-import com.slavamashkov.superjetsimulator.controllers.upper_layer.UpperInfoPaneController;
 import com.slavamashkov.superjetsimulator.malfunctions.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -39,11 +38,6 @@ public class LandingPageController extends FxController implements CommandLineRu
 
     private final MasterPaneController masterPaneController;
 
-    private final NoMalfunction noMalfunction;
-    private final BusMalfunction busMalfunction;
-    private final BatteryMalfunction batteryMalfunction;
-    private final UpperInfoPaneController upperInfoPaneController;
-
     @FXML private ImageView logo;
     @FXML private ComboBox<Malfunction> comboBox;
 
@@ -53,11 +47,31 @@ public class LandingPageController extends FxController implements CommandLineRu
         getStage().initModality(Modality.APPLICATION_MODAL);
         getScene().getStylesheets().add("css/landing-page.css");
         logo.setImage(new Image("images/sukhoi_logo.png"));
+
         comboBox.getItems().addAll(
-                noMalfunction,
-                busMalfunction,
-                batteryMalfunction
+                new NoMalfunction(),
+                new ElecLeftGenDriveFault(),
+                new ElecRightGenDriveFault(),
+                new ElecLeftGenFault(),
+                new ElecRightGenFault(),
+                new ElecApuGenFault(),
+                new ElecBatOverheat(1),
+                new ElecBatOverheat(2),
+                new ElecBatOverheat(3),
+                new ElecBatOverheat(4),
+                new ElecDcBusOnBat(),
+                new ElecLeftGenOvercurrent(),
+                new ElecRightGenOvercurrent(),
+                new ElecGenLeftOverload(),
+                new ElecGenRightOverload(),
+                new ElecLeftAcBusFault(),
+                new ElecRightAcBusFault(),
+                new ElecLeftDcBusFault(),
+                new ElecRightDcBusFault(),
+                new ElecLeftDcEssBusFault(),
+                new ElecRightDcEssBusFault()
         );
+
         comboBox.setVisibleRowCount(10);
     }
 
