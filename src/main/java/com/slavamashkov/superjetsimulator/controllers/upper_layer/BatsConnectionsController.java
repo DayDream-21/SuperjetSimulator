@@ -29,7 +29,7 @@ import static com.slavamashkov.superjetsimulator.enums.MyColor.WARNING_COLOR;
 @Component
 @RequiredArgsConstructor
 public class BatsConnectionsController extends FxController {
-    private final String source = "fxml/upper-info-bats-connections-pane.fxml";
+    private final String source = "fxml/upper_layer/upper-info-bats-connections-pane.fxml";
     @FXML private Pane upperInfoBatsConnectionsMainPane;
 
     private ElecUnitsController elecUnitsController;
@@ -38,6 +38,8 @@ public class BatsConnectionsController extends FxController {
     public void setElecUnitsController(@Lazy ElecUnitsController elecUnitsController) {
         this.elecUnitsController = elecUnitsController;
     }
+
+    private static final long BAT_CHARGE_DISCHARGE_TIME = 1000L;
 
     // Bat 1
     @FXML private Label bat1VoltageSign;
@@ -361,7 +363,7 @@ public class BatsConnectionsController extends FxController {
                 });
 
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(BAT_CHARGE_DISCHARGE_TIME);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -382,7 +384,7 @@ public class BatsConnectionsController extends FxController {
                 });
 
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(BAT_CHARGE_DISCHARGE_TIME);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

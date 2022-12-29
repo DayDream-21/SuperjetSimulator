@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class BottomInfoPaneController extends FxController {
-    private final String source = "fxml/bottom-info-pane.fxml";
+    private final String source = "fxml/bottom_layer/bottom-info-pane.fxml";
     @FXML private Pane bottomInfoMainPane;
 
     private final ElecUnitsController elecUnitsController;

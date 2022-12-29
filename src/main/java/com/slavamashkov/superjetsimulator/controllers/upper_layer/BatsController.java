@@ -18,7 +18,7 @@ import static com.slavamashkov.superjetsimulator.enums.MyColor.*;
 @Component
 @RequiredArgsConstructor
 public class BatsController extends FxController {
-    private final String source = "fxml/upper-info-bats-pane.fxml";
+    private final String source = "fxml/upper_layer/upper-info-bats-pane.fxml";
     @FXML private Pane upperInfoBatsMainPane;
 
     @FXML private Rectangle bat1Frame;

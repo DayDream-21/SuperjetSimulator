@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class UpperInfoPaneController extends FxController {
-    private final String source = "fxml/upper-info-pane.fxml";
+    private final String source = "fxml/upper_layer/upper-info-pane.fxml";
     @FXML private Pane upperInfoMainPane;
 
     private final BatsController batsController;

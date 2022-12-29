@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.slavamashkov.superjetsimulator.controllers.LandingPageController" prefHeight="1000.0"
-            prefWidth="1518.0">
+<AnchorPane prefHeight="1000.0" prefWidth="1518.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.slavamashkov.superjetsimulator.controllers.LandingPageController">
     <children>
         <Rectangle fx:id="background" height="1000.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"
                    width="1518.0">
@@ -126,7 +126,8 @@
                     </effect>
                 </Rectangle>
 
-                <ComboBox fx:id="comboBox" layoutX="568.0" layoutY="2.0" prefWidth="150.0" value="No Malfunction"/>
+                <ComboBox fx:id="comboBox" layoutX="568.0" layoutY="2.0" prefHeight="25.0" prefWidth="220.0"
+                          value="No Malfunction"/>
                 <Pane layoutY="214.0" prefHeight="56.0" prefWidth="566.0">
                     <children>
                         <Text fill="WHITE" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0"
@@ -135,15 +136,15 @@
                                 <Font name="Open Sans Bold" size="41.0"/>
                             </font>
                         </Text>
-                        <Pane styleClass="start-button-pane" onMouseClicked="#switchToSceneTwo" layoutX="437.0"
-                              layoutY="-72.0" prefHeight="200.0" prefWidth="200.0" scaleX="0.15" scaleY="0.15">
+                        <Pane layoutX="437.0" layoutY="-72.0" onMouseClicked="#switchToSceneTwo" prefHeight="200.0"
+                              prefWidth="200.0" scaleX="0.15" scaleY="0.15" styleClass="start-button-pane">
                             <children>
-                                <Circle styleClass="start-button-circle" fill="WHITE" layoutX="100.0" layoutY="100.0"
-                                        radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"/>
-                                <Polygon styleClass="start-button-triangle" fill="#1f93ff" layoutX="111.0"
-                                         layoutY="108.0" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" rotate="90.0"
-                                         scaleX="0.75" scaleY="0.75" stroke="#1f93ff" strokeLineCap="ROUND"
-                                         strokeLineJoin="ROUND" strokeWidth="10.0"/>
+                                <Circle fill="WHITE" layoutX="100.0" layoutY="100.0" radius="100.0" stroke="BLACK"
+                                        strokeType="INSIDE" strokeWidth="0.0" styleClass="start-button-circle"/>
+                                <Polygon fill="#1f93ff" layoutX="111.0" layoutY="108.0"
+                                         points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" rotate="90.0" scaleX="0.75"
+                                         scaleY="0.75" stroke="#1f93ff" strokeLineCap="ROUND" strokeLineJoin="ROUND"
+                                         strokeWidth="10.0" styleClass="start-button-triangle"/>
                             </children>
                         </Pane>
                     </children>

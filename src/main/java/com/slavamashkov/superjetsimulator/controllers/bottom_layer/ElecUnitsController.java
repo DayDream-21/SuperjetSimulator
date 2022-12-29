@@ -31,7 +31,7 @@ import static com.slavamashkov.superjetsimulator.enums.MyColor.*;
 @Component
 @RequiredArgsConstructor
 public class ElecUnitsController extends FxController {
-    private final String source = "fxml/bottom-info-elec-units-pane.fxml";
+    private final String source = "fxml/bottom_layer/bottom-info-elec-units-pane.fxml";
     @FXML private Pane bottomInfoElecUnitsMainPane;
 
     private final BatsController batsController;

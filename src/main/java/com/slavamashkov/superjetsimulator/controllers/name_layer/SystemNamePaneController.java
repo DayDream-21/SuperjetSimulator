@@ -14,6 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class SystemNamePaneController extends FxController {
-    private final String source = "fxml/system-name-pane.fxml";
+    private final String source = "fxml/name_layer/system-name-pane.fxml";
     @FXML private Pane systemNameMainPane;
 }

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class ElecUnitsConnectionsController extends FxController {
-    private final String source = "fxml/bottom-info-elec-units-connections-pane.fxml";
+    private final String source = "fxml/bottom_layer/bottom-info-elec-units-connections-pane.fxml";
     @FXML private Pane bottomInfoElecUnitsConnectionsMainPane;
 
     @FXML private Pane fromExtToLeft;

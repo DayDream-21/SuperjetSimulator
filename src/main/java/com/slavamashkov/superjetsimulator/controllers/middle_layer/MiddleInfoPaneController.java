@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class MiddleInfoPaneController extends FxController {
-    private final String source = "fxml/middle-info-pane.fxml";
+    private final String source = "fxml/middle_layer/middle-info-pane.fxml";
     @FXML private Pane middleInfoMainPane;
 
     @FXML private Rectangle leftMainBusDC;
