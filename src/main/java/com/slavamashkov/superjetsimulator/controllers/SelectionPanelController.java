@@ -88,7 +88,7 @@ public class SelectionPanelController extends FxController {
 
     @FXML private Rectangle apuGenUpperLight;
     @FXML private Rectangle apuGenLowerLight;
-
+    // todo включать подсветку кнопок только после того как подключается питание
     @Override
     public void init() {
         buttons.getStylesheets().add("css/selection-panel.css");
@@ -188,39 +188,31 @@ public class SelectionPanelController extends FxController {
     boolean extPwrSwitchedPressed = false;
 
     @FXML public void switchExtPwrButton(MouseEvent mouseEvent) {
-        extPwrSwitchedPressed = !extPwrSwitchedPressed;
-
+        extPwrSwitchedPressed = !extPwrSwitchedPressed; // Если метод был вызван, значит меняем состояние кнопки
+        // Если состояние кнопки "нажата"
         if (extPwrSwitchedPressed) {
-            elecUnitsController.activateExtPwrUnit();
-
+            elecUnitsController.activateExtPwrUnit(); // Включаем блок внешнего питания
+            // Дальнейшая логика описывает то, каким путем будет подключен блок
             if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                // Если левый двигатель включен, а правый нет, тогда подключаем к правой подсети
                 elecUnitsConnectionsController.activateExtPwrConnectionToRight();
             } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
+                // Если правый двигатель включен, а левый нет, тогда подключаем к левой подсети
                 elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
             } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                // Если оба двигателя отключены, тогда подключаем к левой и правой подсети
                 elecUnitsConnectionsController.activateExtPwrConnection();
             }
-
+            // Если одновременно с внешним питанием включено ВСУ, тогда отдаем приоритет ВСУ
             if (apuGenSwitchedPressed) {
-                elecUnitsConnectionsController.deactivateExtPwrConnectionToLeft();
-                elecUnitsConnectionsController.deactivateExtPwrConnectionToRight();
+                elecUnitsConnectionsController.deactivateExtPwrConnection();
             }
-
+            // Переключаем подсветку кнопки
             extPwrUpperLight.setFill(INACTIVE_LIGHT_COLOR.color);
             extPwrLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
-        } else {
-            elecUnitsController.deactivateExtPwrUnit();
-            elecUnitsConnectionsController.deactivateExtPwrConnection();
-
-            if (apuGenSwitchedPressed) {
-                if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
-                    elecUnitsConnectionsController.activateApuGenConnectionToRight();
-                } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
-                    elecUnitsConnectionsController.activateApuGenConnectionToLeft();
-                } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
-                    elecUnitsConnectionsController.activateApuGenConnection();
-                }
-            }
+        } else { // Если состояние кнопки "отжата"
+            elecUnitsController.deactivateExtPwrUnit(); // Отключаем блок внешнего питания
+            elecUnitsConnectionsController.deactivateExtPwrConnection(); // Отсоединяем блок от левой и правой подсети
 
             extPwrUpperLight.setFill(ACTIVE_LIGHT_COLOR.color);
             extPwrLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
@@ -230,38 +222,44 @@ public class SelectionPanelController extends FxController {
     boolean apuGenSwitchedPressed = false;
 
     @FXML private void switchApuGenButton(MouseEvent mouseEvent) {
-        apuGenSwitchedPressed = !apuGenSwitchedPressed;
-
+        apuGenSwitchedPressed = !apuGenSwitchedPressed; // Если метод был вызван, значит меняем состояние кнопки
+        // Если состояние кнопки "нажата"
         if (apuGenSwitchedPressed) {
-            elecUnitsController.activateApuGenUnit();
-
+            elecUnitsController.activateApuGenUnit(); // Включаем блок ВСУ
+            // Дальнейшая логика описывает то, каким путем будет подключен блок
             if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                // Если левый двигатель включен, а правый нет, тогда подключаем к правой подсети
                 elecUnitsConnectionsController.activateApuGenConnectionToRight();
             } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
+                // Если правый двигатель включен, а левый нет, тогда подключаем к левой подсети
                 elecUnitsConnectionsController.activateApuGenConnectionToLeft();
             } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                // Если оба двигателя отключены, тогда подключаем к левой и правой подсети
                 elecUnitsConnectionsController.activateApuGenConnection();
             }
-
+            // Если одновременно с ВСУ включено внешнее питание, тогда отдаем приоритет ВСУ
             if (extPwrSwitchedPressed) {
                 elecUnitsConnectionsController.deactivateExtPwrConnection();
             }
-
+            // Переключаем подсветку кнопки
             apuGenLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
-        } else {
-            elecUnitsController.deactivateApuGenUnit();
-            elecUnitsConnectionsController.deactivateApuGenConnection();
-
+        } else { // Если состояние кнопки "отжата"
+            elecUnitsController.deactivateApuGenUnit(); // Отключаем блок ВСУ
+            elecUnitsConnectionsController.deactivateApuGenConnection(); // Отсоединяем блок от левой и правой подсети
+            // Если после отжатия кнопки APU GEN, кнопка EXT PWR все еще нажата, тогда
             if (extPwrSwitchedPressed) {
                 if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                    // Если левый двигатель включен, а правый нет, тогда подключаем внешнее питание к правой подсети
                     elecUnitsConnectionsController.activateExtPwrConnectionToRight();
                 } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
+                    // Если правый двигатель включен, а левый нет, тогда подключаем внешнее питание к левой подсети
                     elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
                 } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
+                    // Если оба двигателя отключены, тогда подключаем внешнее питание к левой и правой подсети
                     elecUnitsConnectionsController.activateExtPwrConnection();
                 }
             }
-
+            // Переключаем подсветку кнопки
             apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }
     }
