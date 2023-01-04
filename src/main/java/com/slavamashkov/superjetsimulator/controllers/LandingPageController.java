@@ -41,6 +41,28 @@ public class LandingPageController extends FxController implements CommandLineRu
     @FXML private ImageView logo;
     @FXML private ComboBox<Malfunction> comboBox;
 
+    private final NoMalfunction noMalfunction;
+    private final ElecLeftGenDriveFault elecLeftGenDriveFault;
+    private final ElecRightGenDriveFault elecRightGenDriveFault;
+    private final ElecLeftGenFault elecLeftGenFault;
+    private final ElecRightGenFault elecRightGenFault;
+    private final ElecApuGenFault elecApuGenFault;
+    private final ElecBat1Overheat elecBat1Overheat;
+    private final ElecBat2Overheat elecBat2Overheat;
+    private final ElecBat3Overheat elecBat3Overheat;
+    private final ElecBat4Overheat elecBat4Overheat;
+    private final ElecDcBusOnBat elecDcBusOnBat;
+    private final ElecLeftGenOvercurrent elecLeftGenOvercurrent;
+    private final ElecRightGenOvercurrent elecRightGenOvercurrent;
+    private final ElecGenLeftOverload elecGenLeftOverload;
+    private final ElecGenRightOverload elecGenRightOverload;
+    private final ElecLeftAcBusFault elecLeftAcBusFault;
+    private final ElecRightAcBusFault elecRightAcBusFault;
+    private final ElecLeftDcBusFault elecLeftDcBusFault;
+    private final ElecRightDcBusFault elecRightDcBusFault;
+    private final ElecLeftDcEssBusFault elecLeftDcEssBusFault;
+    private final ElecRightDcEssBusFault elecRightDcEssBusFault;
+
     @Override
     public void init() {
         super.init();
@@ -49,27 +71,27 @@ public class LandingPageController extends FxController implements CommandLineRu
         logo.setImage(new Image("images/sukhoi_logo.png"));
 
         comboBox.getItems().addAll(
-                new NoMalfunction(),
-                new ElecLeftGenDriveFault(),
-                new ElecRightGenDriveFault(),
-                new ElecLeftGenFault(),
-                new ElecRightGenFault(),
-                new ElecApuGenFault(),
-                new ElecBatOverheat(1),
-                new ElecBatOverheat(2),
-                new ElecBatOverheat(3),
-                new ElecBatOverheat(4),
-                new ElecDcBusOnBat(),
-                new ElecLeftGenOvercurrent(),
-                new ElecRightGenOvercurrent(),
-                new ElecGenLeftOverload(),
-                new ElecGenRightOverload(),
-                new ElecLeftAcBusFault(),
-                new ElecRightAcBusFault(),
-                new ElecLeftDcBusFault(),
-                new ElecRightDcBusFault(),
-                new ElecLeftDcEssBusFault(),
-                new ElecRightDcEssBusFault()
+                noMalfunction,
+                elecLeftGenDriveFault,
+                elecRightGenDriveFault,
+                elecLeftGenFault,
+                elecRightGenFault,
+                elecApuGenFault,
+                elecBat1Overheat,
+                elecBat2Overheat,
+                elecBat3Overheat,
+                elecBat4Overheat,
+                elecDcBusOnBat,
+                elecLeftGenOvercurrent,
+                elecRightGenOvercurrent,
+                elecGenLeftOverload,
+                elecGenRightOverload,
+                elecLeftAcBusFault,
+                elecRightAcBusFault,
+                elecLeftDcBusFault,
+                elecRightDcBusFault,
+                elecLeftDcEssBusFault,
+                elecRightDcEssBusFault
         );
 
         comboBox.setVisibleRowCount(10);
@@ -88,7 +110,7 @@ public class LandingPageController extends FxController implements CommandLineRu
      * Transmits the selected malfunction to the application
      * @param event
      */
-    public void switchToSceneTwo(MouseEvent event) {
+    @FXML private void switchToSceneTwo(MouseEvent event) {
         if (comboBox.getSelectionModel().getSelectedIndex() == -1) {
             comboBox.getSelectionModel().select(0);
             masterPaneController.receiveData(comboBox.getValue());
@@ -96,6 +118,6 @@ public class LandingPageController extends FxController implements CommandLineRu
             masterPaneController.receiveData(comboBox.getValue());
         }
 
-        masterPaneController.getStage().show();
+        getStage().setScene(masterPaneController.getStage().getScene());
     }
 }

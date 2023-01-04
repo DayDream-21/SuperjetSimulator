@@ -62,4 +62,22 @@ public class BatsController extends FxController {
             case 4 -> bat4Frame.setStroke(INACTIVE_COLOR.color);
         }
     }
+
+    public Rectangle getBatFrame(int i) {
+        switch (i) {
+            case 1 -> {
+                return bat1Frame;
+            }
+            case 2 -> {
+                return bat2Frame;
+            }
+            case 3 -> {
+                return bat3Frame;
+            }
+            case 4 -> {
+                return bat4Frame;
+            }
+        }
+        return null;
+    }
 }
