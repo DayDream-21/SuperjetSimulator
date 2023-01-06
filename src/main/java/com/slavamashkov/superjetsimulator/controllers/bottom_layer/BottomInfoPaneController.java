@@ -63,4 +63,24 @@ public class BottomInfoPaneController extends FxController {
         elecUnitsController.deactivateRightEngine();
         elecUnitsConnectionsController.disconnectRightEngine();
     }
+
+    public void activateExtPwrUnit() {
+        elecUnitsController.activateExtPwrUnit();
+        elecUnitsConnectionsController.connectExtPwrUnit();
+    }
+
+    public void deactivateExtPwrUnit() {
+        elecUnitsController.deactivateExtPwrUnit();
+        elecUnitsConnectionsController.disconnectExtPwrUnit();
+    }
+
+    public void activateApuGenUnit() {
+        elecUnitsController.activateApuGenUnit();
+        elecUnitsConnectionsController.connectApuGenUnit();
+    }
+
+    public void deactivateApuGenUnit() {
+        elecUnitsController.deactivateApuGenUnit();
+        elecUnitsConnectionsController.disconnectApuGenUnit();
+    }
 }

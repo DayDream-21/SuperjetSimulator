@@ -68,25 +68,9 @@ public class ElecScreenController extends FxController {
         if (selectionPanelController.isLeftGenButtonPressed()) {
             bottomInfoPaneController.activateLeftEngine();
             selectionPanelController.getLeftGenLowerLight().setFill(INACTIVE_LIGHT_COLOR.color);
-
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                elecUnitsConnectionsController.deactivateApuGenConnectionToLeft();
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                elecUnitsConnectionsController.deactivateExtPwrConnectionToLeft();
-            }
         } else {
             bottomInfoPaneController.deactivateLeftEngine();
             selectionPanelController.getLeftGenLowerLight().setFill(ACTIVE_LIGHT_COLOR.color);
-
-            if (selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
-                elecUnitsConnectionsController.activateApuGenConnectionToLeft();
-            } else if (selectionPanelController.isExtPwrSwitchedPressed() && !selectionPanelController.isApuGenSwitchedPressed()) {
-                elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
-            } else if (selectionPanelController.isApuGenSwitchedPressed() && selectionPanelController.isExtPwrSwitchedPressed()) {
-                elecUnitsConnectionsController.activateApuGenConnectionToLeft();
-            }
         }
     }
 
@@ -95,24 +79,9 @@ public class ElecScreenController extends FxController {
             bottomInfoPaneController.activateRightEngine();
             selectionPanelController.getRightGenLowerLight().setFill(INACTIVE_LIGHT_COLOR.color);
 
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                elecUnitsConnectionsController.deactivateApuGenConnectionToRight();
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                elecUnitsConnectionsController.deactivateExtPwrConnectionToRight();
-            }
         } else {
             bottomInfoPaneController.deactivateRightEngine();
             selectionPanelController.getRightGenLowerLight().setFill(ACTIVE_LIGHT_COLOR.color);
-
-            if (selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
-                elecUnitsConnectionsController.activateApuGenConnectionToRight();
-            } else if (selectionPanelController.isExtPwrSwitchedPressed() && !selectionPanelController.isApuGenSwitchedPressed()) {
-                elecUnitsConnectionsController.activateExtPwrConnectionToRight();
-            } else if (selectionPanelController.isApuGenSwitchedPressed() && selectionPanelController.isExtPwrSwitchedPressed()) {
-                elecUnitsConnectionsController.activateApuGenConnectionToRight();
-            }
         }
     }
 
@@ -126,7 +95,7 @@ public class ElecScreenController extends FxController {
                 elecUnitsConnectionsController.getFromRightDriveToLeftRight().getOpacity() > 0.0;
     }
 
-    @FXML private void switchToSceneOne(ActionEvent actionEvent) {
+    @FXML private void switchToSceneOne() {
         System.out.println("Switch");
     }
 }

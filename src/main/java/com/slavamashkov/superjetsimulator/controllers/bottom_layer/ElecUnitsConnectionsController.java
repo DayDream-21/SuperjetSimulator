@@ -49,46 +49,105 @@ public class ElecUnitsConnectionsController extends FxController {
     @FXML private Pane fromRightDriveToLeftRight;
     @FXML private Pane rightDriveInfoPane;
 
-    public void activateExtPwrConnectionToLeft() {
-        fromExtToLeft.setOpacity(1.0);
+    public void connectLeftEngine() {
+        if (selectionPanelController.isApuGenSwitchedPressed()) {
+            deactivateApuGenConnectionToLeft();
+        }
+
+        if (selectionPanelController.isExtPwrSwitchedPressed()) {
+            deactivateExtPwrConnectionToLeft();
+        }
+
+        if (elecScreenController.isRightEngineConnected()) {
+            activateLeftDriveToLeftConnection();
+
+            deactivateRightDriveToLeftRightConnection();
+            activateRightDriveToRightConnection();
+        } else {
+            activateLeftDriveToLeftRightConnection();
+        }
     }
 
-    public void deactivateExtPwrConnectionToLeft() {
-        fromExtToLeft.setOpacity(0.0);
+    public void disconnectLeftEngine() {
+        if (selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
+            activateApuGenConnectionToLeft();
+        } else if (selectionPanelController.isExtPwrSwitchedPressed() && !selectionPanelController.isApuGenSwitchedPressed()) {
+            activateExtPwrConnectionToLeft();
+        } else if (selectionPanelController.isApuGenSwitchedPressed() && selectionPanelController.isExtPwrSwitchedPressed()) {
+            activateApuGenConnectionToLeft();
+        }
+
+        if (elecScreenController.isRightEngineConnected()) {
+            deactivateLeftDriveToLeftConnection();
+            deactivateLeftDriveToLeftRightConnection();
+
+            deactivateRightDriveToRightConnection();
+            activateRightDriveToLeftRightConnection();
+        } else {
+            deactivateLeftDriveToLeftConnection();
+            deactivateLeftDriveToLeftRightConnection();
+        }
     }
 
-    public void activateExtPwrConnectionToRight() {
-        fromExtToRight.setOpacity(1.0);
+    public void connectRightEngine() {
+        if (selectionPanelController.isApuGenSwitchedPressed()) {
+            deactivateApuGenConnectionToRight();
+        }
+
+        if (selectionPanelController.isExtPwrSwitchedPressed()) {
+            deactivateExtPwrConnectionToRight();
+        }
+
+        if (elecScreenController.isLeftEngineConnected()) {
+            activateRightDriveToRightConnection();
+
+            deactivateLeftDriveToLeftRightConnection();
+            activateLeftDriveToLeftConnection();
+        } else {
+            activateRightDriveToLeftRightConnection();
+        }
     }
 
-    public void deactivateExtPwrConnectionToRight() {
-        fromExtToRight.setOpacity(0.0);
+    public void disconnectRightEngine() {
+        if (selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
+            activateApuGenConnectionToRight();
+        } else if (selectionPanelController.isExtPwrSwitchedPressed() && !selectionPanelController.isApuGenSwitchedPressed()) {
+            activateExtPwrConnectionToRight();
+        } else if (selectionPanelController.isApuGenSwitchedPressed() && selectionPanelController.isExtPwrSwitchedPressed()) {
+            activateApuGenConnectionToRight();
+        }
+
+        if (elecScreenController.isLeftEngineConnected()) {
+            deactivateRightDriveToRightConnection();
+            deactivateRightDriveToLeftRightConnection();
+
+            deactivateLeftDriveToLeftConnection();
+            activateLeftDriveToLeftRightConnection();
+        } else {
+            deactivateRightDriveToRightConnection();
+            deactivateRightDriveToLeftRightConnection();
+        }
     }
 
-    public void activateApuGenConnectionToLeft() {
-        fromApuToLeft.setOpacity(1.0);
+    public void connectApuGenUnit() {
+        if (elecScreenController.isLeftEngineConnected() && !elecScreenController.isRightEngineConnected()) {
+            // Если левый двигатель включен, а правый нет, тогда подключаем к правой подсети
+            activateApuGenConnectionToRight();
+        } else if (elecScreenController.isRightEngineConnected() && !elecScreenController.isLeftEngineConnected()) {
+            // Если правый двигатель включен, а левый нет, тогда подключаем к левой подсети
+            activateApuGenConnectionToLeft();
+        } else if (!elecScreenController.isLeftEngineConnected() && !elecScreenController.isRightEngineConnected()) {
+            // Если оба двигателя отключены, тогда подключаем к левой и правой подсети
+            activateApuGenConnection();
+        }
+        // Если одновременно с ВСУ включено внешнее питание, тогда отдаем приоритет ВСУ
+        if (selectionPanelController.isExtPwrSwitchedPressed()) {
+            deactivateExtPwrConnection();
+        }
     }
 
-    public void deactivateApuGenConnectionToLeft() {
-        fromApuToLeft.setOpacity(0.0);
-    }
-
-    public void activateApuGenConnectionToRight() {
-        fromApuToRight.setOpacity(1.0);
-    }
-
-    public void deactivateApuGenConnectionToRight() {
-        fromApuToRight.setOpacity(0.0);
-    }
-
-    public void connectApuGenConnection() {
-        activateApuGenConnectionToLeft();
-        activateApuGenConnectionToRight();
-    }
-
-    public void disconnectApuGenConnection() {
-        deactivateApuGenConnectionToLeft();
-        deactivateApuGenConnectionToRight();
+    public void disconnectApuGenUnit() {
+        deactivateApuGenConnection();
 
         // Если после отжатия кнопки APU GEN, кнопка EXT PWR все еще нажата, тогда
         if (selectionPanelController.isExtPwrSwitchedPressed()) {
@@ -105,104 +164,6 @@ public class ElecUnitsConnectionsController extends FxController {
         }
     }
 
-    public void activateExtPwrConnection() {
-        activateExtPwrConnectionToLeft();
-        activateExtPwrConnectionToRight();
-    }
-
-    public void disconnectExtPwrConnection() {
-        deactivateExtPwrConnectionToLeft();
-        deactivateExtPwrConnectionToRight();
-    }
-
-    public void activateLeftDriveToLeftConnection() {
-        leftDriveInfoPane.setOpacity(1.0);
-        fromLeftDriveToLeft.setOpacity(1.0);
-    }
-
-    public void deactivateLeftDriveToLeftConnection() {
-        leftDriveInfoPane.setOpacity(0.0);
-        fromLeftDriveToLeft.setOpacity(0.0);
-    }
-
-    public void activateLeftDriveToLeftRightConnection() {
-        leftDriveInfoPane.setOpacity(1.0);
-        fromLeftDriveToLeftRight.setOpacity(1.0);
-    }
-
-    public void deactivateLeftDriveToLeftRightConnection() {
-        leftDriveInfoPane.setOpacity(0.0);
-        fromLeftDriveToLeftRight.setOpacity(0.0);
-    }
-
-    public void activateRightDriveToRightConnection() {
-        rightDriveInfoPane.setOpacity(1.0);
-        fromRightDriveToRight.setOpacity(1.0);
-    }
-
-    public void deactivateRightDriveToRightConnection() {
-        rightDriveInfoPane.setOpacity(0.0);
-        fromRightDriveToRight.setOpacity(0.0);
-    }
-
-    public void activateRightDriveToLeftRightConnection() {
-        rightDriveInfoPane.setOpacity(1.0);
-        fromRightDriveToLeftRight.setOpacity(1.0);
-    }
-
-    public void deactivateRightDriveToLeftRightConnection() {
-        rightDriveInfoPane.setOpacity(0.0);
-        fromRightDriveToLeftRight.setOpacity(0.0);
-    }
-
-    public void connectLeftEngine() {
-        if (elecScreenController.isRightEngineConnected()) {
-            activateLeftDriveToLeftConnection();
-
-            deactivateRightDriveToLeftRightConnection();
-            activateRightDriveToRightConnection();
-        } else {
-            activateLeftDriveToLeftRightConnection();
-        }
-    }
-
-    public void disconnectLeftEngine() {
-        if (elecScreenController.isRightEngineConnected()) {
-            deactivateLeftDriveToLeftConnection();
-            deactivateLeftDriveToLeftRightConnection();
-
-            deactivateRightDriveToRightConnection();
-            activateRightDriveToLeftRightConnection();
-        } else {
-            deactivateLeftDriveToLeftConnection();
-            deactivateLeftDriveToLeftRightConnection();
-        }
-    }
-
-    public void connectRightEngine() {
-        if (elecScreenController.isLeftEngineConnected()) {
-            activateRightDriveToRightConnection();
-
-            deactivateLeftDriveToLeftRightConnection();
-            activateLeftDriveToLeftConnection();
-        } else {
-            activateRightDriveToLeftRightConnection();
-        }
-    }
-
-    public void disconnectRightEngine() {
-        if (elecScreenController.isLeftEngineConnected()) {
-            deactivateRightDriveToRightConnection();
-            deactivateRightDriveToLeftRightConnection();
-
-            deactivateLeftDriveToLeftConnection();
-            activateLeftDriveToLeftRightConnection();
-        } else {
-            deactivateRightDriveToRightConnection();
-            deactivateRightDriveToLeftRightConnection();
-        }
-    }
-
     public void connectExtPwrUnit() {
         if (elecScreenController.isLeftEngineConnected() && !elecScreenController.isRightEngineConnected()) {
             // Если левый двигатель включен, а правый нет, тогда подключаем к правой подсети
@@ -216,24 +177,105 @@ public class ElecUnitsConnectionsController extends FxController {
         }
         // Если одновременно с внешним питанием включено ВСУ, тогда отдаем приоритет ВСУ
         if (selectionPanelController.isApuGenSwitchedPressed()) {
-            disconnectExtPwrConnection();
+            deactivateExtPwrConnection();
         }
     }
 
-    public void connectApuGenUnit() {
-        if (elecScreenController.isLeftEngineConnected() && !elecScreenController.isRightEngineConnected()) {
-            // Если левый двигатель включен, а правый нет, тогда подключаем к правой подсети
-            activateApuGenConnectionToRight();
-        } else if (elecScreenController.isRightEngineConnected() && !elecScreenController.isLeftEngineConnected()) {
-            // Если правый двигатель включен, а левый нет, тогда подключаем к левой подсети
-            activateApuGenConnectionToLeft();
-        } else if (!elecScreenController.isLeftEngineConnected() && !elecScreenController.isRightEngineConnected()) {
-            // Если оба двигателя отключены, тогда подключаем к левой и правой подсети
-            connectApuGenConnection();
-        }
-        // Если одновременно с ВСУ включено внешнее питание, тогда отдаем приоритет ВСУ
-        if (selectionPanelController.isExtPwrSwitchedPressed()) {
-            disconnectExtPwrConnection();
-        }
+    public void disconnectExtPwrUnit() {
+        deactivateExtPwrConnection();
+    }
+
+    // Private methods
+
+    private void activateExtPwrConnection() {
+        activateExtPwrConnectionToLeft();
+        activateExtPwrConnectionToRight();
+    }
+
+    private void deactivateApuGenConnection() {
+        deactivateApuGenConnectionToLeft();
+        deactivateApuGenConnectionToRight();
+    }
+
+    private void deactivateExtPwrConnection() {
+        deactivateExtPwrConnectionToLeft();
+        deactivateExtPwrConnectionToRight();
+    }
+
+    private void activateApuGenConnection() {
+        activateApuGenConnectionToLeft();
+        activateApuGenConnectionToRight();
+    }
+
+    private void activateExtPwrConnectionToLeft() {
+        fromExtToLeft.setOpacity(1.0);
+    }
+
+    private void deactivateExtPwrConnectionToLeft() {
+        fromExtToLeft.setOpacity(0.0);
+    }
+
+    private void activateExtPwrConnectionToRight() {
+        fromExtToRight.setOpacity(1.0);
+    }
+
+    private void deactivateExtPwrConnectionToRight() {
+        fromExtToRight.setOpacity(0.0);
+    }
+
+    private void activateApuGenConnectionToLeft() {
+        fromApuToLeft.setOpacity(1.0);
+    }
+
+    private void deactivateApuGenConnectionToLeft() {
+        fromApuToLeft.setOpacity(0.0);
+    }
+
+    private void activateApuGenConnectionToRight() {
+        fromApuToRight.setOpacity(1.0);
+    }
+
+    private void deactivateApuGenConnectionToRight() {
+        fromApuToRight.setOpacity(0.0);
+    }
+
+    private void activateLeftDriveToLeftConnection() {
+        leftDriveInfoPane.setOpacity(1.0);
+        fromLeftDriveToLeft.setOpacity(1.0);
+    }
+
+    private void deactivateLeftDriveToLeftConnection() {
+        leftDriveInfoPane.setOpacity(0.0);
+        fromLeftDriveToLeft.setOpacity(0.0);
+    }
+
+    private void activateLeftDriveToLeftRightConnection() {
+        leftDriveInfoPane.setOpacity(1.0);
+        fromLeftDriveToLeftRight.setOpacity(1.0);
+    }
+
+    private void deactivateLeftDriveToLeftRightConnection() {
+        leftDriveInfoPane.setOpacity(0.0);
+        fromLeftDriveToLeftRight.setOpacity(0.0);
+    }
+
+    private void activateRightDriveToRightConnection() {
+        rightDriveInfoPane.setOpacity(1.0);
+        fromRightDriveToRight.setOpacity(1.0);
+    }
+
+    private void deactivateRightDriveToRightConnection() {
+        rightDriveInfoPane.setOpacity(0.0);
+        fromRightDriveToRight.setOpacity(0.0);
+    }
+
+    private void activateRightDriveToLeftRightConnection() {
+        rightDriveInfoPane.setOpacity(1.0);
+        fromRightDriveToLeftRight.setOpacity(1.0);
+    }
+
+    private void deactivateRightDriveToLeftRightConnection() {
+        rightDriveInfoPane.setOpacity(0.0);
+        fromRightDriveToLeftRight.setOpacity(0.0);
     }
 }

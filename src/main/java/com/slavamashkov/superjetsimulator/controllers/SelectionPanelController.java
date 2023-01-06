@@ -1,8 +1,6 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
 import com.slavamashkov.superjetsimulator.controllers.bottom_layer.BottomInfoPaneController;
-import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsConnectionsController;
-import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsController;
 import com.slavamashkov.superjetsimulator.controllers.upper_layer.BatsConnectionsController;
 import com.slavamashkov.superjetsimulator.controllers.upper_layer.UpperInfoPaneController;
 import javafx.fxml.FXML;
@@ -10,7 +8,6 @@ import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
@@ -42,8 +39,6 @@ public class SelectionPanelController extends FxController {
     private final BottomInfoPaneController bottomInfoPaneController;
     private final BatsConnectionsController batsConnectionsController;
     private final UpperInfoPaneController upperInfoPaneController;
-    private final ElecUnitsController elecUnitsController;
-    private final ElecUnitsConnectionsController elecUnitsConnectionsController;
 
     private ElecScreenController elecScreenController;
 
@@ -190,19 +185,17 @@ public class SelectionPanelController extends FxController {
     }
 
     private boolean extPwrSwitchedPressed = false;
-    // TODO: переместить логику подключения в другой класс
+
     @FXML public void switchExtPwrButton() {
-        extPwrSwitchedPressed = !extPwrSwitchedPressed; // Если метод был вызван, значит меняем состояние кнопки
-        // Если состояние кнопки "нажата"
+        extPwrSwitchedPressed = !extPwrSwitchedPressed;
+
         if (extPwrSwitchedPressed) {
-            elecUnitsController.activateExtPwrUnit(); // Включаем блок внешнего питания
-            elecUnitsConnectionsController.connectExtPwrUnit(); // и подключаем его
-            // Переключаем подсветку кнопки
+            bottomInfoPaneController.activateExtPwrUnit();
+
             extPwrUpperLight.setFill(INACTIVE_LIGHT_COLOR.color);
             extPwrLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
-        } else { // Если состояние кнопки "отжата"
-            elecUnitsController.deactivateExtPwrUnit(); // Отключаем блок внешнего питания
-            elecUnitsConnectionsController.disconnectExtPwrConnection(); // Отсоединяем блок от левой и правой подсети
+        } else {
+            bottomInfoPaneController.deactivateExtPwrUnit();
 
             extPwrUpperLight.setFill(ACTIVE_LIGHT_COLOR.color);
             extPwrLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
@@ -210,19 +203,17 @@ public class SelectionPanelController extends FxController {
     }
 
     private boolean apuGenSwitchedPressed = false;
-    // TODO: переместить логику подключения в другой класс
+
     @FXML private void switchApuGenButton() {
-        apuGenSwitchedPressed = !apuGenSwitchedPressed; // Если метод был вызван, значит меняем состояние кнопки
-        // Если состояние кнопки "нажата"
+        apuGenSwitchedPressed = !apuGenSwitchedPressed;
+
         if (apuGenSwitchedPressed) {
-            elecUnitsController.activateApuGenUnit(); // Включаем блок ВСУ
-            elecUnitsConnectionsController.connectApuGenUnit(); // и подключаем его
-            // Переключаем подсветку кнопки
+            bottomInfoPaneController.activateApuGenUnit();
+
             apuGenLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
-        } else { // Если состояние кнопки "отжата"
-            elecUnitsController.deactivateApuGenUnit(); // Отключаем блок ВСУ
-            elecUnitsConnectionsController.disconnectApuGenConnection(); // Отсоединяем блок от левой и правой подсети
-            // Переключаем подсветку кнопки
+        } else {
+            bottomInfoPaneController.deactivateApuGenUnit();
+
             apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }
     }
