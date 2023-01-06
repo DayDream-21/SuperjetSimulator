@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
  */
 public enum MyColor {
     ACTIVE_COLOR(Color.LIME),
-    WARNING_COLOR(Color.ORANGE),
+    WARNING_COLOR(Color.DARKORANGE),
     INACTIVE_COLOR(Color.WHITE),
     ERROR_COLOR(Color.RED),
     ACTIVE_LIGHT_COLOR(Color.LIME),

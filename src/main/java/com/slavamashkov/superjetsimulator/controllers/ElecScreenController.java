@@ -64,64 +64,69 @@ public class ElecScreenController extends FxController {
         bottomInfoPane.getChildren().add(bottomInfoPaneController.getBottomInfoMainPane());
     }
 
-    @FXML private void onActionActivateLeftEngine(ActionEvent event) {
-        if (isLeftEngineActive()) {
+    @FXML public void onActionActivateLeftEngine() {
+        if (selectionPanelController.isLeftGenButtonPressed()) {
             bottomInfoPaneController.activateLeftEngine();
             selectionPanelController.getLeftGenLowerLight().setFill(INACTIVE_LIGHT_COLOR.color);
 
-            if (selectionPanelController.apuGenSwitchedPressed) {
+            if (selectionPanelController.isApuGenSwitchedPressed()) {
                 elecUnitsConnectionsController.deactivateApuGenConnectionToLeft();
             }
 
-            if (selectionPanelController.extPwrSwitchedPressed) {
+            if (selectionPanelController.isExtPwrSwitchedPressed()) {
                 elecUnitsConnectionsController.deactivateExtPwrConnectionToLeft();
             }
-
         } else {
             bottomInfoPaneController.deactivateLeftEngine();
             selectionPanelController.getLeftGenLowerLight().setFill(ACTIVE_LIGHT_COLOR.color);
 
-            if (selectionPanelController.apuGenSwitchedPressed && !selectionPanelController.extPwrSwitchedPressed) {
+            if (selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
                 elecUnitsConnectionsController.activateApuGenConnectionToLeft();
-            } else if (selectionPanelController.extPwrSwitchedPressed && !selectionPanelController.apuGenSwitchedPressed) {
+            } else if (selectionPanelController.isExtPwrSwitchedPressed() && !selectionPanelController.isApuGenSwitchedPressed()) {
                 elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
-            } else if (selectionPanelController.apuGenSwitchedPressed && selectionPanelController.extPwrSwitchedPressed) {
+            } else if (selectionPanelController.isApuGenSwitchedPressed() && selectionPanelController.isExtPwrSwitchedPressed()) {
                 elecUnitsConnectionsController.activateApuGenConnectionToLeft();
             }
         }
     }
 
-    @FXML private void onActionActivateRightEngine(ActionEvent event) {
-        if (isRightEngineActive()) {
+    @FXML public void onActionActivateRightEngine() {
+        if (selectionPanelController.isRightGenButtonPressed()) {
             bottomInfoPaneController.activateRightEngine();
             selectionPanelController.getRightGenLowerLight().setFill(INACTIVE_LIGHT_COLOR.color);
 
-            if (selectionPanelController.apuGenSwitchedPressed) {
+            if (selectionPanelController.isApuGenSwitchedPressed()) {
                 elecUnitsConnectionsController.deactivateApuGenConnectionToRight();
             }
 
-            if (selectionPanelController.extPwrSwitchedPressed) {
+            if (selectionPanelController.isExtPwrSwitchedPressed()) {
                 elecUnitsConnectionsController.deactivateExtPwrConnectionToRight();
             }
         } else {
             bottomInfoPaneController.deactivateRightEngine();
             selectionPanelController.getRightGenLowerLight().setFill(ACTIVE_LIGHT_COLOR.color);
 
-            if (selectionPanelController.apuGenSwitchedPressed && !selectionPanelController.extPwrSwitchedPressed) {
+            if (selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
                 elecUnitsConnectionsController.activateApuGenConnectionToRight();
-            } else if (selectionPanelController.extPwrSwitchedPressed && !selectionPanelController.apuGenSwitchedPressed) {
+            } else if (selectionPanelController.isExtPwrSwitchedPressed() && !selectionPanelController.isApuGenSwitchedPressed()) {
                 elecUnitsConnectionsController.activateExtPwrConnectionToRight();
-            } else if (selectionPanelController.apuGenSwitchedPressed && selectionPanelController.extPwrSwitchedPressed) {
+            } else if (selectionPanelController.isApuGenSwitchedPressed() && selectionPanelController.isExtPwrSwitchedPressed()) {
                 elecUnitsConnectionsController.activateApuGenConnectionToRight();
             }
         }
     }
 
-    public boolean isRightEngineActive() {
-        return rightEngineToggleButton.isSelected();
+    public boolean isLeftEngineConnected() {
+        return elecUnitsConnectionsController.getFromLeftDriveToLeft().getOpacity() > 0.0 ||
+                elecUnitsConnectionsController.getFromLeftDriveToLeftRight().getOpacity() > 0.0;
     }
 
-    public boolean isLeftEngineActive() {
-        return leftEngineToggleButton.isSelected();
+    public boolean isRightEngineConnected() {
+        return elecUnitsConnectionsController.getFromRightDriveToRight().getOpacity() > 0.0 ||
+                elecUnitsConnectionsController.getFromRightDriveToLeftRight().getOpacity() > 0.0;
+    }
+
+    @FXML private void switchToSceneOne(ActionEvent actionEvent) {
+        System.out.println("Switch");
     }
 }

@@ -7,11 +7,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="bottomInfoElecUnitsConnectionsMainPane"
-      fx:controller="com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsConnectionsController" prefHeight="144.0"
-      prefWidth="650.0"
-      style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml">
+<Pane fx:id="bottomInfoElecUnitsConnectionsMainPane" prefHeight="144.0" prefWidth="650.0"
+      style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsConnectionsController">
     <children>
         <Pane fx:id="fromLeftDriveToLeft" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
             <children>
@@ -35,20 +33,6 @@
                            width="4.0"/>
             </children>
         </Pane>
-        <Pane fx:id="fromRightDriveToLeftRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
-            <children>
-                <Polygon fill="LIME" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="413.0" layoutY="16.0" smooth="false"
-                           width="4.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="4.0" layoutX="233.0" layoutY="61.0" smooth="false"
-                           width="324.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="87.0" layoutX="553.0" layoutY="65.0" smooth="false"
-                           width="4.0"/>
-                <Polygon fill="LIME" layoutX="235.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="233.0" layoutY="16.0" smooth="false"
-                           width="4.0"/>
-            </children>
-        </Pane>
         <Pane fx:id="fromLeftDriveToLeftRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
             <children>
                 <Polygon fill="LIME" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
@@ -56,7 +40,21 @@
                            width="4.0"/>
                 <Rectangle arcHeight="5.0" fill="LIME" height="4.0" layoutX="93.0" layoutY="61.0" smooth="false"
                            width="324.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="84.0" layoutX="93.0" layoutY="65.0" smooth="false"
+                <Rectangle arcHeight="5.0" fill="LIME" height="84.0" layoutX="93.0" layoutY="63.0" smooth="false"
+                           width="4.0"/>
+                <Polygon fill="LIME" layoutX="235.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="233.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+            </children>
+        </Pane>
+        <Pane fx:id="fromRightDriveToLeftRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="LIME" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="413.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+                <Rectangle arcHeight="5.0" fill="LIME" height="4.0" layoutX="233.0" layoutY="61.0" smooth="false"
+                           width="324.0"/>
+                <Rectangle arcHeight="5.0" fill="LIME" height="84.0" layoutX="553.0" layoutY="63.0" smooth="false"
                            width="4.0"/>
                 <Polygon fill="LIME" layoutX="235.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
                 <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="233.0" layoutY="16.0" smooth="false"

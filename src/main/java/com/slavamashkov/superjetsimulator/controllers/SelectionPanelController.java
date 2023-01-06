@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -44,13 +45,6 @@ public class SelectionPanelController extends FxController {
     private final ElecUnitsController elecUnitsController;
     private final ElecUnitsConnectionsController elecUnitsConnectionsController;
 
-    /*
-    * Here the @Lazy annotation is used to resolve the cyclic dependency
-    * between beans elecScreenController and selectionPanelController.
-    * Instead of fully initializing the bean, Spring will create a proxy
-    * to inject it into the other bean. The injected bean will only be
-    * fully created when it’s first needed.
-    * */
     private ElecScreenController elecScreenController;
 
     @Autowired
@@ -105,7 +99,7 @@ public class SelectionPanelController extends FxController {
 
     boolean bat1SwitchedPressed = false;
 
-    @FXML private void switchBat1Button(MouseEvent mouseEvent) {
+    @FXML private void switchBat1Button() {
         bat1SwitchedPressed = !bat1SwitchedPressed;
 
         if (bat1SwitchedPressed) {
@@ -119,7 +113,7 @@ public class SelectionPanelController extends FxController {
 
     boolean bat2SwitchedPressed = false;
 
-    @FXML private void switchBat2Button(MouseEvent mouseEvent) {
+    @FXML private void switchBat2Button() {
         bat2SwitchedPressed = !bat2SwitchedPressed;
 
         if (bat2SwitchedPressed) {
@@ -133,7 +127,7 @@ public class SelectionPanelController extends FxController {
 
     boolean bat3SwitchedPressed = false;
 
-    @FXML private void switchBat3Button(MouseEvent mouseEvent) {
+    @FXML private void switchBat3Button() {
         bat3SwitchedPressed = !bat3SwitchedPressed;
 
         if (bat3SwitchedPressed) {
@@ -147,7 +141,7 @@ public class SelectionPanelController extends FxController {
 
     boolean bat4SwitchedPressed = false;
 
-    @FXML private void switchBat4Button(MouseEvent mouseEvent) {
+    @FXML private void switchBat4Button() {
         bat4SwitchedPressed = !bat4SwitchedPressed;
 
         if (bat4SwitchedPressed) {
@@ -177,88 +171,57 @@ public class SelectionPanelController extends FxController {
         return false;
     }
 
-    @FXML public void switchLeftGenButton(MouseEvent mouseEvent) {
+    @Setter
+    private boolean leftGenButtonPressed = false;
+
+    @FXML public void switchLeftGenButton() {
+        leftGenButtonPressed = !leftGenButtonPressed;
+
         elecScreenController.getLeftEngineToggleButton().fire();
     }
 
-    @FXML public void switchRightGenButton(MouseEvent mouseEvent) {
+    @Setter
+    private boolean rightGenButtonPressed = false;
+
+    @FXML public void switchRightGenButton() {
+        rightGenButtonPressed = !rightGenButtonPressed;
+
         elecScreenController.getRightEngineToggleButton().fire();
     }
 
-    boolean extPwrSwitchedPressed = false;
-
-    @FXML public void switchExtPwrButton(MouseEvent mouseEvent) {
+    private boolean extPwrSwitchedPressed = false;
+    // TODO: переместить логику подключения в другой класс
+    @FXML public void switchExtPwrButton() {
         extPwrSwitchedPressed = !extPwrSwitchedPressed; // Если метод был вызван, значит меняем состояние кнопки
         // Если состояние кнопки "нажата"
         if (extPwrSwitchedPressed) {
             elecUnitsController.activateExtPwrUnit(); // Включаем блок внешнего питания
-            // Дальнейшая логика описывает то, каким путем будет подключен блок
-            if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
-                // Если левый двигатель включен, а правый нет, тогда подключаем к правой подсети
-                elecUnitsConnectionsController.activateExtPwrConnectionToRight();
-            } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
-                // Если правый двигатель включен, а левый нет, тогда подключаем к левой подсети
-                elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
-            } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
-                // Если оба двигателя отключены, тогда подключаем к левой и правой подсети
-                elecUnitsConnectionsController.activateExtPwrConnection();
-            }
-            // Если одновременно с внешним питанием включено ВСУ, тогда отдаем приоритет ВСУ
-            if (apuGenSwitchedPressed) {
-                elecUnitsConnectionsController.deactivateExtPwrConnection();
-            }
+            elecUnitsConnectionsController.connectExtPwrUnit(); // и подключаем его
             // Переключаем подсветку кнопки
             extPwrUpperLight.setFill(INACTIVE_LIGHT_COLOR.color);
             extPwrLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else { // Если состояние кнопки "отжата"
             elecUnitsController.deactivateExtPwrUnit(); // Отключаем блок внешнего питания
-            elecUnitsConnectionsController.deactivateExtPwrConnection(); // Отсоединяем блок от левой и правой подсети
+            elecUnitsConnectionsController.disconnectExtPwrConnection(); // Отсоединяем блок от левой и правой подсети
 
             extPwrUpperLight.setFill(ACTIVE_LIGHT_COLOR.color);
             extPwrLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
-    boolean apuGenSwitchedPressed = false;
-
-    @FXML private void switchApuGenButton(MouseEvent mouseEvent) {
+    private boolean apuGenSwitchedPressed = false;
+    // TODO: переместить логику подключения в другой класс
+    @FXML private void switchApuGenButton() {
         apuGenSwitchedPressed = !apuGenSwitchedPressed; // Если метод был вызван, значит меняем состояние кнопки
         // Если состояние кнопки "нажата"
         if (apuGenSwitchedPressed) {
             elecUnitsController.activateApuGenUnit(); // Включаем блок ВСУ
-            // Дальнейшая логика описывает то, каким путем будет подключен блок
-            if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
-                // Если левый двигатель включен, а правый нет, тогда подключаем к правой подсети
-                elecUnitsConnectionsController.activateApuGenConnectionToRight();
-            } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
-                // Если правый двигатель включен, а левый нет, тогда подключаем к левой подсети
-                elecUnitsConnectionsController.activateApuGenConnectionToLeft();
-            } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
-                // Если оба двигателя отключены, тогда подключаем к левой и правой подсети
-                elecUnitsConnectionsController.activateApuGenConnection();
-            }
-            // Если одновременно с ВСУ включено внешнее питание, тогда отдаем приоритет ВСУ
-            if (extPwrSwitchedPressed) {
-                elecUnitsConnectionsController.deactivateExtPwrConnection();
-            }
+            elecUnitsConnectionsController.connectApuGenUnit(); // и подключаем его
             // Переключаем подсветку кнопки
             apuGenLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         } else { // Если состояние кнопки "отжата"
             elecUnitsController.deactivateApuGenUnit(); // Отключаем блок ВСУ
-            elecUnitsConnectionsController.deactivateApuGenConnection(); // Отсоединяем блок от левой и правой подсети
-            // Если после отжатия кнопки APU GEN, кнопка EXT PWR все еще нажата, тогда
-            if (extPwrSwitchedPressed) {
-                if (elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
-                    // Если левый двигатель включен, а правый нет, тогда подключаем внешнее питание к правой подсети
-                    elecUnitsConnectionsController.activateExtPwrConnectionToRight();
-                } else if (elecScreenController.isRightEngineActive() && !elecScreenController.isLeftEngineActive()) {
-                    // Если правый двигатель включен, а левый нет, тогда подключаем внешнее питание к левой подсети
-                    elecUnitsConnectionsController.activateExtPwrConnectionToLeft();
-                } else if (!elecScreenController.isLeftEngineActive() && !elecScreenController.isRightEngineActive()) {
-                    // Если оба двигателя отключены, тогда подключаем внешнее питание к левой и правой подсети
-                    elecUnitsConnectionsController.activateExtPwrConnection();
-                }
-            }
+            elecUnitsConnectionsController.disconnectApuGenConnection(); // Отсоединяем блок от левой и правой подсети
             // Переключаем подсветку кнопки
             apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }
@@ -267,7 +230,7 @@ public class SelectionPanelController extends FxController {
     private static final List<Double> allowedDegrees = Arrays.asList(45.0, 90.0, 135.0, 180.0);
     private Iterator<Double> listIterator = allowedDegrees.listIterator();
 
-    @FXML private void changeDegree(MouseEvent mouseEvent) {
+    @FXML private void changeDegree() {
         if (!listIterator.hasNext()) {
             listIterator = allowedDegrees.listIterator();
             selectorGroup.setRotate(0.0);

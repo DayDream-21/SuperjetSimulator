@@ -1,7 +1,6 @@
 package com.slavamashkov.superjetsimulator.controllers.upper_layer;
 
 import com.slavamashkov.superjetsimulator.controllers.FxController;
-import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,8 +9,6 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ExecutorService;
@@ -31,13 +28,6 @@ import static com.slavamashkov.superjetsimulator.enums.MyColor.WARNING_COLOR;
 public class BatsConnectionsController extends FxController {
     private final String source = "fxml/upper_layer/upper-info-bats-connections-pane.fxml";
     @FXML private Pane upperInfoBatsConnectionsMainPane;
-
-    private ElecUnitsController elecUnitsController;
-
-    @Autowired
-    public void setElecUnitsController(@Lazy ElecUnitsController elecUnitsController) {
-        this.elecUnitsController = elecUnitsController;
-    }
 
     private static final long BAT_CHARGE_DISCHARGE_TIME = 1000L;
 
@@ -433,5 +423,59 @@ public class BatsConnectionsController extends FxController {
         }
 
         return 0.0;
+    }
+
+    public Polygon getBatArrowUp(int i) {
+        switch (i) {
+            case 1 -> {
+                return bat1ArrowUp;
+            }
+            case 2 -> {
+                return bat2ArrowUp;
+            }
+            case 3 -> {
+                return bat3ArrowUp;
+            }
+            case 4 -> {
+                return bat4ArrowUp;
+            }
+        }
+        return null;
+    }
+
+    public Rectangle getBatArrow(int i) {
+        switch (i) {
+            case 1 -> {
+                return bat1Arrow;
+            }
+            case 2 -> {
+                return bat2Arrow;
+            }
+            case 3 -> {
+                return bat3Arrow;
+            }
+            case 4 -> {
+                return bat4Arrow;
+            }
+        }
+        return null;
+    }
+
+    public Polygon getBatArrowDown(int i) {
+        switch (i) {
+            case 1 -> {
+                return bat1ArrowDown;
+            }
+            case 2 -> {
+                return bat2ArrowDown;
+            }
+            case 3 -> {
+                return bat3ArrowDown;
+            }
+            case 4 -> {
+                return bat4ArrowDown;
+            }
+        }
+        return null;
     }
 }

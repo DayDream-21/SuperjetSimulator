@@ -17,7 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import static com.slavamashkov.superjetsimulator.enums.MyColor.*;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_COLOR;
 
 /**
  * The class responsible for displaying the units that supply power
@@ -155,6 +156,7 @@ public class ElecUnitsController extends FxController {
     }
 
     public void activateLeftEngine() {
+        leftDriveConnection.setStroke(ACTIVE_COLOR.color);
         leftDriveConnection.setOpacity(1.0);
         leftDriveTransformerSign.setOpacity(1.0);
         leftDriveTransformerSign.setStroke(ACTIVE_COLOR.color);
@@ -188,6 +190,7 @@ public class ElecUnitsController extends FxController {
     }
 
     public void activateRightEngine() {
+        rightDriveConnection.setStroke(ACTIVE_COLOR.color);
         rightDriveConnection.setOpacity(1.0);
         rightDriveTransformerSign.setOpacity(1.0);
         rightDriveTransformerSign.setStroke(ACTIVE_COLOR.color);
