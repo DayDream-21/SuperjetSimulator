@@ -92,7 +92,7 @@ public class SelectionPanelController extends FxController {
         selectorImageView.setImage(new Image("images/selector.png"));
     }
 
-    boolean bat1SwitchedPressed = false;
+    private boolean bat1SwitchedPressed = false;
 
     @FXML private void switchBat1Button() {
         bat1SwitchedPressed = !bat1SwitchedPressed;
@@ -106,7 +106,7 @@ public class SelectionPanelController extends FxController {
         }
     }
 
-    boolean bat2SwitchedPressed = false;
+    private boolean bat2SwitchedPressed = false;
 
     @FXML private void switchBat2Button() {
         bat2SwitchedPressed = !bat2SwitchedPressed;
@@ -120,7 +120,7 @@ public class SelectionPanelController extends FxController {
         }
     }
 
-    boolean bat3SwitchedPressed = false;
+    private boolean bat3SwitchedPressed = false;
 
     @FXML private void switchBat3Button() {
         bat3SwitchedPressed = !bat3SwitchedPressed;
@@ -134,7 +134,7 @@ public class SelectionPanelController extends FxController {
         }
     }
 
-    boolean bat4SwitchedPressed = false;
+    private boolean bat4SwitchedPressed = false;
 
     @FXML private void switchBat4Button() {
         bat4SwitchedPressed = !bat4SwitchedPressed;

@@ -1,12 +1,9 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
 import com.slavamashkov.superjetsimulator.controllers.bottom_layer.BottomInfoPaneController;
-import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsConnectionsController;
-import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsController;
 import com.slavamashkov.superjetsimulator.controllers.middle_layer.MiddleInfoPaneController;
 import com.slavamashkov.superjetsimulator.controllers.name_layer.SystemNamePaneController;
 import com.slavamashkov.superjetsimulator.controllers.upper_layer.UpperInfoPaneController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
@@ -39,8 +36,6 @@ public class ElecScreenController extends FxController {
     private final UpperInfoPaneController upperInfoPaneController;
     private final MiddleInfoPaneController middleInfoPaneController;
     private final BottomInfoPaneController bottomInfoPaneController;
-    private final ElecUnitsController elecUnitsController;
-    private final ElecUnitsConnectionsController elecUnitsConnectionsController;
     private final SelectionPanelController selectionPanelController;
 
     @FXML private Pane systemNamePane;
@@ -83,16 +78,6 @@ public class ElecScreenController extends FxController {
             bottomInfoPaneController.deactivateRightEngine();
             selectionPanelController.getRightGenLowerLight().setFill(ACTIVE_LIGHT_COLOR.color);
         }
-    }
-
-    public boolean isLeftEngineConnected() {
-        return elecUnitsConnectionsController.getFromLeftDriveToLeft().getOpacity() > 0.0 ||
-                elecUnitsConnectionsController.getFromLeftDriveToLeftRight().getOpacity() > 0.0;
-    }
-
-    public boolean isRightEngineConnected() {
-        return elecUnitsConnectionsController.getFromRightDriveToRight().getOpacity() > 0.0 ||
-                elecUnitsConnectionsController.getFromRightDriveToLeftRight().getOpacity() > 0.0;
     }
 
     @FXML private void switchToSceneOne() {

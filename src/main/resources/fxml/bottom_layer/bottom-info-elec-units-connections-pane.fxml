@@ -22,6 +22,15 @@
                            width="4.0"/>
             </children>
         </Pane>
+        <Pane fx:id="fromLeftDriveToRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+            <children>
+                <Polygon fill="LIME" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
+                <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="413.0" layoutY="16.0" smooth="false"
+                           width="4.0"/>
+                <Rectangle arcHeight="5.0" fill="LIME" height="4.0" layoutX="237.0" layoutY="61.0" smooth="false"
+                           width="180.0"/>
+            </children>
+        </Pane>
         <Pane fx:id="fromRightDriveToRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
             <children>
                 <Polygon fill="LIME" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
@@ -33,29 +42,10 @@
                            width="4.0"/>
             </children>
         </Pane>
-        <Pane fx:id="fromLeftDriveToLeftRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
+        <Pane fx:id="fromRightDriveToLeft" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
             <children>
-                <Polygon fill="LIME" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="413.0" layoutY="16.0" smooth="false"
-                           width="4.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="4.0" layoutX="93.0" layoutY="61.0" smooth="false"
-                           width="324.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="84.0" layoutX="93.0" layoutY="63.0" smooth="false"
-                           width="4.0"/>
-                <Polygon fill="LIME" layoutX="235.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="233.0" layoutY="16.0" smooth="false"
-                           width="4.0"/>
-            </children>
-        </Pane>
-        <Pane fx:id="fromRightDriveToLeftRight" opacity="0.0" prefHeight="147.0" prefWidth="650.0">
-            <children>
-                <Polygon fill="LIME" layoutX="415.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="413.0" layoutY="16.0" smooth="false"
-                           width="4.0"/>
                 <Rectangle arcHeight="5.0" fill="LIME" height="4.0" layoutX="233.0" layoutY="61.0" smooth="false"
-                           width="324.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="84.0" layoutX="553.0" layoutY="63.0" smooth="false"
-                           width="4.0"/>
+                           width="180.0"/>
                 <Polygon fill="LIME" layoutX="235.0" layoutY="26.0" points="-8.0, -10.0, 8.0, -10.0, 0.0, -26.0"/>
                 <Rectangle arcHeight="5.0" fill="LIME" height="47.0" layoutX="233.0" layoutY="16.0" smooth="false"
                            width="4.0"/>
