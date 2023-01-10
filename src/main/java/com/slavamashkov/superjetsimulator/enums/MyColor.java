@@ -13,7 +13,8 @@ public enum MyColor {
     INACTIVE_COLOR(Color.WHITE),
     ERROR_COLOR(Color.RED),
     ACTIVE_LIGHT_COLOR(Color.LIME),
-    INACTIVE_LIGHT_COLOR(Color.GREY);
+    INACTIVE_LIGHT_COLOR(Color.GREY),
+    WARNING_LIGHT_COLOR(Color.DARKORANGE);
 
     public final Color color;
 
