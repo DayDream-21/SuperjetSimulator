@@ -18,7 +18,7 @@
                            width="4.0"/>
                 <Rectangle arcHeight="5.0" fill="LIME" height="4.0" layoutX="93.0" layoutY="61.0" smooth="false"
                            width="144.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="84.0" layoutX="93.0" layoutY="63.0" smooth="false"
+                <Rectangle arcHeight="5.0" fill="LIME" height="84.0" layoutX="93.0" layoutY="61.0" smooth="false"
                            width="4.0"/>
             </children>
         </Pane>
@@ -38,7 +38,7 @@
                            width="4.0"/>
                 <Rectangle arcHeight="5.0" fill="LIME" height="4.0" layoutX="413.0" layoutY="61.0" smooth="false"
                            width="144.0"/>
-                <Rectangle arcHeight="5.0" fill="LIME" height="84.0" layoutX="553.0" layoutY="63.0" smooth="false"
+                <Rectangle arcHeight="5.0" fill="LIME" height="84.0" layoutX="553.0" layoutY="61.0" smooth="false"
                            width="4.0"/>
             </children>
         </Pane>
@@ -101,7 +101,7 @@
                     </font>
                 </Label>
                 <Label fx:id="leftDrivePercentValue" alignment="CENTER_RIGHT" layoutX="18.0" layoutY="30.0"
-                       prefHeight="30.0" prefWidth="44.0" text="30" textFill="LIME">
+                       prefHeight="30.0" prefWidth="44.0" text="90" textFill="LIME">
                     <font>
                         <Font size="20.0"/>
                     </font>
@@ -142,7 +142,7 @@
                     </font>
                 </Label>
                 <Label fx:id="rightDrivePercentValue" alignment="CENTER_RIGHT" layoutY="30.0" prefHeight="30.0"
-                       prefWidth="44.0" text="30" textFill="LIME">
+                       prefWidth="44.0" text="90" textFill="LIME">
                     <font>
                         <Font size="20.0"/>
                     </font>
