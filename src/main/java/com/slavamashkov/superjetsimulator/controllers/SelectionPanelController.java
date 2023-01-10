@@ -1,6 +1,7 @@
 package com.slavamashkov.superjetsimulator.controllers;
 
 import com.slavamashkov.superjetsimulator.controllers.bottom_layer.BottomInfoPaneController;
+import com.slavamashkov.superjetsimulator.controllers.bottom_layer.ElecUnitsConnectionsController;
 import com.slavamashkov.superjetsimulator.controllers.upper_layer.BatsConnectionsController;
 import com.slavamashkov.superjetsimulator.controllers.upper_layer.UpperInfoPaneController;
 import javafx.fxml.FXML;
@@ -40,7 +41,13 @@ public class SelectionPanelController extends FxController {
     private final BatsConnectionsController batsConnectionsController;
     private final UpperInfoPaneController upperInfoPaneController;
 
+    private ElecUnitsConnectionsController elecUnitsConnectionsController;
     private ElecScreenController elecScreenController;
+
+    @Autowired
+    public void setElecUnitsConnectionsController(@Lazy ElecUnitsConnectionsController elecUnitsConnectionsController) {
+        this.elecUnitsConnectionsController = elecUnitsConnectionsController;
+    }
 
     @Autowired
     public void setElecScreenController(@Lazy ElecScreenController elecScreenController) {
@@ -53,6 +60,8 @@ public class SelectionPanelController extends FxController {
 
     @FXML private Label batteryVoltageIndicator;
     @FXML private Group selectorGroup;
+
+    @FXML private Rectangle galleyLowerLight;
 
     @FXML private Rectangle bat1UpperLight;
     @FXML private Rectangle bat1LowerLight;
@@ -217,6 +226,119 @@ public class SelectionPanelController extends FxController {
             apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         }
     }
+
+    private boolean galleyButtonSwitched = false;
+
+    @FXML private void switchGalleyButton() {
+        galleyButtonSwitched = !galleyButtonSwitched;
+
+        if (galleyButtonSwitched) {
+            Label leftEngineLoadValueLabel = elecUnitsConnectionsController.getLeftDrivePercentValue();
+            Label rightEngineLoadValueLabel = elecUnitsConnectionsController.getRightDrivePercentValue();
+
+            int prevLeftEngineLoadValue = Integer.parseInt(leftEngineLoadValueLabel.getText());
+            int nextLeftEngineLoadValue = prevLeftEngineLoadValue - 20;
+
+            int prevRightEngineLoadValue = Integer.parseInt(rightEngineLoadValueLabel.getText());
+            int nextRightEngineLoadValue = prevRightEngineLoadValue - 20;
+
+            leftEngineLoadValueLabel.setText(String.valueOf(nextLeftEngineLoadValue));
+            rightEngineLoadValueLabel.setText(String.valueOf(nextRightEngineLoadValue));
+
+            galleyLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+        } else {
+            Label leftEngineLoadValueLabel = elecUnitsConnectionsController.getLeftDrivePercentValue();
+            Label rightEngineLoadValueLabel = elecUnitsConnectionsController.getRightDrivePercentValue();
+
+            int prevLeftEngineLoadValue = Integer.parseInt(leftEngineLoadValueLabel.getText());
+            int nextLeftEngineLoadValue = prevLeftEngineLoadValue + 20;
+
+            int prevRightEngineLoadValue = Integer.parseInt(rightEngineLoadValueLabel.getText());
+            int nextRightEngineLoadValue = prevRightEngineLoadValue + 20;
+
+            leftEngineLoadValueLabel.setText(String.valueOf(nextLeftEngineLoadValue));
+            rightEngineLoadValueLabel.setText(String.valueOf(nextRightEngineLoadValue));
+
+            galleyLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
+        }
+    }
+
+    // TODO: Стоит перенести методы относящиеся к топливной системе в отдельный
+    //  контроллер, а также сделать для кнопок отдельный Pane
+
+    private boolean fuelLeftADDTButtonSwitched = false;
+
+    @FXML private void switchFuelLeftADDTButton() {
+        fuelLeftADDTButtonSwitched = !fuelLeftADDTButtonSwitched;
+
+        if (fuelLeftADDTButtonSwitched) {
+
+        } else {
+
+        }
+    }
+
+    private boolean fuelLeftAUXButtonSwitched = false;
+
+    @FXML private void switchFuelLeftAUXButton() {
+        fuelLeftAUXButtonSwitched = !fuelLeftAUXButtonSwitched;
+
+        if (fuelLeftAUXButtonSwitched) {
+
+        } else {
+
+        }
+    }
+
+    private boolean fuelLeftMAINButtonSwitched = false;
+
+    @FXML private void switchFuelLeftMAINButton() {
+        fuelLeftMAINButtonSwitched = !fuelLeftMAINButtonSwitched;
+
+        if (fuelLeftMAINButtonSwitched) {
+
+        } else {
+
+        }
+    }
+
+    private boolean fuelRightMAINButtonSwitched = false;
+
+    @FXML private void switchFuelRightMAINButton() {
+        fuelRightMAINButtonSwitched = !fuelRightMAINButtonSwitched;
+
+        if (fuelRightMAINButtonSwitched) {
+
+        } else {
+
+        }
+    }
+
+    private boolean fuelRightAUXButtonSwitched = false;
+
+    @FXML private void switchFuelRightAUXButton() {
+        fuelRightAUXButtonSwitched = !fuelRightAUXButtonSwitched;
+
+        if (fuelRightAUXButtonSwitched) {
+
+        } else {
+
+        }
+    }
+
+    private boolean fuelRightADDTButtonSwitched = false;
+
+    @FXML private void switchFuelRightADDTButton() {
+        fuelRightADDTButtonSwitched = !fuelRightADDTButtonSwitched;
+
+        if (fuelRightADDTButtonSwitched) {
+
+        } else {
+
+        }
+    }
+
+
 
     private static final List<Double> allowedDegrees = Arrays.asList(45.0, 90.0, 135.0, 180.0);
     private Iterator<Double> listIterator = allowedDegrees.listIterator();

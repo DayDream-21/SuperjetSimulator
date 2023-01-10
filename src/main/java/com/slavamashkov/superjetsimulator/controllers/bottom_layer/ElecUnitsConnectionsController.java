@@ -2,13 +2,23 @@ package com.slavamashkov.superjetsimulator.controllers.bottom_layer;
 
 import com.slavamashkov.superjetsimulator.controllers.FxController;
 import com.slavamashkov.superjetsimulator.controllers.SelectionPanelController;
+import io.reactivex.Observable;
+import io.reactivex.rxjavafx.observables.JavaFxObservable;
+import io.reactivex.rxjavafx.sources.Change;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+
+import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.WARNING_COLOR;
 
 /**
  * The class responsible for displaying the connections of units that
@@ -22,6 +32,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ElecUnitsConnectionsController extends FxController {
     private final String source = "fxml/bottom_layer/bottom-info-elec-units-connections-pane.fxml";
+
     @FXML private Pane bottomInfoElecUnitsConnectionsMainPane;
 
     private SelectionPanelController selectionPanelController;
@@ -29,6 +40,14 @@ public class ElecUnitsConnectionsController extends FxController {
     @Autowired
     public void setSelectionPanelController(@Lazy SelectionPanelController selectionPanelController) {
         this.selectionPanelController = selectionPanelController;
+    }
+
+    @Override
+    public void init() {
+        super.init();
+
+        subscribeOnValueLabel(leftDrivePercentValue, 0, 100);
+        subscribeOnValueLabel(rightDrivePercentValue, 0, 100);
     }
 
     @FXML private Pane fromExtToLeft;
@@ -42,46 +61,31 @@ public class ElecUnitsConnectionsController extends FxController {
     @FXML private Pane fromRightDriveToLeft;
     @FXML private Pane rightDriveInfoPane;
 
+    @FXML private Label leftDrivePercentValue;
+
+    @FXML private Label rightDrivePercentValue;
+
     public void connectLeftEngine() {
         if (isRightEngineConnected()) {
             deactivateRightDriveToLeftConnection();
+            activateLeftDriveToLeftConnection();
 
             if (!selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
-                activateLeftDriveToLeftConnection();
                 return;
-            }
-
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                activateLeftDriveToLeftConnection();
-                connectApuGenUnit();
-                return;
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                activateLeftDriveToLeftConnection();
-                connectExtPwrUnit();
             }
         } else {
             if (!selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
                 activateLeftDriveToLeftRightConnection();
                 return;
             }
-
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                activateLeftDriveToLeftConnection();
-                connectApuGenUnit();
-                return;
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                activateLeftDriveToLeftConnection();
-                connectExtPwrUnit();
-            }
+            activateLeftDriveToLeftConnection();
         }
+
+        dealWithApuAndExtPwr();
     }
 
     public void disconnectLeftEngine() {
-        deactivateLeftDriveToLeftConnection();
+        deactivateLeftDriveToLeftRightConnection();
 
         if (isRightEngineConnected()) {
             if (!selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
@@ -89,50 +93,19 @@ public class ElecUnitsConnectionsController extends FxController {
                 return;
             }
 
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                activateRightDriveToRightConnection();
-                connectApuGenUnit();
-                return;
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                activateRightDriveToRightConnection();
-                connectExtPwrUnit();
-            }
-        } else {
-            if (!selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
-                return;
-            }
-
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                connectApuGenUnit();
-                return;
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                connectExtPwrUnit();
-            }
+            activateRightDriveToRightConnection();
         }
+
+        dealWithApuAndExtPwr();
     }
 
     public void connectRightEngine() {
         if (isLeftEngineConnected()) {
             deactivateLeftDriveToRightConnection();
+            activateRightDriveToRightConnection();
 
             if (!selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
-                activateRightDriveToRightConnection();
                 return;
-            }
-
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                activateRightDriveToRightConnection();
-                connectApuGenUnit();
-                return;
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                activateRightDriveToRightConnection();
-                connectExtPwrUnit();
             }
         } else {
             if (!selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
@@ -140,21 +113,14 @@ public class ElecUnitsConnectionsController extends FxController {
                 return;
             }
 
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                activateRightDriveToRightConnection();
-                connectApuGenUnit();
-                return;
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                activateRightDriveToRightConnection();
-                connectExtPwrUnit();
-            }
+            activateRightDriveToRightConnection();
         }
+
+        dealWithApuAndExtPwr();
     }
 
     public void disconnectRightEngine() {
-        deactivateRightDriveToRightConnection();
+        deactivateRightDriveToLeftRightConnection();
 
         if (isLeftEngineConnected()) {
             if (!selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
@@ -162,31 +128,10 @@ public class ElecUnitsConnectionsController extends FxController {
                 return;
             }
 
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                activateLeftDriveToLeftConnection();
-                connectApuGenUnit();
-                return;
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                activateLeftDriveToLeftConnection();
-                connectExtPwrUnit();
-            }
-
-        } else {
-            if (!selectionPanelController.isApuGenSwitchedPressed() && !selectionPanelController.isExtPwrSwitchedPressed()) {
-                return;
-            }
-
-            if (selectionPanelController.isApuGenSwitchedPressed()) {
-                connectApuGenUnit();
-                return;
-            }
-
-            if (selectionPanelController.isExtPwrSwitchedPressed()) {
-                connectExtPwrUnit();
-            }
+            activateLeftDriveToLeftConnection();
         }
+
+        dealWithApuAndExtPwr();
     }
 
     public void connectApuGenUnit() {
@@ -277,13 +222,65 @@ public class ElecUnitsConnectionsController extends FxController {
         }
     }
 
-    // Private methods
-    private boolean isLeftEngineConnected() {
+    public boolean isLeftEngineConnected() {
         return getFromLeftDriveToLeft().getOpacity() > 0.0 || getFromLeftDriveToRight().getOpacity() > 0.0;
     }
 
-    private boolean isRightEngineConnected() {
+    public boolean isRightEngineConnected() {
         return getFromRightDriveToRight().getOpacity() > 0.0 || getFromRightDriveToLeft().getOpacity() > 0.0;
+    }
+
+    // Private methods
+    // TODO: возможно стоит перенести этот метод в абстрактный класс Malfunction
+    //  (с реализацией) и вызывать его в реализациях
+    /**
+     * The method is used to monitor the value of the Label,
+     * when the value is within the range with the borders of
+     * leftBorder and rightBorder, the color of the displayed
+     * value will be green, when leaving the specified range,
+     * the value will be colored in orange
+     *
+     * @param label values of which we monitor
+     * @param leftBorder left limit of the normal range of values
+     * @param rightBorder right limit of the normal range of values
+     */
+    private void subscribeOnValueLabel(Label label, int leftBorder, int rightBorder) {
+        Observable<Change<String>> observable = JavaFxObservable.changesOf(new ObservableValue<>() {
+            @Override
+            public void addListener(ChangeListener<? super String> changeListener) {
+                label.textProperty().addListener(changeListener);
+            }
+
+            @Override
+            public void removeListener(ChangeListener<? super String> changeListener) {}
+
+            @Override
+            public String getValue() { return null; }
+
+            @Override
+            public void addListener(InvalidationListener invalidationListener) {}
+
+            @Override
+            public void removeListener(InvalidationListener invalidationListener) {}
+        });
+
+        observable.subscribe(i -> {
+            if (Integer.parseInt(i.getNewVal()) < leftBorder || Integer.parseInt(i.getNewVal()) > rightBorder) {
+                label.setTextFill(WARNING_COLOR.color);
+            } else {
+                label.setTextFill(ACTIVE_COLOR.color);
+            }
+        });
+    }
+
+    private void dealWithApuAndExtPwr() {
+        if (selectionPanelController.isApuGenSwitchedPressed()) {
+            connectApuGenUnit();
+            return;
+        }
+        if (selectionPanelController.isExtPwrSwitchedPressed()) {
+            connectExtPwrUnit();
+        }
     }
 
     private void activateExtPwrConnection() {

@@ -30,17 +30,16 @@ public class ElecBat1Overheat extends Malfunction {
                 if ((selectionPanelController.isBatButtonPressed(BAT_NUMBER) && elecUnitsController.isPowered()) ||
                         selectionPanelController.isBatButtonPressed(BAT_NUMBER)) {
 
+                    selectionPanelController.getBat1UpperLight().setFill(WARNING_LIGHT_COLOR.color);
+
                     batsConnectionsController.getBatArrowUp(BAT_NUMBER).setFill(WARNING_COLOR.color);
                     batsConnectionsController.getBatArrow(BAT_NUMBER).setFill(WARNING_COLOR.color);
                     batsConnectionsController.getBatArrowDown(BAT_NUMBER).setFill(WARNING_COLOR.color);
                     batsController.getBatFrame(BAT_NUMBER).setStroke(WARNING_COLOR.color);
                 } else {
-                    try {
-                        batsController.getBatFrame(BAT_NUMBER).setStroke(INACTIVE_COLOR.color);
-                        Thread.sleep(3000L);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                    batsController.getBatFrame(BAT_NUMBER).setStroke(INACTIVE_COLOR.color);
+
+                    waitStep(3000L);
                 }
             }
         };
