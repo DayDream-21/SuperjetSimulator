@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -76,16 +75,16 @@ public class LandingPageController extends FxController implements CommandLineRu
                 elecRightGenDriveFault,
                 elecLeftGenFault,
                 elecRightGenFault,
-                elecApuGenFault,
+                elecGenLeftOverload,
+                elecGenRightOverload,
                 elecBat1Overheat,
                 elecBat2Overheat,
                 elecBat3Overheat,
                 elecBat4Overheat,
+                elecApuGenFault,
                 elecDcBusOnBat,
                 elecLeftGenOvercurrent,
                 elecRightGenOvercurrent,
-                elecGenLeftOverload,
-                elecGenRightOverload,
                 elecLeftAcBusFault,
                 elecRightAcBusFault,
                 elecLeftDcBusFault,
@@ -108,9 +107,8 @@ public class LandingPageController extends FxController implements CommandLineRu
      * the power supply system.
      * <p>
      * Transmits the selected malfunction to the application
-     * @param event
      */
-    @FXML private void switchToSceneTwo(MouseEvent event) {
+    @FXML private void switchToSceneTwo() {
         if (comboBox.getSelectionModel().getSelectedIndex() == -1) {
             comboBox.getSelectionModel().select(0);
             masterPaneController.receiveData(comboBox.getValue());
