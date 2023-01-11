@@ -14,7 +14,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -61,6 +60,11 @@ public class SelectionPanelController extends FxController {
     @FXML private Label batteryVoltageIndicator;
     @FXML private Group selectorGroup;
 
+    @FXML private Rectangle fuelLeftMAINButton;
+    @FXML private Rectangle fuelRightMAINButton;
+
+    @FXML private Rectangle galleyButton;
+
     @FXML private Rectangle galleyLowerLight;
 
     @FXML private Rectangle bat1UpperLight;
@@ -86,6 +90,19 @@ public class SelectionPanelController extends FxController {
 
     @FXML private Rectangle apuGenUpperLight;
     @FXML private Rectangle apuGenLowerLight;
+
+    @FXML private Rectangle fuelLeftADDTLowerLight;
+
+    @FXML private Rectangle fuelLeftAUXLowerLight;
+
+    @FXML private Rectangle fuelLeftMAINLowerLight;
+
+    @FXML private Rectangle fuelRightMAINLowerLight;
+
+    @FXML private Rectangle fuelRightAUXLowerLight;
+
+    @FXML private Rectangle fuelRightADDTLowerLight;
+
     // todo включать подсветку кнопок только после того как подключается питание
     @Override
     public void init() {
@@ -175,7 +192,6 @@ public class SelectionPanelController extends FxController {
         return false;
     }
 
-    @Setter
     private boolean leftGenButtonPressed = false;
 
     @FXML public void switchLeftGenButton() {
@@ -184,7 +200,6 @@ public class SelectionPanelController extends FxController {
         elecScreenController.getLeftEngineToggleButton().fire();
     }
 
-    @Setter
     private boolean rightGenButtonPressed = false;
 
     @FXML public void switchRightGenButton() {
@@ -233,32 +248,8 @@ public class SelectionPanelController extends FxController {
         galleyButtonSwitched = !galleyButtonSwitched;
 
         if (galleyButtonSwitched) {
-            Label leftEngineLoadValueLabel = elecUnitsConnectionsController.getLeftDrivePercentValue();
-            Label rightEngineLoadValueLabel = elecUnitsConnectionsController.getRightDrivePercentValue();
-
-            int prevLeftEngineLoadValue = Integer.parseInt(leftEngineLoadValueLabel.getText());
-            int nextLeftEngineLoadValue = prevLeftEngineLoadValue - 20;
-
-            int prevRightEngineLoadValue = Integer.parseInt(rightEngineLoadValueLabel.getText());
-            int nextRightEngineLoadValue = prevRightEngineLoadValue - 20;
-
-            leftEngineLoadValueLabel.setText(String.valueOf(nextLeftEngineLoadValue));
-            rightEngineLoadValueLabel.setText(String.valueOf(nextRightEngineLoadValue));
-
             galleyLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
-            Label leftEngineLoadValueLabel = elecUnitsConnectionsController.getLeftDrivePercentValue();
-            Label rightEngineLoadValueLabel = elecUnitsConnectionsController.getRightDrivePercentValue();
-
-            int prevLeftEngineLoadValue = Integer.parseInt(leftEngineLoadValueLabel.getText());
-            int nextLeftEngineLoadValue = prevLeftEngineLoadValue + 20;
-
-            int prevRightEngineLoadValue = Integer.parseInt(rightEngineLoadValueLabel.getText());
-            int nextRightEngineLoadValue = prevRightEngineLoadValue + 20;
-
-            leftEngineLoadValueLabel.setText(String.valueOf(nextLeftEngineLoadValue));
-            rightEngineLoadValueLabel.setText(String.valueOf(nextRightEngineLoadValue));
-
             galleyLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
@@ -272,9 +263,9 @@ public class SelectionPanelController extends FxController {
         fuelLeftADDTButtonSwitched = !fuelLeftADDTButtonSwitched;
 
         if (fuelLeftADDTButtonSwitched) {
-
+            fuelLeftADDTLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
-
+            fuelLeftADDTLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -284,9 +275,9 @@ public class SelectionPanelController extends FxController {
         fuelLeftAUXButtonSwitched = !fuelLeftAUXButtonSwitched;
 
         if (fuelLeftAUXButtonSwitched) {
-
+            fuelLeftAUXLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
-
+            fuelLeftAUXLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -296,9 +287,9 @@ public class SelectionPanelController extends FxController {
         fuelLeftMAINButtonSwitched = !fuelLeftMAINButtonSwitched;
 
         if (fuelLeftMAINButtonSwitched) {
-
+            fuelLeftMAINLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
-
+            fuelLeftMAINLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -308,9 +299,9 @@ public class SelectionPanelController extends FxController {
         fuelRightMAINButtonSwitched = !fuelRightMAINButtonSwitched;
 
         if (fuelRightMAINButtonSwitched) {
-
+            fuelRightMAINLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
-
+            fuelRightMAINLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -320,9 +311,9 @@ public class SelectionPanelController extends FxController {
         fuelRightAUXButtonSwitched = !fuelRightAUXButtonSwitched;
 
         if (fuelRightAUXButtonSwitched) {
-
+            fuelRightAUXLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
-
+            fuelRightAUXLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
 
@@ -332,13 +323,11 @@ public class SelectionPanelController extends FxController {
         fuelRightADDTButtonSwitched = !fuelRightADDTButtonSwitched;
 
         if (fuelRightADDTButtonSwitched) {
-
+            fuelRightADDTLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
         } else {
-
+            fuelRightADDTLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
     }
-
-
 
     private static final List<Double> allowedDegrees = Arrays.asList(45.0, 90.0, 135.0, 180.0);
     private Iterator<Double> listIterator = allowedDegrees.listIterator();
