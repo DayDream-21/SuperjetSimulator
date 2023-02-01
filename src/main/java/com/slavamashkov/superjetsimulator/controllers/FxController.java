@@ -46,6 +46,11 @@ abstract public class FxController {
 
             scene = new Scene(root);
 
+            stage.setOnCloseRequest(windowEvent -> {
+                Platform.exit();
+                System.exit(0);
+            });
+
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

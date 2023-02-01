@@ -22,8 +22,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_LIGHT_COLOR;
-import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_LIGHT_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.*;
 
 /**
  *
@@ -108,12 +107,6 @@ public class SelectionPanelController extends FxController {
     public void init() {
         buttons.getStylesheets().add("css/selection-panel.css");
 
-        extPwrUpperLight.setFill(ACTIVE_LIGHT_COLOR.color);
-        apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
-
-        leftGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
-        rightGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
-
         overheadPanelImageView.setImage(new Image("images/overhead_panel_2.png"));
         selectorImageView.setImage(new Image("images/selector.png"));
     }
@@ -128,7 +121,7 @@ public class SelectionPanelController extends FxController {
             bat1LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         } else {
             upperInfoPaneController.batOff(1);
-            bat1LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            bat1LowerLight.setFill(OFF_LIGHT_COLOR.color);
         }
     }
 
@@ -142,7 +135,7 @@ public class SelectionPanelController extends FxController {
             bat2LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         } else {
             upperInfoPaneController.batOff(2);
-            bat2LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            bat2LowerLight.setFill(OFF_LIGHT_COLOR.color);
         }
     }
 
@@ -156,7 +149,7 @@ public class SelectionPanelController extends FxController {
             bat3LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         } else {
             upperInfoPaneController.batOff(3);
-            bat3LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            bat3LowerLight.setFill(OFF_LIGHT_COLOR.color);
         }
     }
 
@@ -170,7 +163,7 @@ public class SelectionPanelController extends FxController {
             bat4LowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         } else {
             upperInfoPaneController.batOff(4);
-            bat4LowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            bat4LowerLight.setFill(OFF_LIGHT_COLOR.color);
         }
     }
 
@@ -216,8 +209,13 @@ public class SelectionPanelController extends FxController {
         if (extPwrSwitchedPressed) {
             bottomInfoPaneController.activateExtPwrUnit();
 
+            elecScreenController.getSystemNamePane().setOpacity(1.0);
+            elecScreenController.getUpperInfoPane().setOpacity(1.0);
+            elecScreenController.getMiddleInfoPane().setOpacity(1.0);
+            elecScreenController.getBottomInfoPane().setOpacity(1.0);
+
             extPwrUpperLight.setFill(INACTIVE_LIGHT_COLOR.color);
-            extPwrLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            extPwrLowerLight.setFill(EXT_PWR_ON_LIGHT_COLOR.color);
         } else {
             bottomInfoPaneController.deactivateExtPwrUnit();
 
@@ -238,7 +236,7 @@ public class SelectionPanelController extends FxController {
         } else {
             bottomInfoPaneController.deactivateApuGenUnit();
 
-            apuGenLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            apuGenLowerLight.setFill(OFF_LIGHT_COLOR.color);
         }
     }
 
@@ -248,7 +246,7 @@ public class SelectionPanelController extends FxController {
         galleyButtonSwitched = !galleyButtonSwitched;
 
         if (galleyButtonSwitched) {
-            galleyLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            galleyLowerLight.setFill(OFF_LIGHT_COLOR.color);
         } else {
             galleyLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
@@ -287,7 +285,7 @@ public class SelectionPanelController extends FxController {
         fuelLeftMAINButtonSwitched = !fuelLeftMAINButtonSwitched;
 
         if (fuelLeftMAINButtonSwitched) {
-            fuelLeftMAINLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            fuelLeftMAINLowerLight.setFill(OFF_LIGHT_COLOR.color);
         } else {
             fuelLeftMAINLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
@@ -299,7 +297,7 @@ public class SelectionPanelController extends FxController {
         fuelRightMAINButtonSwitched = !fuelRightMAINButtonSwitched;
 
         if (fuelRightMAINButtonSwitched) {
-            fuelRightMAINLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            fuelRightMAINLowerLight.setFill(OFF_LIGHT_COLOR.color);
         } else {
             fuelRightMAINLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }
@@ -323,7 +321,7 @@ public class SelectionPanelController extends FxController {
         fuelRightADDTButtonSwitched = !fuelRightADDTButtonSwitched;
 
         if (fuelRightADDTButtonSwitched) {
-            fuelRightADDTLowerLight.setFill(ACTIVE_LIGHT_COLOR.color);
+            fuelRightADDTLowerLight.setFill(ACTIVE_COLOR.color);
         } else {
             fuelRightADDTLowerLight.setFill(INACTIVE_LIGHT_COLOR.color);
         }

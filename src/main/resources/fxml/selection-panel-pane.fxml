@@ -61,25 +61,25 @@
                 <Pane fx:id="bat1Lights" layoutX="77.0" layoutY="66.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="bat1UpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="bat1LowerLight" fill="LIME" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat1LowerLight" fill="WHITE" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="bat3Lights" layoutX="121.0" layoutY="66.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="bat3UpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="bat3LowerLight" fill="LIME" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat3LowerLight" fill="WHITE" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="bat2Lights" layoutX="168.0" layoutY="66.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="bat2UpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="bat2LowerLight" fill="LIME" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat2LowerLight" fill="WHITE" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="bat4Lights" layoutX="213.0" layoutY="66.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="bat4UpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="bat4LowerLight" fill="LIME" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="bat4LowerLight" fill="WHITE" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="invLights" layoutX="258.0" layoutY="66.0" prefHeight="50.0" prefWidth="45.0">
@@ -91,13 +91,13 @@
                 <Pane fx:id="leftGenLights" layoutX="32.0" layoutY="123.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="leftGenUpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="leftGenLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="leftGenLowerLight" fill="WHITE" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="rightGenLights" layoutX="258.0" layoutY="123.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="rightGenUpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="rightGenLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="rightGenLowerLight" fill="WHITE" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="leftDriveLights" layoutX="32.0" layoutY="170.0" prefHeight="50.0" prefWidth="45.0">
@@ -115,12 +115,12 @@
                 <Pane fx:id="apuGenLights" layoutX="91.0" layoutY="171.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
                         <Rectangle fx:id="apuGenUpperLight" fill="GREY" height="25.0" width="45.0"/>
-                        <Rectangle fx:id="apuGenLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
+                        <Rectangle fx:id="apuGenLowerLight" fill="WHITE" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>
                 <Pane fx:id="extPwrLights" layoutX="197.0" layoutY="171.0" prefHeight="50.0" prefWidth="45.0">
                     <children>
-                        <Rectangle fx:id="extPwrUpperLight" fill="GREY" height="25.0" width="45.0"/>
+                        <Rectangle fx:id="extPwrUpperLight" fill="LIME" height="25.0" width="45.0"/>
                         <Rectangle fx:id="extPwrLowerLight" fill="GREY" height="25.0" layoutY="25.0" width="45.0"/>
                     </children>
                 </Pane>

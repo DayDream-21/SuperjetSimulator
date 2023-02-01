@@ -12,8 +12,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import static com.slavamashkov.superjetsimulator.enums.MyColor.ACTIVE_LIGHT_COLOR;
-import static com.slavamashkov.superjetsimulator.enums.MyColor.INACTIVE_LIGHT_COLOR;
+import static com.slavamashkov.superjetsimulator.enums.MyColor.*;
 
 /**
  * The main task of this class is to combine the controllers responsible
@@ -60,23 +59,23 @@ public class ElecScreenController extends FxController {
     }
 
     @FXML public void onActionActivateLeftEngine() {
-        if (selectionPanelController.isLeftGenButtonPressed()) {
+        if (leftEngineToggleButton.isSelected()) {
             bottomInfoPaneController.activateLeftEngine();
             selectionPanelController.getLeftGenLowerLight().setFill(INACTIVE_LIGHT_COLOR.color);
         } else {
             bottomInfoPaneController.deactivateLeftEngine();
-            selectionPanelController.getLeftGenLowerLight().setFill(ACTIVE_LIGHT_COLOR.color);
+            selectionPanelController.getLeftGenLowerLight().setFill(OFF_LIGHT_COLOR.color);
         }
     }
 
     @FXML public void onActionActivateRightEngine() {
-        if (selectionPanelController.isRightGenButtonPressed()) {
+        if (rightEngineToggleButton.isSelected()) {
             bottomInfoPaneController.activateRightEngine();
             selectionPanelController.getRightGenLowerLight().setFill(INACTIVE_LIGHT_COLOR.color);
 
         } else {
             bottomInfoPaneController.deactivateRightEngine();
-            selectionPanelController.getRightGenLowerLight().setFill(ACTIVE_LIGHT_COLOR.color);
+            selectionPanelController.getRightGenLowerLight().setFill(OFF_LIGHT_COLOR.color);
         }
     }
 

@@ -23,9 +23,9 @@
             </children>
         </VBox>
 
-        <Pane fx:id="systemNamePane" prefHeight="67.0" prefWidth="650.0"/>
-        <Pane fx:id="upperInfoPane" layoutY="67.0" prefHeight="161.0" prefWidth="650.0"/>
-        <Pane fx:id="middleInfoPane" layoutY="228.0" prefHeight="186.0" prefWidth="650.0"/>
-        <Pane fx:id="bottomInfoPane" layoutY="414.0" prefHeight="288.0" prefWidth="650.0"/>
+        <Pane fx:id="systemNamePane" prefHeight="67.0" prefWidth="650.0" opacity="0.0"/>
+        <Pane fx:id="upperInfoPane" layoutY="67.0" prefHeight="161.0" prefWidth="650.0" opacity="0.0"/>
+        <Pane fx:id="middleInfoPane" layoutY="228.0" prefHeight="186.0" prefWidth="650.0" opacity="0.0"/>
+        <Pane fx:id="bottomInfoPane" layoutY="414.0" prefHeight="288.0" prefWidth="650.0" opacity="0.0"/>
     </children>
 </AnchorPane>
